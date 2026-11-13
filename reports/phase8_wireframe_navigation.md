@@ -59,3 +59,8 @@ inferred from this wireframe prototype.
 Next recover source `PlayerCtrl` motion constants and per-state transitions
 from IL, then tune navigation data against gameplay evidence. Do not quietly
 promote these placeholder physics values to authentic Corn Kidz 64 behavior.
+
+## Phase 9 continuation
+
+Near-plane segment clipping is addressed in `reports/phase9_nearplane_clipping.md`.
+This is a renderer maintenance fix, not an original-game fidelity milestone.

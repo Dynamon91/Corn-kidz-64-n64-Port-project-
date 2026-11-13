@@ -99,6 +99,62 @@ bool ck64_world3d_project(const CK64World3D *world, CK64Vec3 point,
          fabsf(out.x)>20000.0f || fabsf(out.y)>20000.0f) return false;
     *screen=out; return true;
 }
+/* Clip a world-space segment against the camera near plane BEFORE projection.
+ * The legacy wireframe renderer rejected an entire segment whenever either
+ * endpoint had depth <= 0.35f. This hid visible parts of the floor grid.
+ * Preserve caller outputs if the line is not visible or an input is invalid.
+ * The additional 0.01f guard is intentional: project() rejects <= 0.35f.
+ */
+bool ck64_world3d_project_line(const CK64World3D *world,
+                               CK64Vec3 from, CK64Vec3 to,
+                               CK64ScreenPoint *out_a, CK64ScreenPoint *out_b) {
+    const float near_depth = 0.36f;
+    if (!world || !out_a || !out_b ||
+        !isfinite(world->camera_yaw) ||
+        !isfinite(world->position.x) || !isfinite(world->position.y) ||
+        !isfinite(world->position.z) ||
+        !isfinite(from.x) || !isfinite(from.y) || !isfinite(from.z) ||
+        !isfinite(to.x) || !isfinite(to.y) || !isfinite(to.z))
+        return false;
+
+    const float sn = sinf(world->camera_yaw), cs = cosf(world->camera_yaw);
+    const CK64Vec3 eye = {
+        world->position.x - 7.0f * sn,
+        world->position.y + 4.0f,
+        world->position.z - 7.0f * cs
+    };
+    const CK64Vec3 target = {
+        world->position.x, world->position.y + 0.8f, world->position.z
+    };
+    const CK64Vec3 forward = normalized(subtract(target, eye));
+    const float depth_a = dot(subtract(from, eye), forward);
+    const float depth_b = dot(subtract(to, eye), forward);
+    if (!isfinite(depth_a) || !isfinite(depth_b) ||
+        (depth_a < near_depth && depth_b < near_depth))
+        return false;
+
+    if (depth_a < near_depth) {
+        const float t = (near_depth - depth_a) / (depth_b - depth_a);
+        from.x += t * (to.x - from.x);
+        from.y += t * (to.y - from.y);
+        from.z += t * (to.z - from.z);
+    } else if (depth_b < near_depth) {
+        const float t = (near_depth - depth_a) / (depth_b - depth_a);
+        to.x = from.x + t * (to.x - from.x);
+        to.y = from.y + t * (to.y - from.y);
+        to.z = from.z + t * (to.z - from.z);
+    }
+
+    CK64ScreenPoint a, b;
+    if (!ck64_world3d_project(world, from, &a) ||
+        !ck64_world3d_project(world, to, &b) ||
+        !ck64_world3d_clip_line(&a, &b))
+        return false;
+    *out_a = a;
+    *out_b = b;
+    return true;
+}
+
 /* Liang-Barsky clipping within inclusive 320x240 viewport. */
 bool ck64_world3d_clip_line(CK64ScreenPoint *a, CK64ScreenPoint *b) {
     if (!a || !b || !isfinite(a->x) || !isfinite(a->y) ||

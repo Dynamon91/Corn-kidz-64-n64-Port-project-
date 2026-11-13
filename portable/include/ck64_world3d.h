@@ -38,6 +38,13 @@ bool ck64_world3d_step(CK64World3D *world, CK64WorldInput input);
  * is conservative: endpoints behind the near plane are rejected, not sliced. */
 bool ck64_world3d_project(const CK64World3D *world, CK64Vec3 point,
                           CK64ScreenPoint *screen);
+/* Clip a 3D segment against depth=0.36 (just beyond project()'s near plane),
+ * project, then clip to the 320x240 screen. Unlike project() on individual
+ * endpoints, this retains the visible half of near-plane-crossing lines.
+ * On failure, leaves output points unchanged. Experimental renderer only. */
+bool ck64_world3d_project_line(const CK64World3D *world,
+                               CK64Vec3 from, CK64Vec3 to,
+                               CK64ScreenPoint *a, CK64ScreenPoint *b);
 /* 2D viewport clipping for graphics_draw_line; useful to avoid out of bounds
  * writes in a software 3D wireframe diagnostic. */
 bool ck64_world3d_clip_line(CK64ScreenPoint *a, CK64ScreenPoint *b);

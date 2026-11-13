@@ -4,9 +4,7 @@
 static void line3d(surface_t *screen,const CK64World3D *w,
                    CK64Vec3 from, CK64Vec3 to, uint32_t color) {
     CK64ScreenPoint a,b;
-    if (!ck64_world3d_project(w,from,&a) ||
-        !ck64_world3d_project(w,to,&b) ||
-        !ck64_world3d_clip_line(&a,&b)) return;
+    if (!ck64_world3d_project_line(w,from,to,&a,&b)) return;
     graphics_draw_line(screen,(int)a.x,(int)a.y,(int)b.x,(int)b.y,color);
 }
 /* 12 edges of a simple upright bounding box: placeholder capsule proxy. */
@@ -49,7 +47,7 @@ void ck64_wireframe_draw(surface_t *screen, const CK64World3D *world,
           world->position.z,0.38f,1.15f,avatar);
     /* Backplate keeps the control legend legible over the grid. */
     graphics_draw_box(screen,0,0,320,32,graphics_make_color(8,15,22,255));
-    graphics_draw_text(screen,6,4,"CK64 N64 - PHASE 8 3D TEST");
+    graphics_draw_text(screen,6,4,"CK64 N64 - PHASE 9 CLIPPING TEST");
     graphics_draw_text(screen,6,18,"STICK: MOVE  A: JUMP  B: RESET");
     graphics_draw_box(screen,0,211,320,29,graphics_make_color(8,15,22,255));
     graphics_draw_text(screen,6,215,"C-L/R: CAMERA   Z: DIAGNOSTIC");

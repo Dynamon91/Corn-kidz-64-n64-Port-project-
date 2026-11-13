@@ -67,10 +67,62 @@ static void test_screen_clip(void) {
     assert(ck64_world3d_clip_line(&a,&b));
     assert(near(a.x,10.0f,0.001f));
 }
+/* The camera follows the avatar. Test a line from exactly the camera eye to
+ * the avatar chest: the old renderer rejected the entire segment because its
+ * first endpoint could not be projected.
+ */
+static void test_line_crosses_near_plane(void) {
+    const float yaw_values[] = {0.0f, 1.0f, -2.1f, 3.0f};
+    for (unsigned i = 0; i < sizeof(yaw_values)/sizeof(yaw_values[0]); ++i) {
+        CK64World3D w; ck64_world3d_reset(&w);
+        w.camera_yaw = yaw_values[i];
+        w.position.x = i % 2 ? 7.5f : -7.5f;
+        w.position.z = i % 2 ? -7.5f : 7.5f;
+        const CK64Vec3 eye = {
+            w.position.x - 7.0f*sinf(w.camera_yaw),
+            w.position.y + 4.0f,
+            w.position.z - 7.0f*cosf(w.camera_yaw)
+        };
+        const CK64Vec3 center = {
+            w.position.x, w.position.y + 0.8f, w.position.z
+        };
+        const CK64Vec3 behind = {
+            eye.x - sinf(w.camera_yaw), eye.y, eye.z - cosf(w.camera_yaw)
+        };
+        CK64ScreenPoint a = {-5.0f,-5.0f}, b = {-6.0f,-6.0f};
+        assert(!ck64_world3d_project(&w,eye,&a));
+        assert(ck64_world3d_project_line(&w,eye,center,&a,&b));
+        assert(near(a.x,160.0f,0.5f) && near(a.y,120.0f,0.5f));
+        assert(near(b.x,160.0f,0.5f) && near(b.y,120.0f,0.5f));
+        assert(ck64_world3d_project_line(&w,center,eye,&a,&b));
+        assert(near(a.x,160.0f,0.5f) && near(b.x,160.0f,0.5f));
+        assert(!ck64_world3d_project_line(&w,eye,behind,&a,&b));
+    }
+}
+static void test_line_screen_clip_and_invalid_args(void) {
+    CK64World3D w; ck64_world3d_reset(&w);
+    CK64ScreenPoint a={-17,-18},b={-19,-20};
+    const CK64Vec3 left={-12.0f,0.8f,0.0f};
+    const CK64Vec3 right={12.0f,0.8f,0.0f};
+    assert(ck64_world3d_project_line(&w,left,right,&a,&b));
+    assert(near(a.x,0.0f,0.1f) && near(b.x,319.0f,0.1f));
+    assert(near(a.y,120.0f,0.1f) && near(b.y,120.0f,0.1f));
+    a=(CK64ScreenPoint){-17,-18}; b=(CK64ScreenPoint){-19,-20};
+    assert(!ck64_world3d_project_line(&w,(CK64Vec3){NAN,0,0},
+                                     right,&a,&b));
+    assert(a.x==-17 && b.y==-20);
+    assert(!ck64_world3d_project_line(NULL,left,right,&a,&b));
+    assert(!ck64_world3d_project_line(&w,left,right,NULL,&b));
+    assert(!ck64_world3d_project_line(&w,left,right,&a,NULL));
+    assert(a.x==-17 && b.y==-20);
+    w.camera_yaw=NAN;
+    assert(!ck64_world3d_project_line(&w,left,right,&a,&b));
+}
 int main(void) {
+    test_line_crosses_near_plane();test_line_screen_clip_and_invalid_args();
     test_reset_and_standstill();test_move_and_bounds();
     test_jump_landing();test_steering_and_reset();
     test_invalid_inputs_atomic();test_perspective_projection();
     test_screen_clip();
-    puts("7 wireframe/navigation prototype scenario tests passed");return 0;
+    puts("9 wireframe/navigation and near-plane scenario tests passed");return 0;
 }
