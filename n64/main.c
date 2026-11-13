@@ -1,4 +1,4 @@
-/* Corn Kidz 64 -> N64: Phase 11 DIAGNOSTIC frontend.
+/* Corn Kidz 64 -> N64: Phase 12 DIAGNOSTIC frontend.
  * Includes fixed-step GameCtrl/MusicFade plus a perspective wireframe TEST.
  * The navigation values are experimental, NOT extracted PlayerCtrl logic.
  * It is NOT a port of original levels, models, textures, music or physics.
@@ -33,6 +33,9 @@ typedef struct CK64DiagnosticApp {
     bool view_3d;
     bool jump_pending, reset_pending;
     float stick_x, stick_y, camera_turn;
+    unsigned grid_mode; /* FULL, LOW or OFF: controller R */
+    unsigned previous_draw_us; /* CPU time for previous draw; not emulator VPS */
+    CK64WireframeStats line_stats;
 } CK64DiagnosticApp;
 static CK64DiagnosticApp app;
 
@@ -87,6 +90,7 @@ static void init_diagnostic(void) {
     app.runtime.music.music_enabled = app.data.bMusic;
     ck64_world3d_reset(&app.world);
     app.view_3d = true;
+    app.grid_mode = CK64_GRID_FULL;
 }
 
 static void controller_diagnostics(void) {
@@ -106,6 +110,11 @@ static void controller_diagnostics(void) {
         app.reset_pending = false;
     }
     if (app.view_3d) {
+        if (pressed.r) {
+            app.grid_mode = app.grid_mode == CK64_GRID_FULL ? CK64_GRID_SPARSE
+                          : app.grid_mode == CK64_GRID_SPARSE ? CK64_GRID_OFF
+                          : CK64_GRID_FULL;
+        }
         if (pressed.start)
             (void)ck64_world3d_set_collision_enabled(
                 &app.world, !app.world.collision_enabled);
@@ -150,7 +159,7 @@ static void draw_diagnostics(void) {
     if (!screen) return;
     graphics_fill_screen(screen, graphics_make_color(13, 19, 29, 255));
     graphics_draw_text(screen, 15, 18, "CORN KIDZ 64 - N64 ENGINE DIAGNOSTIC");
-    graphics_draw_text(screen, 15, 40, "Phase 11: collision events / 30 Hz");
+    graphics_draw_text(screen, 15, 40, "Phase 12: grid audit / 30 Hz");
     graphics_draw_text(screen, 15, 60, "NO ORIGINAL GAME LEVELS OR ASSETS");
     snprintf(line, sizeof line, "Scene: %.90s", app.active_scene);
     graphics_draw_text(screen, 15, 82, line);
@@ -222,8 +231,23 @@ int main(void) {
         if (app.view_3d) {
             surface_t *screen=display_get();
             if (screen) {
+                /* Measure CPU time only while drawing pixels/text/lines.
+                 * Excludes display_get and display_show waits: do not
+                 * interpret this as emulator VPS or GPU frame time. */
+                const uint64_t draw_begin = (uint64_t)timer_ticks();
                 ck64_wireframe_draw(screen,&app.world,
-                        (unsigned long)app.runtime.fixed_updates);
+                        (unsigned long)app.runtime.fixed_updates,
+                        app.grid_mode,app.previous_draw_us,&app.line_stats);
+                const uint64_t draw_end = (uint64_t)timer_ticks();
+                if (draw_end >= draw_begin) {
+                    const uint64_t elapsed = draw_end - draw_begin;
+                    /* Avoid overflow on pathological timers/hangs. */
+                    const uint64_t cap_ticks = ((uint64_t)TICKS_PER_SECOND * 99999u)
+                                              / 1000000u;
+                    app.previous_draw_us = elapsed > cap_ticks ? 99999u
+                        : (unsigned)((elapsed * 1000000u) /
+                                     (uint64_t)TICKS_PER_SECOND);
+                }
                 display_show(screen);
             }
         } else draw_diagnostics();

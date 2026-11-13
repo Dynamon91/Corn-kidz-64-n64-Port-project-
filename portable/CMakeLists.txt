@@ -33,3 +33,13 @@ target_link_libraries(ck64_gameflow PUBLIC m)
 add_executable(test_world3d tests/test_world3d.c)
 target_link_libraries(test_world3d PRIVATE ck64_gameflow)
 add_test(NAME wireframe_navigation_prototype COMMAND test_world3d)
+
+# Phase 12: host-compiled REAL N64 wireframe source using mock graphics calls.
+# Tests the actual number of world-space lines for each grid density.
+add_executable(test_wireframe_modes ../n64/wireframe.c ../n64/tests/test_wireframe_modes.c)
+target_include_directories(test_wireframe_modes PRIVATE ../n64/tests/stubs ../n64)
+target_link_libraries(test_wireframe_modes PRIVATE ck64_gameflow)
+if (CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(test_wireframe_modes PRIVATE -Wall -Wextra -Wpedantic -Werror)
+endif()
+add_test(NAME grid_mode_line_budget COMMAND test_wireframe_modes)
