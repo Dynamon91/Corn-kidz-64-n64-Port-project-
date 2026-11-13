@@ -1,0 +1,29 @@
+{
+  "method": "PlayerCtrl::MovPl",
+  "token": "0x060002a0",
+  "il_bytes": 565,
+  "instructions": 170,
+  "run_calls": 33,
+  "run_flag_pairs_heuristic": {
+    "0,0": 2,
+    "0,1": 19,
+    "1,1": 12
+  },
+  "relevant_fields": [
+    "PlayerCtrl.ctrlDir",
+    "PlayerCtrl.ctrlRot",
+    "PlayerCtrl.floorNorm",
+    "PlayerCtrl.plVel",
+    "PlayerCtrl.zMov"
+  ],
+  "calls": [
+    "UnityEngine.Mathf::MoveTowards",
+    "UnityEngine.Mathf::Lerp",
+    "UnityEngine.Vector3::MoveTowards",
+    "UnityEngine.Vector3::Lerp",
+    "UnityEngine.Quaternion::Angle",
+    "UnityEngine.Quaternion::FromToRotation",
+    "UnityEngine.Quaternion::RotateTowards"
+  ],
+  "disclaimer": "Metadata-only counts from private source; not a numerical equivalence proof."
+}

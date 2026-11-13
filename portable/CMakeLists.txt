@@ -55,3 +55,9 @@ target_sources(ck64_gameflow PRIVATE src/ck64_playercore.c)
 add_executable(test_playercore tests/test_playercore.c)
 target_link_libraries(test_playercore PRIVATE ck64_gameflow)
 add_test(NAME playerctrl_original_il_subset COMMAND test_playercore)
+
+# Phase 15: source-grounded MovPl C11 math, not wired to placeholder gameplay.
+target_sources(ck64_gameflow PRIVATE src/ck64_player_motion.c)
+add_executable(test_player_motion tests/test_player_motion.c)
+target_link_libraries(test_player_motion PRIVATE ck64_gameflow)
+add_test(NAME playerctrl_movpl_source_math COMMAND test_player_motion)

@@ -1,3 +1,5 @@
+> **PROJECT IN DEVELOPMENT — Phase 15/50 provisional milestones (30% of roadmap; NOT gameplay completion).** The N64 diagnostic ROM has been tested in ares, but no complete playable Corn Kidz 64 port exists yet. Original v1.029 PlayerCtrl::MovPl math is reconstructed as a portable C11 module, tested separately and **not active** in the wireframe ROM. See [Phase 15 report](reports/phase15_movpl_source.md).
+
 # Corn Kidz 64 → Nintendo 64: reverse-engineering workspace
 
 > **PROJECT IN DEVELOPMENT — not playable Corn Kidz 64 yet.** Latest research milestone: **Phase 14**, first C11 original-IL-derived PlayerCtrl gravity/reset/utilities and method inventory. The last user-confirmed ares ROM is Phase 13, a **wireframe diagnostic only**.
