@@ -43,3 +43,9 @@ if (CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
     target_compile_options(test_wireframe_modes PRIVATE -Wall -Wextra -Wpedantic -Werror)
 endif()
 add_test(NAME grid_mode_line_budget COMMAND test_wireframe_modes)
+
+# Phase 13: timer stage math with independent C11 tests.
+target_sources(ck64_gameflow PRIVATE src/ck64_perf.c)
+add_executable(test_perf tests/test_perf.c)
+target_link_libraries(test_perf PRIVATE ck64_gameflow)
+add_test(NAME display_stage_timings COMMAND test_perf)

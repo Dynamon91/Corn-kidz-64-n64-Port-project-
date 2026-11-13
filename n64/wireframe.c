@@ -32,8 +32,8 @@ static void box3d(surface_t *screen, const CK64World3D *w,
 }
 
 void ck64_wireframe_draw(surface_t *screen, const CK64World3D *world,
-                         unsigned long game_updates,
-                         unsigned grid_mode, unsigned previous_draw_us,
+                         unsigned long game_updates, unsigned grid_mode,
+                         const CK64PerfTimes *previous,
                          CK64WireframeStats *stats) {
     CK64WireframeStats ignored = {0};
     if (!screen || !world) return;
@@ -75,30 +75,41 @@ void ck64_wireframe_draw(surface_t *screen, const CK64World3D *world,
 
     /* Contact feedback unchanged from successful ares Phase 11 test. */
     if (world->ejection_flash_steps > 0) {
-        graphics_draw_box(screen,105,52,110,15,
+        graphics_draw_box(screen,105,84,110,15,
                           graphics_make_color(101,43,34,255));
-        graphics_draw_text(screen,123,55,"EJECTED");
+        graphics_draw_text(screen,123,87,"EJECTED");
     } else if (world->collided_this_step || world->contact_flash_steps > 0) {
-        graphics_draw_box(screen,105,52,110,15,
+        graphics_draw_box(screen,105,84,110,15,
                           graphics_make_color(101,43,34,255));
-        graphics_draw_text(screen,123,55,"CONTACT!");
+        graphics_draw_text(screen,123,87,"CONTACT!");
     }
 
     graphics_draw_box(screen,0,0,320,32,graphics_make_color(8,15,22,255));
-    graphics_draw_text(screen,6,4,"CK64 N64 - PHASE 12 FRAME AUDIT");
+    graphics_draw_text(screen,6,4,"CK64 N64 - PHASE 13 TIMING");
     graphics_draw_text(screen,6,18,"STICK MOVE A:JUMP B:RESET R:GRID");
 
-    /* A short diagnostic bar shows PREVIOUS draw CPU microseconds (not VPS).
-     * Drawn/attempted line counts refer to this frame, after near-plane
-     * and screen clipping. display_show time is deliberately excluded.
+    /* Each row is intentionally wide enough for 320 px in default font:
+     * stage timings are from PREVIOUS completed display frame.
+     * G = display_get call, D = drawing, S = display_show call.
+     * T = sum from before display_get until display_show returns.
+     * It does not measure the wait for a physical VI flip.
      */
     const char *mode = grid_mode==CK64_GRID_OFF ? "OFF" :
                       grid_mode==CK64_GRID_SPARSE ? "LOW" : "FULL";
-    char debug[68];
-    graphics_draw_box(screen,0,33,320,14,graphics_make_color(8,15,22,255));
-    snprintf(debug,sizeof(debug),"GRID:%s L:%u/%u CPU:%uus",
-             mode,stats->lines_drawn,stats->lines_attempted,previous_draw_us);
+    char debug[88];
+    graphics_draw_box(screen,0,33,320,40,graphics_make_color(8,15,22,255));
+    snprintf(debug,sizeof(debug),"GRID:%s L:%u/%u",
+             mode,stats->lines_drawn,stats->lines_attempted);
     graphics_draw_text(screen,6,36,debug);
+    if (previous && previous->valid) {
+        snprintf(debug,sizeof(debug),"G:%u D:%u S:%u T:%u us",
+                 previous->get_us,previous->draw_us,
+                 previous->show_us,previous->total_us);
+    } else {
+        snprintf(debug,sizeof(debug),"G/D/S/T: NO TIMING SAMPLE");
+    }
+    graphics_draw_text(screen,6,48,debug);
+    graphics_draw_text(screen,6,60,"G:get D:draw S:show T:total");
 
     graphics_draw_box(screen,0,211,320,29,graphics_make_color(8,15,22,255));
     graphics_draw_text(screen,6,215,world->collision_enabled

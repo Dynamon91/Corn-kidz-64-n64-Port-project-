@@ -9,6 +9,7 @@
 struct surface_s { int marker; };
 static unsigned graphics_lines;
 static char last_grid_label[80];
+static char last_perf_label[80];
 
 uint32_t graphics_make_color(int r,int g,int b,int a) {
     return (uint32_t)((unsigned)r ^ (unsigned)g ^ (unsigned)b ^ (unsigned)a);
@@ -32,6 +33,10 @@ void graphics_draw_text(surface_t *screen,int x,int y,const char *s) {
         assert(strlen(s) < sizeof(last_grid_label));
         strcpy(last_grid_label,s);
     }
+    if (strstr(s,"G:") && strstr(s,"T:")) {
+        assert(strlen(s) < sizeof(last_perf_label));
+        strcpy(last_perf_label,s);
+    }
 }
 static void test_grid_mode(unsigned mode,unsigned expected,const char *label) {
     struct surface_s screen = {0};
@@ -40,12 +45,14 @@ static void test_grid_mode(unsigned mode,unsigned expected,const char *label) {
     ck64_world3d_reset(&world);
     graphics_lines=0;
     last_grid_label[0]='\0';
-    ck64_wireframe_draw(&screen,&world,0,mode,412,&stats);
+    last_perf_label[0]='\0';
+    const CK64PerfTimes prior={1000,8123,500,9623,true};
+    ck64_wireframe_draw(&screen,&world,0,mode,&prior,&stats);
     assert(stats.lines_attempted == expected);
     assert(stats.lines_drawn <= stats.lines_attempted);
     assert(graphics_lines == stats.lines_drawn);
     assert(strstr(last_grid_label,label) != NULL);
-    assert(strstr(last_grid_label,"CPU:412us") != NULL);
+    assert(strstr(last_perf_label,"G:1000 D:8123 S:500 T:9623 us") != NULL);
 }
 int main(void) {
     /* 4 border edges + 2 solid boxes x12 edges = 28 baseline. */
@@ -58,11 +65,15 @@ int main(void) {
     CK64World3D w; ck64_world3d_reset(&w);
     CK64WireframeStats untouched={101,202};
     struct surface_s screen = {0};
-    ck64_wireframe_draw(NULL,&w,0,CK64_GRID_FULL,0,&untouched);
+    ck64_wireframe_draw(NULL,&w,0,CK64_GRID_FULL,NULL,&untouched);
     assert(untouched.lines_attempted==101 && untouched.lines_drawn==202);
-    ck64_wireframe_draw(&screen,NULL,0,CK64_GRID_FULL,0,&untouched);
+    ck64_wireframe_draw(&screen,NULL,0,CK64_GRID_FULL,NULL,&untouched);
     assert(untouched.lines_attempted==101 && untouched.lines_drawn==202);
-    ck64_wireframe_draw(&screen,&w,0,CK64_GRID_OFF,0,NULL);
+    ck64_wireframe_draw(&screen,&w,0,CK64_GRID_OFF,NULL,NULL);
+    /* Explicit no-sample UI rather than zero-valued stale timings. */
+    last_perf_label[0]='\0';
+    ck64_wireframe_draw(&screen,&w,0,CK64_GRID_OFF,NULL,&untouched);
+    assert(last_perf_label[0]=='\0');
 
     puts("5 grid mode/count and 2 invalid-argument checks passed");
     return 0;

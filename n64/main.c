@@ -1,4 +1,4 @@
-/* Corn Kidz 64 -> N64: Phase 12 DIAGNOSTIC frontend.
+/* Corn Kidz 64 -> N64: Phase 13 DIAGNOSTIC frontend.
  * Includes fixed-step GameCtrl/MusicFade plus a perspective wireframe TEST.
  * The navigation values are experimental, NOT extracted PlayerCtrl logic.
  * It is NOT a port of original levels, models, textures, music or physics.
@@ -34,7 +34,7 @@ typedef struct CK64DiagnosticApp {
     bool jump_pending, reset_pending;
     float stick_x, stick_y, camera_turn;
     unsigned grid_mode; /* FULL, LOW or OFF: controller R */
-    unsigned previous_draw_us; /* CPU time for previous draw; not emulator VPS */
+    CK64PerfTimes previous_perf; /* Previous complete display frame, not VPS */
     CK64WireframeStats line_stats;
 } CK64DiagnosticApp;
 static CK64DiagnosticApp app;
@@ -159,7 +159,7 @@ static void draw_diagnostics(void) {
     if (!screen) return;
     graphics_fill_screen(screen, graphics_make_color(13, 19, 29, 255));
     graphics_draw_text(screen, 15, 18, "CORN KIDZ 64 - N64 ENGINE DIAGNOSTIC");
-    graphics_draw_text(screen, 15, 40, "Phase 12: grid audit / 30 Hz");
+    graphics_draw_text(screen, 15, 40, "Phase 13: display timing / 30 Hz");
     graphics_draw_text(screen, 15, 60, "NO ORIGINAL GAME LEVELS OR ASSETS");
     snprintf(line, sizeof line, "Scene: %.90s", app.active_scene);
     graphics_draw_text(screen, 15, 82, line);
@@ -229,27 +229,22 @@ int main(void) {
             }
         }
         if (app.view_3d) {
+            const uint64_t before_get=(uint64_t)timer_ticks();
             surface_t *screen=display_get();
+            const uint64_t after_get=(uint64_t)timer_ticks();
             if (screen) {
-                /* Measure CPU time only while drawing pixels/text/lines.
-                 * Excludes display_get and display_show waits: do not
-                 * interpret this as emulator VPS or GPU frame time. */
-                const uint64_t draw_begin = (uint64_t)timer_ticks();
                 ck64_wireframe_draw(screen,&app.world,
                         (unsigned long)app.runtime.fixed_updates,
-                        app.grid_mode,app.previous_draw_us,&app.line_stats);
-                const uint64_t draw_end = (uint64_t)timer_ticks();
-                if (draw_end >= draw_begin) {
-                    const uint64_t elapsed = draw_end - draw_begin;
-                    /* Avoid overflow on pathological timers/hangs. */
-                    const uint64_t cap_ticks = ((uint64_t)TICKS_PER_SECOND * 99999u)
-                                              / 1000000u;
-                    app.previous_draw_us = elapsed > cap_ticks ? 99999u
-                        : (unsigned)((elapsed * 1000000u) /
-                                     (uint64_t)TICKS_PER_SECOND);
-                }
+                        app.grid_mode,&app.previous_perf,&app.line_stats);
+                const uint64_t after_draw=(uint64_t)timer_ticks();
                 display_show(screen);
-            }
+                const uint64_t after_show=(uint64_t)timer_ticks();
+                CK64PerfTimes next={0};
+                if (ck64_perf_measure(&next,before_get,after_get,after_draw,
+                                      after_show,(uint64_t)TICKS_PER_SECOND))
+                    app.previous_perf=next;
+                else app.previous_perf.valid=false;
+            } else app.previous_perf.valid=false;
         } else draw_diagnostics();
     }
 }
