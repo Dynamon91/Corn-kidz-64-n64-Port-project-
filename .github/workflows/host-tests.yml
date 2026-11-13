@@ -43,5 +43,5 @@ jobs:
 
       - name: N64 frontend API compile check with host-only stubs
         run: |
-          ${{ matrix.compiler }} -std=c11 -Wall -Wextra -Wpedantic -Werror \
+          clang -std=c11 -Wall -Wextra -Wpedantic -Werror \
             -fsyntax-only -In64/tests/stubs -Iportable/include n64/main.c

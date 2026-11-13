@@ -14,18 +14,26 @@ permissions:
 
 jobs:
   n64-diagnostic:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
-    container:
-      image: ghcr.io/dragonminded/libdragon:latest
+    env:
+      N64_INST: /opt/libdragon
     steps:
       - uses: actions/checkout@v4
-      - name: Install libdragon SDK in toolchain container
+      - name: Install official MIPS64 toolchain package
+        run: |
+          curl --fail --location --retry 3 --output /tmp/n64-toolchain.deb \
+            https://github.com/DragonMinded/libdragon/releases/download/toolchain-continuous-prerelease/gcc-toolchain-mips64-amd64.deb
+          sudo dpkg -i /tmp/n64-toolchain.deb
+          test -x /opt/libdragon/bin/mips64-elf-gcc
+      - name: Build and install libdragon SDK
         run: |
           git clone --depth 1 --branch trunk https://github.com/DragonMinded/libdragon.git /tmp/libdragon
+          sudo apt-get update
+          sudo apt-get install -y libpng-dev zlib1g-dev
           make -C /tmp/libdragon install-mk
           make -C /tmp/libdragon -j 2 libdragon tools
-          make -C /tmp/libdragon install tools-install
+          sudo --preserve-env=N64_INST make -C /tmp/libdragon install tools-install
       - name: Build N64 diagnostic ROM
         run: make -C n64 -j 2
       - name: Verify ROM header (big-endian Z64)
