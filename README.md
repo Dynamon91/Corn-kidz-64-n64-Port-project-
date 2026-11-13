@@ -1,5 +1,7 @@
 # Corn Kidz 64 → Nintendo 64: reverse-engineering workspace
 
+**Status — Phase 8 (13 November 2026):** The user confirmed Phase 6's diagnostic ROM boots and accepts controller input in ares. Phase 8 adds a separate libdragon **perspective wireframe navigation test**: analog movement, jump, orbit camera, and the earlier diagnostic mode, all with 5 CTest suites passing on host and a successful native MIPS64 cross-build. [Download the experimental 160 KiB .z64](roms/ck64_diag_phase8_wireframe.z64). The Phase 8 ROM **has not yet been boot-tested on ares**. No authentic Corn Kidz 64 player model, level, collision or animations have been ported. See [Phase 8 report](reports/phase8_wireframe_navigation.md).
+
 **Status (13 November 2026): Phase 5 N64 diagnostic ROM cross-compiled** using the official MIPS64 compiler and libdragon in GitHub Actions; portable clock/runtime and selected GameCtrl/MusicFade state logic are tested. Persistent N64 saves, 3D gameplay and original levels are not implemented.
 
 **Important:** a diagnostic-only native `.z64` ROM now exists. **No playable Corn Kidz 64 port exists yet.** The ROM has not been exercised on Ares/console; host tests do not establish gameplay equivalence.
