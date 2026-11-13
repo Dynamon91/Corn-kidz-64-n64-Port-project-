@@ -33,7 +33,8 @@ void graphics_draw_text(surface_t *screen,int x,int y,const char *s) {
         assert(strlen(s) < sizeof(last_grid_label));
         strcpy(last_grid_label,s);
     }
-    if (strstr(s,"G:") && strstr(s,"T:")) {
+    /* Match the measured row only, not the G:get/D:draw legend below. */
+    if (strncmp(s,"G:",2)==0 && strstr(s," T:") && strstr(s," us")) {
         assert(strlen(s) < sizeof(last_perf_label));
         strcpy(last_perf_label,s);
     }
