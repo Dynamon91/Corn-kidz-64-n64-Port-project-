@@ -1,0 +1,6 @@
+reference_only/
+build/
+__pycache__/
+*.pyc
+*.o
+*.a
