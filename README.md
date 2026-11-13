@@ -1,23 +1,34 @@
-# Corn Kidz 64 → Nintendo 64 (N64 Port)
+# Corn Kidz 64 → Nintendo 64: reverse-engineering workspace
 
-Experimental reverse-engineering and native Nintendo 64 reconstruction project.
+**Status (13 November 2026):** binary analysis and **Phase 3 Data/save C11 reconstruction**, plus selected GameCtrl behavior. Source field schema verified; native N64 save hardware and ROM not implemented.
 
-**Status — 2026-11-13:** Phase 1 binary analysis complete; Phase 2 GameCtrl analysis and portable flow prototype; Phase 3 C11 save-data reconstruction and host tests.
+**Important:** no N64 ROM or full playable port exists yet. The available
+host tests **do not** establish gameplay equivalence.
 
-**No native Nintendo 64 ROM (.z64) has been built or tested. This is not a playable port yet.**
+## Verified source facts
 
-## Verified original game architecture
+- Uploaded ZIP parts: `Corn.Kidz.64.v1.029 (1).zip.001`, `.002`, `.003`.
+- Combined ZIP SHA-256 `2d1f4f33ff4cfc86d77a71649c5f89d7191d93c2fa6ad79096676e3aec3c459f`
+- 232 archive entries, all ZIP CRC checks passed.
+- Unity 2021.3.30f1 Windows AMD64 game, C#/Mono logic.
+- `Assembly-CSharp.dll`: 193 managed types, 1105 methods and 230,124 bytes IL.
+- `GameCtrl`: 21 methods / 770 decoded instructions.
+- `Data`: 34 field names/types verified from CLI signatures; 20 assigned by ResetSav.
+- `<WaitForFade>d__44`: coroutine delaying scene load across 50 frame yields.
 
-- Source: Corn Kidz 64 v1.029, Windows x86-64, Unity 2021.3.30f1 / Mono / C#.
-- The original Assembly-CSharp.dll exposes 193 managed types and 1,105 methods.
-- GameCtrl: 21 methods examined; Data: 34 field names and types identified.
-- Target: Nintendo 64, MIPS R4300i, libdragon, native rendering/audio/input.
+## Read the reports first
 
-## Portable prototype
+- `reports/phase1.md`: original executable, binary/architecture analysis, risks.
+- `reports/gamectrl_phase2.md`: Phase 2 behavior scope and limitations.
+- `reports/save_phase3.md`: complete save record, reset behavior, source-grounding and test results.
+- `reports/data_fields.json`: all original Data field definitions and types.
+- `reports/save_phase3_evidence.json`: 13 passing metadata/IL checks.
+- `reports/gamectrl_il.json`: decoded method instruction streams and resolved tokens.
+- `reports/wait_for_fade_il.json`: coroutine instruction stream.
+- `reports/gameflow_evidence_checks.json`: 15 passing static checks.
+- `reports/assembly_inventory.json`: whole managed assembly method catalog.
 
-The Phase 3 C11 prototype includes a 1,533-byte versioned big-endian save record with CRC32, a GameCtrl flow subset and tests (18/18 passed on desktop GCC/Clang and sanitizer builds). These are **host-only** test results; N64 flash/EEPROM, graphics, audio, collision, levels and executable ROM are not implemented.
-
-Run host tests when source files are available:
+## Host-only portable logic and tests
 
 ```sh
 cmake -S portable -B build
@@ -25,16 +36,41 @@ cmake --build build
 ctest --test-dir build --output-on-failure
 ```
 
-## Archive and project policy
+This builds the C11 `ck64_gameflow` static library on a desktop compiler, not
+an N64 ROM. It now includes the 34-field `CK64SaveData` snapshot, a 1,533-byte
+versioned big-endian CRC32 record, a six-field GameFlow synchronization bridge,
+and a source-faithful selective `ResetSav`. GameCtrl also covers scene changes,
+progression, death, checkpoints, volume and Update's counter/HP subset. N64 IO
+and graphics/audio backends are deliberately not implemented yet.
 
-The project is based on reverse engineering of a privately supplied game copy. Only independently authored tools, C sources, tests and analytical reports may be included here. Original Unity executable files, third-party game assets, proprietary audio and models must not be committed.
+Host test counts: 10 gameflow scenario groups + 8 save groups = **18 passing**.
+AddressSanitizer and UndefinedBehaviorSanitizer host builds also pass.
 
-This repository is a backup of the in-progress analysis, **not** an official game release or a finished port. Preserve original logic as closely as the N64 hardware permits, and clearly label verified and hypothetical behavior.
+## Repeat IL inspection with a personal copy of the game
 
-## Roadmap
+```sh
+python3 tools/inspect_gamectrl_il.py '/path/to/Assembly-CSharp.dll' \
+  --type GameCtrl --output reports/gamectrl_il.json
+python3 tools/inspect_gamectrl_il.py '/path/to/Assembly-CSharp.dll' \
+  --type '<WaitForFade>d__44' --output reports/wait_for_fade_il.json
+python3 tools/verify_phase2_evidence.py reports/gamectrl_il.json \
+  reports/wait_for_fade_il.json
+```
 
-1. Native N64 toolchain build via libdragon.
-2. Complete platform-independent GameCtrl and Data save layers.
-3. PlayerCtrl and camera state-machine analysis/translation.
-4. Renderer, audio, level loading and asset adaptation.
-5. Emulator and console testing; gameplay-fidelity validation.
+`tools/dotnet_metadata_inventory.py` and `tools/scan_split_zip.py` reproduce
+the earlier structural checks. Inspect the full save Data field schema via:
+
+```sh
+python3 tools/inspect_data_fields.py '/path/to/Assembly-CSharp.dll' \
+  --output reports/data_fields.json
+python3 tools/verify_phase3_evidence.py .
+```
+
+All inspection scripts are pure Python 3.9+ stdlib and **never execute the game's binaries**.
+
+## Distribution policy
+
+This download includes **only independently authored C code, Python tools,
+IL data extracts, and reports**. It does **not** ship Unity binaries,
+proprietary models, audio, textures, original game resources or Steam emulation
+components. The game must be obtained separately by its lawful owner.
