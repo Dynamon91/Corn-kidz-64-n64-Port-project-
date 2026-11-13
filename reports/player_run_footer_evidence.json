@@ -1,0 +1,12 @@
+{
+  "method": "PlayerCtrl::Run",
+  "token": "0x06000294",
+  "source_offset_range": [
+    75849,
+    76018
+  ],
+  "verified_instruction_count": 22,
+  "verified_branch_count": 8,
+  "version": "1.029",
+  "scope": "private IL structure, no Unity simulation parity"
+}
