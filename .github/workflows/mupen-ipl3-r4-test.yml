@@ -1,0 +1,50 @@
+name: Experimental Mupen64Plus IPL3 r4 ROM (not emulator-tested)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/splice_ipl3_r4.py'
+      - 'tools/tests/test_splice_ipl3_r4.py'
+      - '.github/workflows/mupen-ipl3-r4-test.yml'
+      - 'roms/ck64_diag_phase6.z64'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  splice-historical-boot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unit tests for safe IPL3 region replacement
+        run: python3 -m unittest tools/tests/test_splice_ipl3_r4.py -v
+      - name: Obtain historical, pinned libdragon IPL3 r4
+        run: |
+          curl --fail --location --retry 3 \
+            --output /tmp/libdragon_ipl3_r4.z64 \
+            https://raw.githubusercontent.com/DragonMinded/libdragon/066e5fc39e/boot/bin/ipl3_prod.z64
+          echo 'd78ddd06d2303d3f76d11de6b6326d69  /tmp/libdragon_ipl3_r4.z64' | md5sum --check
+      - name: Patch only IPL3 boot-code region into Phase 6 diagnostic
+        run: |
+          python3 tools/splice_ipl3_r4.py \
+            roms/ck64_diag_phase6.z64 /tmp/libdragon_ipl3_r4.z64 \
+            roms/ck64_diag_phase6_ipl3_r4_mupen_test.z64
+      - name: Make ROM available as build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ck64-phase6-mupen-ipl3-r4-experimental
+          path: roms/ck64_diag_phase6_ipl3_r4_mupen_test.z64
+          if-no-files-found: error
+          retention-days: 30
+      - name: Store experimental ROM in GitHub repository
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add roms/ck64_diag_phase6_ipl3_r4_mupen_test.z64
+          if ! git diff --cached --quiet; then
+            git commit -m 'test: add experimental Phase 6 IPL3 r4 Mupen boot variant'
+            git push origin HEAD:main
+          fi
