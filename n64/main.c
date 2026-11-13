@@ -1,4 +1,4 @@
-/* Corn Kidz 64 -> N64: Phase 13 DIAGNOSTIC frontend.
+/* Corn Kidz 64 -> N64: Phase 19 SOURCE-DRIVEN DIAGNOSTIC frontend.
  * Includes fixed-step GameCtrl/MusicFade plus a perspective wireframe TEST.
  * The navigation values are experimental, NOT extracted PlayerCtrl logic.
  * It is NOT a port of original levels, models, textures, music or physics.
@@ -11,6 +11,7 @@
 #include "ck64_world3d.h"
 #include "ck64_player_state0.h"
 #include "ck64_player_footer.h"
+#include "ck64_source_lab.h"
 #include "wireframe.h"
 #include <stdbool.h>
 #include <stdint.h>
@@ -36,6 +37,9 @@ typedef struct CK64DiagnosticApp {
     bool jump_pending, reset_pending;
     float stick_x, stick_y, camera_turn;
     bool source_jump_probe;
+    bool source_live;
+    bool source_a_held, source_release_pending;
+    CK64SourceLab source_lab;
     bool source_jump_valid;
     unsigned source_jump_samples;
     CK64PlayerRunFooter source_floor;
@@ -99,6 +103,7 @@ static void init_diagnostic(void) {
     (void)ck64_gameflow_import_data(&app.runtime.flow, &app.data);
     app.runtime.music.music_enabled = app.data.bMusic;
     ck64_world3d_reset(&app.world);
+    (void)ck64_source_lab_init(&app.source_lab);
     app.view_3d = true;
     app.grid_mode = CK64_GRID_FULL;
 }
@@ -111,6 +116,8 @@ static void controller_diagnostics(void) {
         app.camera_turn=0.0f;
         app.jump_pending=false;
         app.reset_pending=false;
+        app.source_a_held=false;
+        app.source_release_pending=false;
         return;
     }
     pressed = joypad_get_buttons_pressed(JOYPAD_PORT_1);
@@ -121,14 +128,29 @@ static void controller_diagnostics(void) {
     }
     if (app.view_3d) {
         if (pressed.l) {
-            app.source_jump_probe=!app.source_jump_probe;
-            app.source_jump_valid=false;
-            app.source_jump_samples=0;
-            app.source_floor=(CK64PlayerRunFooter){0};
-            app.source_floor.on_floor=app.world.grounded;
-            app.source_floor.on_floor_timer=app.world.grounded ? 1 : -1;
-            app.source_floor_valid=true;
-            app.source_landings=0;
+            /* Preserve legacy diagnostic: L cycles LEGACY -> PROBE -> LIVE. */
+            if (app.source_live) {
+                app.source_live=false;
+                app.source_jump_probe=false;
+            } else if (app.source_jump_probe) {
+                app.source_jump_probe=false;
+                app.source_live=true;
+                (void)ck64_source_lab_init(&app.source_lab);
+            } else {
+                app.source_jump_probe=true;
+                app.source_live=false;
+                app.source_jump_valid=false;
+                app.source_jump_samples=0;
+                app.source_floor=(CK64PlayerRunFooter){0};
+                app.source_floor.on_floor=app.world.grounded;
+                app.source_floor.on_floor_timer=app.world.grounded ? 1 : -1;
+                app.source_floor_valid=true;
+                app.source_landings=0;
+            }
+            app.jump_pending=false;
+            app.reset_pending=false;
+            app.source_a_held=false;
+            app.source_release_pending=false;
         }
         if (app.source_jump_probe && pressed.a) {
             /* One-shot source rule sample, NOT modifying world3d physics. */
@@ -154,14 +176,19 @@ static void controller_diagnostics(void) {
                           : app.grid_mode == CK64_GRID_SPARSE ? CK64_GRID_OFF
                           : CK64_GRID_FULL;
         }
-        if (pressed.start)
-            (void)ck64_world3d_set_collision_enabled(
-                &app.world, !app.world.collision_enabled);
+        if (pressed.start) {
+            CK64World3D *w = app.source_live ? &app.source_lab.world : &app.world;
+            (void)ck64_world3d_set_collision_enabled(w, !w->collision_enabled);
+        }
         joypad_inputs_t inputs = joypad_get_inputs(JOYPAD_PORT_1);
         app.stick_x = (float)inputs.stick_x / 85.0f;
         app.stick_y = (float)inputs.stick_y / 85.0f;
         app.camera_turn = (inputs.btn.c_right ? 1.0f : 0.0f) -
                           (inputs.btn.c_left ? 1.0f : 0.0f);
+        if (app.source_live) {
+            app.source_release_pending |= app.source_a_held && !inputs.btn.a;
+            app.source_a_held=inputs.btn.a;
+        }
         app.jump_pending |= pressed.a;
         app.reset_pending |= pressed.b;
         return;
@@ -257,7 +284,16 @@ int main(void) {
                     app.jump_pending, app.reset_pending
                 };
                 for (uint32_t i=0; i<frame.updates; ++i) {
-                    if (!ck64_world3d_step(&app.world, input)) {
+                    if (app.source_live) {
+                        CK64SourceLabInput s_in={
+                            input.stick_x,input.stick_y,input.camera_turn,
+                            input.jump,app.source_release_pending,input.reset
+                        };
+                        if (!ck64_source_lab_step(&app.source_lab,s_in)) {
+                            app.dropped_update=true;
+                            break;
+                        }
+                    } else if (!ck64_world3d_step(&app.world, input)) {
                         app.dropped_update = true;
                         break;
                     }
@@ -282,6 +318,7 @@ int main(void) {
                     input.jump = false; input.reset = false;
                     app.jump_pending = false;
                     app.reset_pending = false;
+                    app.source_release_pending=false;
                 }
             }
         }
@@ -290,10 +327,30 @@ int main(void) {
             surface_t *screen=display_get();
             const uint64_t after_get=(uint64_t)timer_ticks();
             if (screen) {
-                ck64_wireframe_draw(screen,&app.world,
+                ck64_wireframe_draw(screen,
+                        app.source_live ? &app.source_lab.world : &app.world,
                         (unsigned long)app.runtime.fixed_updates,
                         app.grid_mode,&app.previous_perf,&app.line_stats);
-                if (app.source_jump_probe) {
+                if (app.source_live) {
+                    char lab_line[100];
+                    graphics_draw_box(screen,0,150,320,61,
+                        graphics_make_color(19,31,44,255));
+                    graphics_draw_text(screen,5,153,
+                        "PH19 SOURCE LIVE - L:MODE");
+                    snprintf(lab_line,sizeof lab_line,
+                        "zMov:%.2f  yVel:%.2f  floorT:%ld",
+                        (double)app.source_lab.motion.z_mov,
+                        (double)app.source_lab.state0.y_vel,
+                        (long)app.source_lab.floor_history.on_floor_timer);
+                    graphics_draw_text(screen,5,168,lab_line);
+                    snprintf(lab_line,sizeof lab_line,
+                        "J:%u LAND:%u PATH:%u",
+                        app.source_lab.jumps,app.source_lab.landings,
+                        (unsigned)app.source_lab.last_decision.path);
+                    graphics_draw_text(screen,5,183,lab_line);
+                    graphics_draw_text(screen,5,198,
+                        "TEST GEOMETRY / NO ORIGINAL ASSETS");
+                } else if (app.source_jump_probe) {
                     char probe_line[96];
                     graphics_draw_box(screen,3,185,313,52,
                         graphics_make_color(18,26,40,255));

@@ -79,3 +79,9 @@ target_sources(ck64_gameflow PRIVATE src/ck64_player_footer.c)
 add_executable(test_player_footer tests/test_player_footer.c)
 target_link_libraries(test_player_footer PRIVATE ck64_gameflow)
 add_test(NAME playerctrl_run_floor_history COMMAND test_player_footer)
+
+# Phase 19: actual movement of a TEST avatar via source-grounded modules.
+target_sources(ck64_gameflow PRIVATE src/ck64_source_lab.c)
+add_executable(test_source_lab tests/test_source_lab.c)
+target_link_libraries(test_source_lab PRIVATE ck64_gameflow)
+add_test(NAME source_driven_wireframe_lab COMMAND test_source_lab)

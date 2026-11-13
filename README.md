@@ -1,12 +1,12 @@
 # Corn Kidz 64 → Nintendo 64 — Port project
 
-> **PROJECT IN DEVELOPMENT.** This is a source-grounded N64 fan-port research and prototyping workspace, **not a playable Corn Kidz 64 release**. The last user-confirmed on-screen ares build remains the Phase 13 diagnostic wireframe; the newest PlayerCtrl modules compile separately but are **not connected to actual gameplay**.
+> **PROJECT IN DEVELOPMENT.** This is a source-grounded N64 fan-port research and prototyping workspace, **not a playable Corn Kidz 64 release**. The last user-confirmed on-screen ares build remains the Phase 13 diagnostic wireframe; the Phase 19 source-derived modules drive an isolated **test-only wireframe avatar**, but authentic game physics, levels and models are **not implemented**.
 
-## Current milestone — Phase 18 of 50+ (provisional)
+## Current milestone — Phase 19 of 50+ (provisional)
 
-**Roadmap milestones:** 18 / 50 = **36% of an illustrative phase plan**, **NOT 36% of original game assets, level content or gameplay**.
+**Roadmap milestones:** 19 / 50 = **38% of an illustrative phase plan**, **NOT 38% of original game assets, level content or gameplay**.
 
-Progress: [█████████░░░░░░░░░░░░░░░░] 36% of the PROVISIONAL ROADMAP (not 36% of the game).
+Progress: [█████████▌░░░░░░░░░░░░░░░] 38% of the PROVISIONAL ROADMAP (not 38% of the game).
 
 ### Verified/recorded engineering work
 
@@ -15,6 +15,7 @@ Progress: [█████████░░░░░░░░░░░░░░
 - **Phase 16:** early PlayerCtrl::Run state entry, selective input lock, rumble decay, camera-mode selection, and deferred frontend effect flags. 10 C11 scenario groups plus private IL structural audit. [Report](reports/phase16_run_prelude.md) · [Evidence](reports/player_run_prelude_evidence.json)
 - **Phase 17:** source-derived state-0 jump/short-hop/coyote/rotation call parameters, optional L-toggled source sample in diagnostic N64 ROM, not live original gameplay. [Report](reports/phase17_state0_jump.md).
 - **Phase 18:** original Run floor-history timer/counters and wall clearing, 11 new C11 scenario groups. L-toggled diagnostic overlay reports a **source-based counter driven by prototype physics**; actual collision and gameplay remain provisional. [Report](reports/phase18_run_footer_landing.md).
+- **Phase 19:** **live** source-driven wireframe test room: `PlayerCtrl`-derived gravity/MovPl/state-0/floor history now moves a separate avatar with simplified adapter geometry and camera. L cycles LEGACY → PROBE → SOURCE LIVE. No actual game assets or authentic collision. [Report](reports/phase19_live_source_movement.md).
 - **Original reference:** [66-method PlayerCtrl inventory](reports/playerctrl_method_inventory.csv) and [110% PC gameplay walkthrough chapter notes](reports/gameplay_reference_110percent_walkthrough.md).
 - **Emulator reference:** [Phase 13 native diagnostic .z64](roms/ck64_diag_phase13_display_timing.z64) tested by user in ares. It is still a placeholder wireframe scene, not the original game's levels.
 
