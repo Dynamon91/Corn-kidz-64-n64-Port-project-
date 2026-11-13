@@ -67,3 +67,9 @@ target_sources(ck64_gameflow PRIVATE src/ck64_player_run.c)
 add_executable(test_player_run tests/test_player_run.c)
 target_link_libraries(test_player_run PRIVATE ck64_gameflow)
 add_test(NAME playerctrl_run_prelude COMMAND test_player_run)
+
+# Phase 17: source-derived original state-0 jump/movement-plan.
+target_sources(ck64_gameflow PRIVATE src/ck64_player_state0.c)
+add_executable(test_player_state0 tests/test_player_state0.c)
+target_link_libraries(test_player_state0 PRIVATE ck64_gameflow)
+add_test(NAME playerctrl_state0_jump_source COMMAND test_player_state0)

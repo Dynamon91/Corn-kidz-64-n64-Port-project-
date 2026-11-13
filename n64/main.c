@@ -9,6 +9,7 @@
 #include "ck64_save.h"
 #include "ck64_gameflow_save.h"
 #include "ck64_world3d.h"
+#include "ck64_player_state0.h"
 #include "wireframe.h"
 #include <stdbool.h>
 #include <stdint.h>
@@ -33,6 +34,11 @@ typedef struct CK64DiagnosticApp {
     bool view_3d;
     bool jump_pending, reset_pending;
     float stick_x, stick_y, camera_turn;
+    bool source_jump_probe;
+    bool source_jump_valid;
+    unsigned source_jump_samples;
+    CK64State0 source_jump_last;
+    CK64State0Result source_jump_result;
     unsigned grid_mode; /* FULL, LOW or OFF: controller R */
     CK64PerfTimes previous_perf; /* Previous complete display frame, not VPS */
     CK64WireframeStats line_stats;
@@ -110,6 +116,29 @@ static void controller_diagnostics(void) {
         app.reset_pending = false;
     }
     if (app.view_3d) {
+        if (pressed.l) {
+            app.source_jump_probe=!app.source_jump_probe;
+            app.source_jump_valid=false;
+            app.source_jump_samples=0;
+        }
+        if (app.source_jump_probe && pressed.a) {
+            /* One-shot source rule sample, NOT modifying world3d physics. */
+            CK64State0 sample={0};
+            CK64State0Result result={0};
+            sample.on_floor=app.world.grounded;
+            sample.on_floor_timer=sample.on_floor?0:-4;
+            sample.z_mov=0.4f;
+            sample.y_vel=app.world.velocity.y;
+            sample.forward.z=1.0f;
+            sample.last_ctrl_dir.z=1.0f;
+            app.source_jump_valid=ck64_player_state0_step(
+                &sample,(CK64State0Buttons){.a_down=true},&result);
+            if (app.source_jump_valid) {
+                app.source_jump_last=sample;
+                app.source_jump_result=result;
+                ++app.source_jump_samples;
+            }
+        }
         if (pressed.r) {
             app.grid_mode = app.grid_mode == CK64_GRID_FULL ? CK64_GRID_SPARSE
                           : app.grid_mode == CK64_GRID_SPARSE ? CK64_GRID_OFF
@@ -236,6 +265,22 @@ int main(void) {
                 ck64_wireframe_draw(screen,&app.world,
                         (unsigned long)app.runtime.fixed_updates,
                         app.grid_mode,&app.previous_perf,&app.line_stats);
+                if (app.source_jump_probe) {
+                    char probe_line[96];
+                    graphics_draw_box(screen,3,199,313,37,
+                        graphics_make_color(18,26,40,255));
+                    graphics_draw_text(screen,7,202,
+                        "L PROBE ON  A SAMPLE (NO PHYSICS)");
+                    if (app.source_jump_valid) {
+                        snprintf(probe_line,sizeof probe_line,
+                            "y=%.2f flags=%lu samples=%u",
+                            (double)app.source_jump_last.y_vel,
+                            (unsigned long)app.source_jump_result.effects,
+                            app.source_jump_samples);
+                        graphics_draw_text(screen,7,216,probe_line);
+                    } else graphics_draw_text(screen,7,216,
+                        "Press A for source jump sample");
+                }
                 const uint64_t after_draw=(uint64_t)timer_ticks();
                 display_show(screen);
                 const uint64_t after_show=(uint64_t)timer_ticks();

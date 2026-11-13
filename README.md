@@ -2,17 +2,18 @@
 
 > **PROJECT IN DEVELOPMENT.** This is a source-grounded N64 fan-port research and prototyping workspace, **not a playable Corn Kidz 64 release**. The last user-confirmed on-screen ares build remains the Phase 13 diagnostic wireframe; the newest PlayerCtrl modules compile separately but are **not connected to actual gameplay**.
 
-## Current milestone — Phase 16 of 50+ (provisional)
+## Current milestone — Phase 17 of 50+ (provisional)
 
-**Roadmap milestones:** 16 / 50 = **32% of an illustrative phase plan**, **NOT 32% of original game assets, level content or gameplay**.
+**Roadmap milestones:** 17 / 50 = **34% of an illustrative phase plan**, **NOT 32% of original game assets, level content or gameplay**.
 
-Progress: `████████░░░░░░░░░░░░░░░░░ 32%` (8 of 25 segments).
+Progress: [████████▌░░░░░░░░░░░░░░░░] 34% of the PROVISIONAL ROADMAP (not 34% of the game).
 
 ### Verified/recorded engineering work
 
 - **Phase 14:** source-grounded C11 port of selected original PlayerCtrl gravity/reset helpers. [Report](reports/phase14_playerctrl_source.md)
 - **Phase 15:** original PlayerCtrl::MovPl (two movement paths, rotation and floor-plane handling) as a separately tested C11 module. [Report](reports/phase15_movpl_source.md)
 - **Phase 16:** early PlayerCtrl::Run state entry, selective input lock, rumble decay, camera-mode selection, and deferred frontend effect flags. 10 C11 scenario groups plus private IL structural audit. [Report](reports/phase16_run_prelude.md) · [Evidence](reports/player_run_prelude_evidence.json)
+- **Phase 17:** source-derived state-0 jump/short-hop/coyote/rotation call parameters, optional L-toggled source sample in diagnostic N64 ROM, not live original gameplay. [Report](reports/phase17_state0_jump.md).
 - **Original reference:** [66-method PlayerCtrl inventory](reports/playerctrl_method_inventory.csv) and [110% PC gameplay walkthrough chapter notes](reports/gameplay_reference_110percent_walkthrough.md).
 - **Emulator reference:** [Phase 13 native diagnostic .z64](roms/ck64_diag_phase13_display_timing.z64) tested by user in ares. It is still a placeholder wireframe scene, not the original game's levels.
 

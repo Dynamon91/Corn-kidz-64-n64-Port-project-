@@ -1,0 +1,26 @@
+{
+  "source": "User-owned Corn Kidz 64 v1.029 Assembly-CSharp.dll",
+  "method": "PlayerCtrl::Run",
+  "token": "0x06000294",
+  "state0_entry_il_offset": 7504,
+  "first_gravity": [
+    0.02,
+    0.6
+  ],
+  "movpl_calls_at": [
+    7686,
+    7751,
+    7805,
+    7841
+  ],
+  "jump_yVel": 0.23,
+  "spin_yVel": 0.24,
+  "short_hop_yVel": 0.1,
+  "coyote_onFloorTimer_strict_gt": -4,
+  "slip_timer_must_be_zero": true,
+  "spin_onFloorTimer_min": 1,
+  "spin_onFloorTimer_max": 10,
+  "spin_required_jumpNum": 2,
+  "interaction_plState": 5,
+  "warning": "Metadata-only source audit, not Unity runtime parity."
+}

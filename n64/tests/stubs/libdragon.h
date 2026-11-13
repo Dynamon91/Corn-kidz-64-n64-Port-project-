@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 typedef struct surface_s surface_t;
-typedef struct joypad_buttons_s { unsigned a:1,b:1,start:1,z:1,c_right:1,c_left:1,r:1; } joypad_buttons_t;
+typedef struct joypad_buttons_s { unsigned a:1,b:1,start:1,z:1,c_right:1,c_left:1,r:1,l:1; } joypad_buttons_t;
 typedef struct joypad_inputs_s {joypad_buttons_t btn; int8_t stick_x,stick_y;} joypad_inputs_t;
 #define JOYPAD_PORT_1 0
 #define TICKS_PER_SECOND 46875000u
