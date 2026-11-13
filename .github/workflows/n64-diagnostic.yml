@@ -31,7 +31,7 @@ jobs:
           git clone --depth 1 --branch trunk https://github.com/DragonMinded/libdragon.git /tmp/libdragon
           sudo apt-get update
           sudo apt-get install -y libpng-dev zlib1g-dev
-          make -C /tmp/libdragon install-mk
+          sudo --preserve-env=N64_INST make -C /tmp/libdragon install-mk
           make -C /tmp/libdragon -j 2 libdragon tools
           sudo --preserve-env=N64_INST make -C /tmp/libdragon install tools-install
       - name: Build N64 diagnostic ROM
