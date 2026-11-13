@@ -1,0 +1,32 @@
+{
+  "target_type": "Data",
+  "source_dll": "Assembly-CSharp.dll",
+  "method_count": 1,
+  "methods": [
+    {
+      "name": "Data::.ctor",
+      "token": "0x0600011f",
+      "il_bytes": 7,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000d5",
+            "target": "System.Object::.ctor"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    }
+  ]
+}

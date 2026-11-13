@@ -1,0 +1,245 @@
+{
+  "source_dll": "Assembly-CSharp.dll",
+  "target_type": "Data",
+  "field_count": 34,
+  "fields": [
+    {
+      "token": "0x0400015a",
+      "name": "switches",
+      "type": "bool[]",
+      "flags": 6,
+      "signature_hex": "061d02"
+    },
+    {
+      "token": "0x0400015b",
+      "name": "items",
+      "type": "bool[]",
+      "flags": 6,
+      "signature_hex": "061d02"
+    },
+    {
+      "token": "0x0400015c",
+      "name": "upgrades",
+      "type": "bool[]",
+      "flags": 6,
+      "signature_hex": "061d02"
+    },
+    {
+      "token": "0x0400015d",
+      "name": "ints",
+      "type": "int32[]",
+      "flags": 6,
+      "signature_hex": "061d08"
+    },
+    {
+      "token": "0x0400015e",
+      "name": "cranks",
+      "type": "int32[]",
+      "flags": 6,
+      "signature_hex": "061d08"
+    },
+    {
+      "token": "0x0400015f",
+      "name": "lvlItems1",
+      "type": "int32[]",
+      "flags": 6,
+      "signature_hex": "061d08"
+    },
+    {
+      "token": "0x04000160",
+      "name": "itemTotal",
+      "type": "int32",
+      "flags": 6,
+      "signature_hex": "0608"
+    },
+    {
+      "token": "0x04000161",
+      "name": "currentLvl",
+      "type": "int32",
+      "flags": 6,
+      "signature_hex": "0608"
+    },
+    {
+      "token": "0x04000162",
+      "name": "HPupTotal",
+      "type": "int32",
+      "flags": 6,
+      "signature_hex": "0608"
+    },
+    {
+      "token": "0x04000163",
+      "name": "screwTotal",
+      "type": "int32",
+      "flags": 6,
+      "signature_hex": "0608"
+    },
+    {
+      "token": "0x04000164",
+      "name": "maxHP",
+      "type": "int32",
+      "flags": 6,
+      "signature_hex": "0608"
+    },
+    {
+      "token": "0x04000165",
+      "name": "totalDeaths",
+      "type": "int32",
+      "flags": 6,
+      "signature_hex": "0608"
+    },
+    {
+      "token": "0x04000166",
+      "name": "gameTime",
+      "type": "int32",
+      "flags": 6,
+      "signature_hex": "0608"
+    },
+    {
+      "token": "0x04000167",
+      "name": "bNonEmpty",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x04000168",
+      "name": "currentCamMode",
+      "type": "int32",
+      "flags": 6,
+      "signature_hex": "0608"
+    },
+    {
+      "token": "0x04000169",
+      "name": "ctrlType",
+      "type": "int32",
+      "flags": 6,
+      "signature_hex": "0608"
+    },
+    {
+      "token": "0x0400016a",
+      "name": "camInvertOff",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x0400016b",
+      "name": "bRumble",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x0400016c",
+      "name": "bSkipLauncher",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x0400016d",
+      "name": "bFullscreen",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x0400016e",
+      "name": "bWidescreen",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x0400016f",
+      "name": "clothes",
+      "type": "int32",
+      "flags": 6,
+      "signature_hex": "0608"
+    },
+    {
+      "token": "0x04000170",
+      "name": "bVsync",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x04000171",
+      "name": "bRAnalogDpad",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x04000172",
+      "name": "bAnalogX2",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x04000173",
+      "name": "b1080",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x04000174",
+      "name": "bIgnoreDpadX",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x04000175",
+      "name": "bP1only",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x04000176",
+      "name": "volume",
+      "type": "int32",
+      "flags": 6,
+      "signature_hex": "0608"
+    },
+    {
+      "token": "0x04000177",
+      "name": "antialias",
+      "type": "int32",
+      "flags": 6,
+      "signature_hex": "0608"
+    },
+    {
+      "token": "0x04000178",
+      "name": "bMusic",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x04000179",
+      "name": "bAchDisable",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x0400017a",
+      "name": "b60fps",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    },
+    {
+      "token": "0x0400017b",
+      "name": "bForce60hz",
+      "type": "bool",
+      "flags": 6,
+      "signature_hex": "0602"
+    }
+  ]
+}

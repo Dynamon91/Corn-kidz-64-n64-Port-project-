@@ -1,0 +1,509 @@
+{
+  "target_type": "<WaitForFade>d__44",
+  "source_dll": "Assembly-CSharp.dll",
+  "method_count": 6,
+  "methods": [
+    {
+      "name": "<WaitForFade>d__44::.ctor",
+      "token": "0x06000427",
+      "il_bytes": 14,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000d5",
+            "target": "System.Object::.ctor"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000638",
+            "target": "<WaitForFade>d__44.<>1__state"
+          }
+        },
+        {
+          "offset": 13,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "<WaitForFade>d__44::System.IDisposable.Dispose",
+      "token": "0x06000428",
+      "il_bytes": 1,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "<WaitForFade>d__44::MoveNext",
+      "token": "0x06000429",
+      "il_bytes": 150,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000638",
+            "target": "<WaitForFade>d__44.<>1__state"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400063a",
+            "target": "<WaitForFade>d__44.<>4__this"
+          }
+        },
+        {
+          "offset": 13,
+          "opcode": "stloc.1",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 15,
+          "opcode": "switch",
+          "operand": [
+            34,
+            73,
+            141
+          ]
+        },
+        {
+          "offset": 32,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 33,
+          "opcode": "ret",
+          "operand": null
+        },
+        {
+          "offset": 34,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 35,
+          "opcode": "ldc.i4.m1",
+          "operand": null
+        },
+        {
+          "offset": 36,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000638",
+            "target": "<WaitForFade>d__44.<>1__state"
+          }
+        },
+        {
+          "offset": 41,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 42,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 43,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400063c",
+            "target": "<WaitForFade>d__44.<a>5__2"
+          }
+        },
+        {
+          "offset": 48,
+          "opcode": "br.s",
+          "operand": 96
+        },
+        {
+          "offset": 50,
+          "opcode": "ldloc.1",
+          "operand": null
+        },
+        {
+          "offset": 51,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 52,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000157",
+            "target": "GameCtrl.bFading"
+          }
+        },
+        {
+          "offset": 57,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 58,
+          "opcode": "ldnull",
+          "operand": null
+        },
+        {
+          "offset": 59,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000639",
+            "target": "<WaitForFade>d__44.<>2__current"
+          }
+        },
+        {
+          "offset": 64,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 65,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 66,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000638",
+            "target": "<WaitForFade>d__44.<>1__state"
+          }
+        },
+        {
+          "offset": 71,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 72,
+          "opcode": "ret",
+          "operand": null
+        },
+        {
+          "offset": 73,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 74,
+          "opcode": "ldc.i4.m1",
+          "operand": null
+        },
+        {
+          "offset": 75,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000638",
+            "target": "<WaitForFade>d__44.<>1__state"
+          }
+        },
+        {
+          "offset": 80,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 81,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400063c",
+            "target": "<WaitForFade>d__44.<a>5__2"
+          }
+        },
+        {
+          "offset": 86,
+          "opcode": "stloc.2",
+          "operand": null
+        },
+        {
+          "offset": 87,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 88,
+          "opcode": "ldloc.2",
+          "operand": null
+        },
+        {
+          "offset": 89,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 90,
+          "opcode": "add",
+          "operand": null
+        },
+        {
+          "offset": 91,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400063c",
+            "target": "<WaitForFade>d__44.<a>5__2"
+          }
+        },
+        {
+          "offset": 96,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 97,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400063c",
+            "target": "<WaitForFade>d__44.<a>5__2"
+          }
+        },
+        {
+          "offset": 102,
+          "opcode": "ldc.i4.s",
+          "operand": 50
+        },
+        {
+          "offset": 104,
+          "opcode": "blt.s",
+          "operand": 50
+        },
+        {
+          "offset": 106,
+          "opcode": "ldloc.1",
+          "operand": null
+        },
+        {
+          "offset": 107,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 108,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000144",
+            "target": "GameCtrl.currentWorld"
+          }
+        },
+        {
+          "offset": 113,
+          "opcode": "ldloc.1",
+          "operand": null
+        },
+        {
+          "offset": 114,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 115,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400063b",
+            "target": "<WaitForFade>d__44.sceneName"
+          }
+        },
+        {
+          "offset": 120,
+          "opcode": "call",
+          "operand": {
+            "token": "0x06000113",
+            "target": "GameCtrl::LoadScene"
+          }
+        },
+        {
+          "offset": 125,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 126,
+          "opcode": "ldnull",
+          "operand": null
+        },
+        {
+          "offset": 127,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000639",
+            "target": "<WaitForFade>d__44.<>2__current"
+          }
+        },
+        {
+          "offset": 132,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 133,
+          "opcode": "ldc.i4.2",
+          "operand": null
+        },
+        {
+          "offset": 134,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000638",
+            "target": "<WaitForFade>d__44.<>1__state"
+          }
+        },
+        {
+          "offset": 139,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 140,
+          "opcode": "ret",
+          "operand": null
+        },
+        {
+          "offset": 141,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 142,
+          "opcode": "ldc.i4.m1",
+          "operand": null
+        },
+        {
+          "offset": 143,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000638",
+            "target": "<WaitForFade>d__44.<>1__state"
+          }
+        },
+        {
+          "offset": 148,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 149,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "<WaitForFade>d__44::System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+      "token": "0x0600042a",
+      "il_bytes": 7,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000639",
+            "target": "<WaitForFade>d__44.<>2__current"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "<WaitForFade>d__44::System.Collections.IEnumerator.Reset",
+      "token": "0x0600042b",
+      "il_bytes": 6,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "newobj",
+          "operand": {
+            "token": "0x0a0001f6",
+            "target": "System.NotSupportedException::.ctor"
+          }
+        },
+        {
+          "offset": 5,
+          "opcode": "throw",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "<WaitForFade>d__44::System.Collections.IEnumerator.get_Current",
+      "token": "0x0600042c",
+      "il_bytes": 7,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000639",
+            "target": "<WaitForFade>d__44.<>2__current"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    }
+  ]
+}

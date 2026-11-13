@@ -1,0 +1,44 @@
+{
+  "verified_checks": {
+    "source_has_34_fields": true,
+    "source_six_arrays": true,
+    "c_struct_has_exact_same_34_names": true,
+    "c_scalar_types_match_metadata": true,
+    "reset_writes_exactly_20_fields": true,
+    "reset_c_assigns_only_source_fields": true,
+    "reset_defaults_match_source": true,
+    "remaining_14_settings_preserved": true,
+    "binaryformatter_source_confirmed": true,
+    "save_file_name_confirmed": true,
+    "fixed_wire_length": true,
+    "test_includes_independent_crc_golden": true,
+    "reset_original_array_capacities": true
+  },
+  "all_pass": true,
+  "field_count": 34,
+  "reset_field_count": 20,
+  "other_fields_preserved": [
+    "antialias",
+    "b1080",
+    "b60fps",
+    "bAchDisable",
+    "bAnalogX2",
+    "bForce60hz",
+    "bFullscreen",
+    "bIgnoreDpadX",
+    "bMusic",
+    "bP1only",
+    "bRAnalogDpad",
+    "bVsync",
+    "ctrlType",
+    "volume"
+  ],
+  "original_array_capacities": {
+    "items": 1000,
+    "switches": 1000,
+    "upgrades": 100,
+    "ints": 100,
+    "cranks": 100,
+    "lvlItems1": 100
+  }
+}

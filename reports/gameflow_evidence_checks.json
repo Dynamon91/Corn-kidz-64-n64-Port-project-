@@ -1,0 +1,22 @@
+{
+  "result": "PASS",
+  "checks_passed": 15,
+  "checks": {
+    "Awake configures nominal 30FPS": true,
+    "Awake level threshold 70": true,
+    "Awake level threshold 140": true,
+    "Awake level threshold 200": true,
+    "Awake level threshold 300": true,
+    "Awake level threshold 360": true,
+    "Awake level threshold 999": true,
+    "SetCurrentLvl compares items against threshold": true,
+    "FadeToScene triggers UI transition": true,
+    "FadeToScene starts coroutine": true,
+    "WaitForFade 50-iteration loop": true,
+    "SaveGame .NET BinaryFormatter": true,
+    "LoadGame .NET BinaryFormatter": true,
+    "Die increments totalDeaths": true,
+    "LoadScene stores lastScene": true
+  },
+  "scope": "Static IL assertions only; not behavioral equivalence to game."
+}
