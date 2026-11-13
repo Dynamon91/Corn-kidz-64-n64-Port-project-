@@ -47,3 +47,12 @@ Alternatively, GitHub Actions `N64 diagnostic ROM build` uses `ghcr.io/dragonmin
 - Recovery of PlayerCtrl physics/input and camera zone state.
 - Actual RDP/RSP 3D rendering and scene graph.
 - Real music sample/track streaming and persistent save-media backend.
+
+## Actual GitHub Actions results (13 Nov 2026)
+
+- Compiler package `gcc-toolchain-mips64-amd64.deb` installed successfully in Ubuntu 24.04 runner.
+- libdragon trunk compiled and installed; native linker completed; ROM header check passed; ROM uploaded as artifact.
+- Build CI: https://github.com/Dynamon91/Corn-kidz-64-n64-Port-project-/actions/runs/43395753964 (success).
+- Host CI: https://github.com/Dynamon91/Corn-kidz-64-n64-Port-project-/actions/runs/43395754126 (success).
+- Extracted artifact: 147,456-byte `ck64_diag.z64`; SHA-256 `c3f6f340006a4e1945c6ac060027896f14a32c37afc3e7e1cfeda7a575873bdc`; N64 magic `80371240`; internal title `CK64 Port Diagnostic`.
+- No emulator/real hardware test has been run. Status is diagnostic ROM *compile verified*, not runtime verified.

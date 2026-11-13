@@ -1,9 +1,8 @@
 # Corn Kidz 64 → Nintendo 64: reverse-engineering workspace
 
-**Status (13 November 2026):** binary analysis and **Phase 4 MusicFade C11 reconstruction**, following Data/save and selected GameCtrl behavior. Source field schema verified; native N64 save hardware and ROM not implemented.
+**Status (13 November 2026): Phase 5 N64 diagnostic ROM cross-compiled** using the official MIPS64 compiler and libdragon in GitHub Actions; portable clock/runtime and selected GameCtrl/MusicFade state logic are tested. Persistent N64 saves, 3D gameplay and original levels are not implemented.
 
-**Important:** no N64 ROM or full playable port exists yet. The available
-host tests **do not** establish gameplay equivalence.
+**Important:** a diagnostic-only native `.z64` ROM now exists. **No playable Corn Kidz 64 port exists yet.** The ROM has not been exercised on Ares/console; host tests do not establish gameplay equivalence.
 
 ## Verified source facts
 
@@ -89,5 +88,16 @@ A **30 Hz fixed-step** portable clock/runtime (`portable/include/ck64_clock.h`, 
 `n64/main.c` is a **libdragon diagnostic screen**: it displays counters/transition state and reads Controller 1. Its scene names are placeholders and its save record is **RAM only**; music is **silent**. It does not render, load or run original levels.
 
 Host: `cmake -S portable -B build && cmake --build build && ctest --test-dir build --output-on-failure`.
-Native (after installing libdragon): `make -C n64`. The GitHub Action `N64 diagnostic ROM build` independently attempts this cross-build and, on success, publishes `ck64_diag.z64` as a workflow artifact. Even a successful ROM build **does not prove execution on an emulator or actual gameplay**. See `reports/phase5_native_shell.md`.
+Native (after installing libdragon): `make -C n64`. The GitHub Action `N64 diagnostic ROM build` has **successfully cross-built** `ck64_diag.z64` and published it as a downloadable workflow artifact (14-day retention). Even a successful ROM build **does not prove execution on an emulator or actual gameplay**. See `reports/phase5_native_shell.md`.
 
+
+## Verified Phase 5 native build (GitHub Actions)
+
+- Build commit: `a3218960fd7c455ca7193c19e0df16094771407f`
+- N64 build run: https://github.com/Dynamon91/Corn-kidz-64-n64-Port-project-/actions/runs/43395753964 — **success** (MIPS64 compiler, libdragon build, linker, ROM magic, upload).
+- Host C11 run: https://github.com/Dynamon91/Corn-kidz-64-n64-Port-project-/actions/runs/43395754126 — **success** (GCC, Clang, sanitizers and frontend syntax).
+- ROM filename: `ck64_diag.z64`; length **147,456 bytes**; begins with N64 big-endian marker `80 37 12 40`.
+- ROM SHA-256: `c3f6f340006a4e1945c6ac060027896f14a32c37afc3e7e1cfeda7a575873bdc`.
+- Artifact: `ck64-diag-n64-rom`, downloadable from the N64 workflow run while retained.
+
+This establishes that the prototype is a well-formed cross-built ROM *image*, **not** that it boots/runs correctly in an emulator or real hardware. No original game assets are shipped.
