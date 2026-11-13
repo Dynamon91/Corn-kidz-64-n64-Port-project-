@@ -1,5 +1,6 @@
-/* Corn Kidz 64 -> N64: Phase 5 DIAGNOSTIC frontend.
- * This shows fixed-step GameCtrl/MusicFade and controller callbacks only.
+/* Corn Kidz 64 -> N64: Phase 8 DIAGNOSTIC frontend.
+ * Includes fixed-step GameCtrl/MusicFade plus a perspective wireframe TEST.
+ * The navigation values are experimental, NOT extracted PlayerCtrl logic.
  * It is NOT a port of original levels, models, textures, music or physics.
  * No save is written to EEPROM: all saves are RAM-only test records.
  */
@@ -7,6 +8,8 @@
 #include "ck64_runtime.h"
 #include "ck64_save.h"
 #include "ck64_gameflow_save.h"
+#include "ck64_world3d.h"
+#include "wireframe.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -25,7 +28,11 @@ typedef struct CK64DiagnosticApp {
     CK64RuntimeStatus last_runtime_error;
     CK64Status last_control_error;
     bool dropped_update;
-    unsigned boot_stage; /* Set only after the corresponding stage succeeds. */
+    unsigned boot_stage;
+    CK64World3D world;
+    bool view_3d;
+    bool jump_pending, reset_pending;
+    float stick_x, stick_y, camera_turn;
 } CK64DiagnosticApp;
 static CK64DiagnosticApp app;
 
@@ -78,12 +85,36 @@ static void init_diagnostic(void) {
     }
     (void)ck64_gameflow_import_data(&app.runtime.flow, &app.data);
     app.runtime.music.music_enabled = app.data.bMusic;
+    ck64_world3d_reset(&app.world);
+    app.view_3d = true;
 }
 
 static void controller_diagnostics(void) {
     joypad_buttons_t pressed;
-    if (!joypad_is_connected(JOYPAD_PORT_1)) return;
+    if (!joypad_is_connected(JOYPAD_PORT_1)) {
+        app.stick_x=0.0f;
+        app.stick_y=0.0f;
+        app.camera_turn=0.0f;
+        app.jump_pending=false;
+        app.reset_pending=false;
+        return;
+    }
     pressed = joypad_get_buttons_pressed(JOYPAD_PORT_1);
+    if (pressed.z) {
+        app.view_3d = !app.view_3d;
+        app.jump_pending = false;
+        app.reset_pending = false;
+    }
+    if (app.view_3d) {
+        joypad_inputs_t inputs = joypad_get_inputs(JOYPAD_PORT_1);
+        app.stick_x = (float)inputs.stick_x / 85.0f;
+        app.stick_y = (float)inputs.stick_y / 85.0f;
+        app.camera_turn = (inputs.btn.c_right ? 1.0f : 0.0f) -
+                          (inputs.btn.c_left ? 1.0f : 0.0f);
+        app.jump_pending |= pressed.a;
+        app.reset_pending |= pressed.b;
+        return;
+    }
     if (pressed.a) {
         const char *destination = strcmp(app.active_scene, "diagnostic") == 0
                                   ? "test_room" : "diagnostic";
@@ -99,17 +130,14 @@ static void controller_diagnostics(void) {
     }
 }
 
-/* Display boot-stage markers BEFORE controller and game initialization.
- * If the ROM never displays "BOOT 1", failure precedes the C frontend.
- * It may be an IPL3/emulator mismatch, not GameCtrl logic.
- */
+/* Restore the three stable boot markers seen on ares in Phase 6. */
 static void draw_boot_stage(const char *message) {
     surface_t *screen = display_get();
     if (!screen) return;
-    graphics_fill_screen(screen, graphics_make_color(13, 19, 29, 255));
-    graphics_draw_text(screen, 12, 36, "CK64 - BOOT DIAGNOSTIC");
-    graphics_draw_text(screen, 12, 70, message);
-    graphics_draw_text(screen, 12, 118, "NOT THE FULL CORN KIDZ 64 GAME");
+    graphics_fill_screen(screen, graphics_make_color(13,19,29,255));
+    graphics_draw_text(screen,12,36,"CK64 - BOOT DIAGNOSTIC");
+    graphics_draw_text(screen,12,70,message);
+    graphics_draw_text(screen,12,118,"NOT THE FULL CORN KIDZ 64 GAME");
     display_show(screen);
 }
 
@@ -119,9 +147,9 @@ static void draw_diagnostics(void) {
     if (!screen) return;
     graphics_fill_screen(screen, graphics_make_color(13, 19, 29, 255));
     graphics_draw_text(screen, 15, 18, "CORN KIDZ 64 - N64 ENGINE DIAGNOSTIC");
-    graphics_draw_text(screen, 15, 40, "Phase 6: boot staging / 30 Hz loop");
+    graphics_draw_text(screen, 15, 40, "Phase 8: 3D wireframe / 30 Hz loop");
     graphics_draw_text(screen, 15, 60, "NO ORIGINAL GAME LEVELS OR ASSETS");
-    snprintf(line, sizeof line, "Boot: %u | Scene: %.70s", app.boot_stage, app.active_scene);
+    snprintf(line, sizeof line, "Scene: %.90s", app.active_scene);
     graphics_draw_text(screen, 15, 82, line);
     snprintf(line, sizeof line, "Fixed updates: %lu", (unsigned long)app.runtime.fixed_updates);
     graphics_draw_text(screen, 15, 100, line);
@@ -133,7 +161,7 @@ static void draw_diagnostics(void) {
              app.data.bMusic ? "ON" : "OFF");
     graphics_draw_text(screen, 15, 156, line);
     graphics_draw_text(screen, 15, 184, "A: FADE TEST | B: RETURN TEST");
-    graphics_draw_text(screen, 15, 202, "START: MUSIC FLAG (SILENT)");
+    graphics_draw_text(screen, 15, 202, "START: MUSIC  Z: 3D VIEW");
     if (app.last_runtime_error != CK64_RUNTIME_OK ||
         app.last_control_error != CK64_OK || app.dropped_update) {
         snprintf(line, sizeof line, "ERR runtime=%d ctrl=%d drop=%d",
@@ -157,13 +185,13 @@ int main(void) {
     display_init(RESOLUTION_320x240, DEPTH_16_BPP, 2,
                  GAMMA_NONE, FILTERS_RESAMPLE);
     graphics_set_default_font();
-    app.boot_stage = 1;
+    app.boot_stage=1;
     draw_boot_stage("BOOT 1: DISPLAY INITIALIZED");
     joypad_init();
-    app.boot_stage = 2;
+    app.boot_stage=2;
     draw_boot_stage("BOOT 2: CONTROLLER INITIALIZED");
     init_diagnostic();
-    app.boot_stage = 3;
+    app.boot_stage=3;
     draw_boot_stage("BOOT 3: GAMEFLOW INITIALIZED");
     for (;;) {
         joypad_poll();
@@ -172,7 +200,29 @@ int main(void) {
             app.last_runtime_error = ck64_runtime_frame(&app.runtime,
                         (uint64_t)timer_ticks(), 1u, &frame);
             app.dropped_update |= frame.dropped_time;
+            if (app.view_3d) {
+                CK64WorldInput input = {
+                    app.stick_x, app.stick_y, app.camera_turn,
+                    app.jump_pending, app.reset_pending
+                };
+                for (uint32_t i=0; i<frame.updates; ++i) {
+                    if (!ck64_world3d_step(&app.world, input)) {
+                        app.dropped_update = true;
+                        break;
+                    }
+                    input.jump = false; input.reset = false;
+                    app.jump_pending = false;
+                    app.reset_pending = false;
+                }
+            }
         }
-        draw_diagnostics();
+        if (app.view_3d) {
+            surface_t *screen=display_get();
+            if (screen) {
+                ck64_wireframe_draw(screen,&app.world,
+                        (unsigned long)app.runtime.fixed_updates);
+                display_show(screen);
+            }
+        } else draw_diagnostics();
     }
 }

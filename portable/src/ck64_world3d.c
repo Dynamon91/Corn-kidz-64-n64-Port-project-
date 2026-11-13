@@ -1,0 +1,122 @@
+#include "ck64_world3d.h"
+#include <math.h>
+#include <limits.h>
+#include <stdint.h>
+
+#define CK64_STEP (1.0f / 30.0f)
+#define CK64_PI 3.14159265358979323846f
+
+static float clampf(float x, float lo, float hi) {
+    return x < lo ? lo : x > hi ? hi : x;
+}
+static float move_towards(float x, float target, float maximum) {
+    if (x < target) return x + fminf(maximum, target - x);
+    return x - fminf(maximum, x - target);
+}
+static float dot(CK64Vec3 a, CK64Vec3 b) {
+    return a.x*b.x + a.y*b.y + a.z*b.z;
+}
+static CK64Vec3 subtract(CK64Vec3 a, CK64Vec3 b) {
+    CK64Vec3 v = {a.x-b.x, a.y-b.y, a.z-b.z}; return v;
+}
+static CK64Vec3 cross(CK64Vec3 a, CK64Vec3 b) {
+    CK64Vec3 v = {a.y*b.z-a.z*b.y, a.z*b.x-a.x*b.z, a.x*b.y-a.y*b.x};
+    return v;
+}
+static CK64Vec3 normalized(CK64Vec3 v) {
+    float d = sqrtf(dot(v,v));
+    if (d < 0.00001f) { CK64Vec3 fallback={0.0f, 0.0f, 1.0f}; return fallback; }
+    CK64Vec3 n={v.x/d, v.y/d, v.z/d}; return n;
+}
+void ck64_world3d_reset(CK64World3D *world) {
+    if (!world) return;
+    *world = (CK64World3D){0};
+    world->grounded = true;
+}
+bool ck64_world3d_step(CK64World3D *world, CK64WorldInput in) {
+    if (!world || !isfinite(in.stick_x) || !isfinite(in.stick_y) ||
+        !isfinite(in.camera_turn) || world->total_steps == UINT_MAX) return false;
+    if (in.reset) { ck64_world3d_reset(world); return true; }
+    float sx = clampf(in.stick_x, -1.0f, 1.0f);
+    float sy = clampf(in.stick_y, -1.0f, 1.0f);
+    float mag = sqrtf(sx*sx+sy*sy);
+    if (mag < 0.12f) { sx=0.0f; sy=0.0f; }
+    else if (mag > 1.0f) { sx/=mag; sy/=mag; }
+
+    world->camera_yaw += clampf(in.camera_turn,-1.0f,1.0f) * (1.8f*CK64_STEP);
+    if (world->camera_yaw > CK64_PI) world->camera_yaw -= 2.0f*CK64_PI;
+    if (world->camera_yaw < -CK64_PI) world->camera_yaw += 2.0f*CK64_PI;
+    float sn = sinf(world->camera_yaw), cs = cosf(world->camera_yaw);
+    float dx = (cs*sx + sn*sy) * 4.0f;
+    float dz = (-sn*sx + cs*sy) * 4.0f;
+    world->velocity.x = move_towards(world->velocity.x, dx, 18.0f*CK64_STEP);
+    world->velocity.z = move_towards(world->velocity.z, dz, 18.0f*CK64_STEP);
+    world->position.x += world->velocity.x*CK64_STEP;
+    world->position.z += world->velocity.z*CK64_STEP;
+    if (world->position.x <= -7.5f || world->position.x >= 7.5f) {
+        world->position.x = clampf(world->position.x,-7.5f,7.5f);
+        world->velocity.x = 0.0f;
+    }
+    if (world->position.z <= -7.5f || world->position.z >= 7.5f) {
+        world->position.z = clampf(world->position.z,-7.5f,7.5f);
+        world->velocity.z = 0.0f;
+    }
+    if (in.jump && world->grounded) {
+        world->grounded = false;
+        world->velocity.y = 6.0f;
+    }
+    if (!world->grounded) {
+        world->velocity.y -= 14.0f*CK64_STEP;
+        world->position.y += world->velocity.y*CK64_STEP;
+        if (world->position.y <= 0.0f) {
+            world->position.y = 0.0f;
+            world->velocity.y = 0.0f;
+            world->grounded = true;
+        }
+    }
+    ++world->total_steps;
+    return true;
+}
+bool ck64_world3d_project(const CK64World3D *world, CK64Vec3 point,
+                          CK64ScreenPoint *screen) {
+    if (!world || !screen || !isfinite(point.x) ||
+        !isfinite(point.y) || !isfinite(point.z)) return false;
+    const float sn = sinf(world->camera_yaw), cs=cosf(world->camera_yaw);
+    CK64Vec3 eye = {world->position.x - 7.0f*sn,
+                  world->position.y + 4.0f,
+                  world->position.z - 7.0f*cs};
+    CK64Vec3 target = {world->position.x,world->position.y + 0.8f,world->position.z};
+    CK64Vec3 forward = normalized(subtract(target,eye));
+    CK64Vec3 y_axis = {0.0f,1.0f,0.0f};
+    CK64Vec3 right = normalized(cross(y_axis,forward));
+    CK64Vec3 up = cross(forward,right);
+    CK64Vec3 view=subtract(point,eye);
+    float depth = dot(view,forward);
+    if (!isfinite(depth) || depth <= 0.35f) return false;
+    CK64ScreenPoint out = {160.0f + 170.0f * dot(view,right)/depth,
+                          120.0f - 170.0f * dot(view,up)/depth};
+    if (!isfinite(out.x) || !isfinite(out.y) ||
+         fabsf(out.x)>20000.0f || fabsf(out.y)>20000.0f) return false;
+    *screen=out; return true;
+}
+/* Liang-Barsky clipping within inclusive 320x240 viewport. */
+bool ck64_world3d_clip_line(CK64ScreenPoint *a, CK64ScreenPoint *b) {
+    if (!a || !b || !isfinite(a->x) || !isfinite(a->y) ||
+        !isfinite(b->x) || !isfinite(b->y)) return false;
+    float dx=b->x-a->x,dy=b->y-a->y,lo=0.0f,hi=1.0f;
+    const float p[4]={-dx,dx,-dy,dy};
+    const float q[4]={a->x,319.0f-a->x,a->y,239.0f-a->y};
+    for(int i=0;i<4;i++) {
+        if (fabsf(p[i]) < 1.0e-7f) {
+            if (q[i]<0.0f) return false;
+        } else {
+            float r=q[i]/p[i];
+            if (p[i]<0.0f) { if (r>lo) lo=r; }
+            else { if (r<hi) hi=r; }
+            if (lo>hi) return false;
+        }
+    }
+    CK64ScreenPoint out_a={a->x+lo*dx,a->y+lo*dy};
+    CK64ScreenPoint out_b={a->x+hi*dx,a->y+hi*dy};
+    *a=out_a; *b=out_b; return true;
+}

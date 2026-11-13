@@ -26,3 +26,10 @@ target_sources(ck64_gameflow PRIVATE src/ck64_clock.c src/ck64_runtime.c)
 add_executable(test_clock_runtime tests/test_clock_runtime.c)
 target_link_libraries(test_clock_runtime PRIVATE ck64_gameflow)
 add_test(NAME clock_runtime_host_tests COMMAND test_clock_runtime)
+
+# Phase 8: independent 3D navigation experiment. NOT PlayerCtrl reverse engineering.
+target_sources(ck64_gameflow PRIVATE src/ck64_world3d.c)
+target_link_libraries(ck64_gameflow PUBLIC m)
+add_executable(test_world3d tests/test_world3d.c)
+target_link_libraries(test_world3d PRIVATE ck64_gameflow)
+add_test(NAME wireframe_navigation_prototype COMMAND test_world3d)
