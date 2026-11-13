@@ -26,13 +26,19 @@ CK64PlayerVec3 ck64_playercore_zxpos(CK64PlayerVec3 in) {
     return (CK64PlayerVec3){in.x,0.0f,in.z};
 }
 bool ck64_playercore_look_disable(CK64PlayerCore *p) {
-    if (!p) return false; p->no_look=true; return true;
+    if (!p) return false;
+    p->no_look=true;
+    return true;
 }
 bool ck64_playercore_look_enable(CK64PlayerCore *p) {
-    if (!p) return false; p->no_look=false; return true;
+    if (!p) return false;
+    p->no_look=false;
+    return true;
 }
 bool ck64_playercore_attack_disable(CK64PlayerCore *p) {
-    if (!p) return false; p->no_attack=true; return true;
+    if (!p) return false;
+    p->no_attack=true;
+    return true;
 }
 bool ck64_playercore_camera_shake(CK64PlayerCore *p,float amount) {
     if (!p || !isfinite(amount)) return false;
