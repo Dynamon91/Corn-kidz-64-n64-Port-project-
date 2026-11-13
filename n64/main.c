@@ -18,6 +18,35 @@
 #include <stdio.h>
 #include <string.h>
 
+/* Phase 20: exact Unity BuildSettings scene order, metadata only.
+ * Original level meshes and scripts are NOT loaded by this diagnostic. */
+typedef struct CK64UnitySceneInfo {
+    const char *name;
+    unsigned game_objects;
+    unsigned mesh_filters;
+} CK64UnitySceneInfo;
+static const CK64UnitySceneInfo original_scenes[] = {
+    {"launcher", 69u, 2u},
+    {"title01", 322u, 49u},
+    {"PizzaOut", 618u, 105u},
+    {"TutorialWorld01", 1597u, 477u},
+    {"Wolloh's Hollow", 8553u, 1376u},
+    {"Tower00", 2685u, 395u},
+    {"bonus01", 379u, 76u},
+    {"bonus02", 336u, 54u},
+    {"gameover", 326u, 51u},
+    {"credits", 1312u, 54u},
+    {"bonus03", 364u, 90u},
+    {"bonus04", 374u, 77u},
+    {"bonus05", 342u, 61u},
+    {"TowerN00", 2341u, 442u},
+    {"TestZoneX", 1004u, 328u},
+    {"secretZone00", 660u, 196u},
+    {"results", 337u, 49u},
+    {"bonus06", 392u, 76u},
+};
+#define CK64_SCENE_COUNT ((unsigned)(sizeof(original_scenes) / sizeof(original_scenes[0])))
+
 /* Keep static; don't use an 8 KB automatic stack frame on R4300i. */
 typedef struct CK64DiagnosticApp {
     CK64Runtime runtime;
@@ -48,6 +77,7 @@ typedef struct CK64DiagnosticApp {
     CK64State0 source_jump_last;
     CK64State0Result source_jump_result;
     unsigned grid_mode; /* FULL, LOW or OFF: controller R */
+    unsigned original_scene_index; /* Z diagnostics: R cycles metadata */
     CK64PerfTimes previous_perf; /* Previous complete display frame, not VPS */
     CK64WireframeStats line_stats;
 } CK64DiagnosticApp;
@@ -193,6 +223,8 @@ static void controller_diagnostics(void) {
         app.reset_pending |= pressed.b;
         return;
     }
+    if (pressed.r)
+        app.original_scene_index = (app.original_scene_index + 1u) % CK64_SCENE_COUNT;
     if (pressed.a) {
         const char *destination = strcmp(app.active_scene, "diagnostic") == 0
                                   ? "test_room" : "diagnostic";
@@ -225,7 +257,7 @@ static void draw_diagnostics(void) {
     if (!screen) return;
     graphics_fill_screen(screen, graphics_make_color(13, 19, 29, 255));
     graphics_draw_text(screen, 15, 18, "CORN KIDZ 64 - N64 ENGINE DIAGNOSTIC");
-    graphics_draw_text(screen, 15, 40, "Phase 13: display timing / 30 Hz");
+    graphics_draw_text(screen, 15, 40, "PH20: ORIGINAL SCENE INDEX / 30 HZ");
     graphics_draw_text(screen, 15, 60, "NO ORIGINAL GAME LEVELS OR ASSETS");
     snprintf(line, sizeof line, "Scene: %.90s", app.active_scene);
     graphics_draw_text(screen, 15, 82, line);
@@ -238,8 +270,14 @@ static void draw_diagnostics(void) {
     snprintf(line, sizeof line, "Music flag: %s (AUDIO NOT ACTIVE)",
              app.data.bMusic ? "ON" : "OFF");
     graphics_draw_text(screen, 15, 156, line);
-    graphics_draw_text(screen, 15, 184, "A: FADE TEST | B: RETURN TEST");
-    graphics_draw_text(screen, 15, 202, "START: MUSIC  Z: 3D VIEW");
+    const CK64UnitySceneInfo *scene = &original_scenes[app.original_scene_index];
+    snprintf(line, sizeof line, "SOURCE %u/%u: %.23s",
+             app.original_scene_index + 1u, CK64_SCENE_COUNT, scene->name);
+    graphics_draw_text(screen, 15, 177, line);
+    snprintf(line, sizeof line, "GO:%u MESH:%u (META ONLY)",
+             scene->game_objects, scene->mesh_filters);
+    graphics_draw_text(screen, 15, 191, line);
+    graphics_draw_text(screen, 15, 205, "R:SCENE A:FADE B:BACK Z:3D");
     if (app.last_runtime_error != CK64_RUNTIME_OK ||
         app.last_control_error != CK64_OK || app.dropped_update) {
         snprintf(line, sizeof line, "ERR runtime=%d ctrl=%d drop=%d",

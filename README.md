@@ -1,12 +1,23 @@
 # Corn Kidz 64 → Nintendo 64 — Port project
 
-> **PROJECT IN DEVELOPMENT.** This is a source-grounded N64 fan-port research and prototyping workspace, **not a playable Corn Kidz 64 release**. The last user-confirmed on-screen ares build remains the Phase 13 diagnostic wireframe; the Phase 19 source-derived modules drive an isolated **test-only wireframe avatar**, but authentic game physics, levels and models are **not implemented**.
+> **PROJECT IN DEVELOPMENT.** This is a source-grounded fan-port research workspace. **No playable Corn Kidz 64 N64 release exists.** Phase 13 remains the last user-validated ares build; Phase 19 source-driven wireframe motion is not yet visually verified in ares.
 
-## Current milestone — Phase 19 of 50+ (provisional)
+## Current milestone — Phase 20 of 50+ (provisional)
 
-**Roadmap milestones:** 19 / 50 = **38% of an illustrative phase plan**, **NOT 38% of original game assets, level content or gameplay**.
+**Roadmap:** 20/50 = **40% of planned milestone positions**, **NOT 40% of original gameplay or game assets ported**.
 
-Progress: [█████████▌░░░░░░░░░░░░░░░] 38% of the PROVISIONAL ROADMAP (not 38% of the game).
+Progress: [██████████░░░░░░░░░░░░░░░] 40% (provisional planning roadmap).
+
+### Phase 20 — Source-owned Unity scene index (metadata, no geometry)
+
+- Recovered the original **18-scene Build Settings order** from user-provided Unity v1.029 source archive.
+- Independently parsed all `level0`–`level17` serialized objects and GameObject/Transform links (Python stdlib only), with 8 synthetic-fixture Python tests.
+- `PizzaOut`: 2,055 serialized objects, 618 GameObjects and 105 MeshFilters; `TutorialWorld01`: 6,000 objects, 1,597 GameObjects and 477 MeshFilters.
+- N64 diagnostic Z screen: **R cycles scene names and verified GameObject/MeshFilter counts**. No commercial models/textures are built into the ROM.
+- [Read the Phase 20 evidence and full index](reports/phase20_unity_scene_inventory.md). Run `python3 tools/unity_scene_inventory.py /path/to/combined.zip --output scene_summary.json` with your **own** legal copy of the game.
+- Latest .z64 (after CI build): `roms/ck64_diag_phase20_scene_index.z64`. The source index page is **not** an original-level preview; ares confirmation pending.
+
+### Earlier phase reports
 
 ### Verified/recorded engineering work
 
