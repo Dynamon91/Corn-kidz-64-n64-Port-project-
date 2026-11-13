@@ -73,3 +73,9 @@ target_sources(ck64_gameflow PRIVATE src/ck64_player_state0.c)
 add_executable(test_player_state0 tests/test_player_state0.c)
 target_link_libraries(test_player_state0 PRIVATE ck64_gameflow)
 add_test(NAME playerctrl_state0_jump_source COMMAND test_player_state0)
+
+# Phase 18: source-derived PlayerCtrl.Run footer and contact history.
+target_sources(ck64_gameflow PRIVATE src/ck64_player_footer.c)
+add_executable(test_player_footer tests/test_player_footer.c)
+target_link_libraries(test_player_footer PRIVATE ck64_gameflow)
+add_test(NAME playerctrl_run_floor_history COMMAND test_player_footer)

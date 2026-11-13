@@ -10,6 +10,7 @@
 #include "ck64_gameflow_save.h"
 #include "ck64_world3d.h"
 #include "ck64_player_state0.h"
+#include "ck64_player_footer.h"
 #include "wireframe.h"
 #include <stdbool.h>
 #include <stdint.h>
@@ -37,6 +38,9 @@ typedef struct CK64DiagnosticApp {
     bool source_jump_probe;
     bool source_jump_valid;
     unsigned source_jump_samples;
+    CK64PlayerRunFooter source_floor;
+    bool source_floor_valid;
+    unsigned source_landings;
     CK64State0 source_jump_last;
     CK64State0Result source_jump_result;
     unsigned grid_mode; /* FULL, LOW or OFF: controller R */
@@ -120,13 +124,19 @@ static void controller_diagnostics(void) {
             app.source_jump_probe=!app.source_jump_probe;
             app.source_jump_valid=false;
             app.source_jump_samples=0;
+            app.source_floor=(CK64PlayerRunFooter){0};
+            app.source_floor.on_floor=app.world.grounded;
+            app.source_floor.on_floor_timer=app.world.grounded ? 1 : -1;
+            app.source_floor_valid=true;
+            app.source_landings=0;
         }
         if (app.source_jump_probe && pressed.a) {
             /* One-shot source rule sample, NOT modifying world3d physics. */
             CK64State0 sample={0};
             CK64State0Result result={0};
             sample.on_floor=app.world.grounded;
-            sample.on_floor_timer=sample.on_floor?0:-4;
+            sample.on_floor_timer=app.source_floor.on_floor_timer;
+            sample.jump_num=app.source_jump_valid ? app.source_jump_last.jump_num : 0;
             sample.z_mov=0.4f;
             sample.y_vel=app.world.velocity.y;
             sample.forward.z=1.0f;
@@ -251,6 +261,24 @@ int main(void) {
                         app.dropped_update = true;
                         break;
                     }
+                    if (app.source_jump_probe && app.source_floor_valid) {
+                        if (input.reset) {
+                            app.source_floor=(CK64PlayerRunFooter){0};
+                            app.source_landings=0;
+                            app.source_jump_valid=false;
+                        }
+                        app.source_floor.on_floor=app.world.grounded;
+                        app.source_floor.pl_state=0;
+                        CK64PlayerRunFooterResult source_footer_event={0};
+                        app.source_floor_valid=ck64_player_run_footer_step(
+                            &app.source_floor,&source_footer_event);
+                        if (app.source_floor_valid &&
+                            source_footer_event.landing_edge &&
+                            app.source_landings != UINT32_MAX)
+                            ++app.source_landings;
+                        if (!app.source_floor_valid)
+                            app.dropped_update=true;
+                    }
                     input.jump = false; input.reset = false;
                     app.jump_pending = false;
                     app.reset_pending = false;
@@ -267,19 +295,25 @@ int main(void) {
                         app.grid_mode,&app.previous_perf,&app.line_stats);
                 if (app.source_jump_probe) {
                     char probe_line[96];
-                    graphics_draw_box(screen,3,199,313,37,
+                    graphics_draw_box(screen,3,185,313,52,
                         graphics_make_color(18,26,40,255));
-                    graphics_draw_text(screen,7,202,
-                        "L PROBE ON  A SAMPLE (NO PHYSICS)");
+                    graphics_draw_text(screen,7,189,
+                        "L SOURCE FLOOR/JUMP PROBE");
+                    snprintf(probe_line,sizeof probe_line,
+                        "floorT=%ld land=%u step=%ld",
+                        (long)app.source_floor.on_floor_timer,
+                        app.source_landings,
+                        (long)app.source_floor.pl_timer);
+                    graphics_draw_text(screen,7,204,probe_line);
                     if (app.source_jump_valid) {
                         snprintf(probe_line,sizeof probe_line,
-                            "y=%.2f flags=%lu samples=%u",
+                            "A y=%.2f jump=%ld flags=%lu",
                             (double)app.source_jump_last.y_vel,
-                            (unsigned long)app.source_jump_result.effects,
-                            app.source_jump_samples);
-                        graphics_draw_text(screen,7,216,probe_line);
-                    } else graphics_draw_text(screen,7,216,
-                        "Press A for source jump sample");
+                            (long)app.source_jump_last.jump_num,
+                            (unsigned long)app.source_jump_result.effects);
+                        graphics_draw_text(screen,7,219,probe_line);
+                    } else graphics_draw_text(screen,7,219,
+                        "Press A to sample source jump");
                 }
                 const uint64_t after_draw=(uint64_t)timer_ticks();
                 display_show(screen);
