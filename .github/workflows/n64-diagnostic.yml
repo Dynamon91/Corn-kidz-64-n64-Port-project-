@@ -45,9 +45,17 @@ jobs:
           assert rom[:4] == b'\x80\x37\x12\x40', f'Not big-endian z64 header: {rom[:4].hex()}'
           print('Verified N64 ROM magic; byte length:',len(rom))
           PY
+      - name: Audit original ROM and create 1 MiB experimental size variant
+        run: |
+          python3 tools/n64_rom_compat.py n64/ck64_diag.z64 \
+            --pad-output n64/ck64_diag_1mib_test.z64
+          test "$(stat -c%s n64/ck64_diag_1mib_test.z64)" -eq 1048576
+          python3 -m unittest discover -s tools/tests -v
       - uses: actions/upload-artifact@v4
         with:
           name: ck64-diag-n64-rom
-          path: n64/ck64_diag.z64
+          path: |
+            n64/ck64_diag.z64
+            n64/ck64_diag_1mib_test.z64
           if-no-files-found: error
           retention-days: 14

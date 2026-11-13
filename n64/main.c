@@ -25,6 +25,7 @@ typedef struct CK64DiagnosticApp {
     CK64RuntimeStatus last_runtime_error;
     CK64Status last_control_error;
     bool dropped_update;
+    unsigned boot_stage; /* Set only after the corresponding stage succeeds. */
 } CK64DiagnosticApp;
 static CK64DiagnosticApp app;
 
@@ -98,15 +99,29 @@ static void controller_diagnostics(void) {
     }
 }
 
+/* Display boot-stage markers BEFORE controller and game initialization.
+ * If the ROM never displays "BOOT 1", failure precedes the C frontend.
+ * It may be an IPL3/emulator mismatch, not GameCtrl logic.
+ */
+static void draw_boot_stage(const char *message) {
+    surface_t *screen = display_get();
+    if (!screen) return;
+    graphics_fill_screen(screen, graphics_make_color(13, 19, 29, 255));
+    graphics_draw_text(screen, 12, 36, "CK64 - BOOT DIAGNOSTIC");
+    graphics_draw_text(screen, 12, 70, message);
+    graphics_draw_text(screen, 12, 118, "NOT THE FULL CORN KIDZ 64 GAME");
+    display_show(screen);
+}
+
 static void draw_diagnostics(void) {
     char line[120];
     surface_t *screen = display_get();
     if (!screen) return;
     graphics_fill_screen(screen, graphics_make_color(13, 19, 29, 255));
     graphics_draw_text(screen, 15, 18, "CORN KIDZ 64 - N64 ENGINE DIAGNOSTIC");
-    graphics_draw_text(screen, 15, 40, "Phase 5: C11 gameflow / 30 Hz loop");
+    graphics_draw_text(screen, 15, 40, "Phase 6: boot staging / 30 Hz loop");
     graphics_draw_text(screen, 15, 60, "NO ORIGINAL GAME LEVELS OR ASSETS");
-    snprintf(line, sizeof line, "Scene: %.90s", app.active_scene);
+    snprintf(line, sizeof line, "Boot: %u | Scene: %.70s", app.boot_stage, app.active_scene);
     graphics_draw_text(screen, 15, 82, line);
     snprintf(line, sizeof line, "Fixed updates: %lu", (unsigned long)app.runtime.fixed_updates);
     graphics_draw_text(screen, 15, 100, line);
@@ -139,11 +154,17 @@ int main(void) {
     CK64ClockResult frame = {0};
     /* 16-bit 320x240x2 framebuffers = 300 KiB; no 3D resources loaded. */
     timer_init();
-    joypad_init();
     display_init(RESOLUTION_320x240, DEPTH_16_BPP, 2,
                  GAMMA_NONE, FILTERS_RESAMPLE);
     graphics_set_default_font();
+    app.boot_stage = 1;
+    draw_boot_stage("BOOT 1: DISPLAY INITIALIZED");
+    joypad_init();
+    app.boot_stage = 2;
+    draw_boot_stage("BOOT 2: CONTROLLER INITIALIZED");
     init_diagnostic();
+    app.boot_stage = 3;
+    draw_boot_stage("BOOT 3: GAMEFLOW INITIALIZED");
     for (;;) {
         joypad_poll();
         controller_diagnostics();

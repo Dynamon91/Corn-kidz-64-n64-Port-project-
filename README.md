@@ -101,3 +101,24 @@ Native (after installing libdragon): `make -C n64`. The GitHub Action `N64 diagn
 - Artifact: `ck64-diag-n64-rom`, downloadable from the N64 workflow run while retained.
 
 This establishes that the prototype is a well-formed cross-built ROM *image*, **not** that it boots/runs correctly in an emulator or real hardware. No original game assets are shipped.
+
+## Phase 6 — RetroArch crash triage
+
+A user reported that the Phase 5 ROM crashes on RetroArch during startup. A
+known Mupen64Plus incompatibility with libdragon IPL3 r5+ may explain the
+behavior (upstream issue #1185); the exact core is still unknown. This does
+**not** prove our program is fault-free. The phase6 diagnostic prints boot
+stages and the N64 CI now produces a 1 MiB **experimental** padded ROM alongside
+the default ROM. **Padding does not fix broken IPL3 emulation.** See
+`reports/phase6_retroarch_crash.md` for the evidence and test matrix.
+
+For static ROM audit:
+
+```sh
+python3 tools/n64_rom_compat.py roms/ck64_diag_phase5.z64 \
+  --pad-output /tmp/ck64_diag_phase5_1mib_test.z64
+python3 -m unittest discover -s tools/tests -v
+```
+
+Do not report the boot crash as fixed until the user confirms an on-screen boot
+marker on a real emulator, and/or a true headless emulation test has passed.
