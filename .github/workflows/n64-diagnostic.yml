@@ -65,10 +65,10 @@ jobs:
           set -euo pipefail
           mkdir -p roms
           cp n64/ck64_diag.z64 roms/ck64_diag_phase21_world_anchors.z64
-          sha256sum roms/ck64_diag_phase20_scene_index.z64
+          sha256sum roms/ck64_diag_phase21_world_anchors.z64
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -f roms/ck64_diag_phase20_scene_index.z64
+          git add -f roms/ck64_diag_phase21_world_anchors.z64
           if git diff --cached --quiet; then
             echo 'Diagnostic ROM unchanged'
           else
