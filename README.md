@@ -1,17 +1,30 @@
-> **PROJECT IN DEVELOPMENT — Phase 15/50 provisional milestones (30% of roadmap; NOT gameplay completion).** The N64 diagnostic ROM has been tested in ares, but no complete playable Corn Kidz 64 port exists yet. Original v1.029 PlayerCtrl::MovPl math is reconstructed as a portable C11 module, tested separately and **not active** in the wireframe ROM. See [Phase 15 report](reports/phase15_movpl_source.md).
+# Corn Kidz 64 → Nintendo 64 — Port project
 
-# Corn Kidz 64 → Nintendo 64: reverse-engineering workspace
+> **PROJECT IN DEVELOPMENT.** This is a source-grounded N64 fan-port research and prototyping workspace, **not a playable Corn Kidz 64 release**. The last user-confirmed on-screen ares build remains the Phase 13 diagnostic wireframe; the newest PlayerCtrl modules compile separately but are **not connected to actual gameplay**.
 
-> **PROJECT IN DEVELOPMENT — not playable Corn Kidz 64 yet.** Latest research milestone: **Phase 14**, first C11 original-IL-derived PlayerCtrl gravity/reset/utilities and method inventory. The last user-confirmed ares ROM is Phase 13, a **wireframe diagnostic only**.
+## Current milestone — Phase 16 of 50+ (provisional)
 
-**Roadmap milestone counter: 14/50 (28%)** — this is a planning ratio, **NOT the actual percentage of the original game ported.**
+**Roadmap milestones:** 16 / 50 = **32% of an illustrative phase plan**, **NOT 32% of original game assets, level content or gameplay**.
 
-`[███████░░░░░░░░░░░░░░░░░░] 28% of provisional phases`
+Progress: `████████░░░░░░░░░░░░░░░░░ 32%` (8 of 25 segments).
 
-- [Phase 14 source reconstruction](reports/phase14_playerctrl_source.md)
-- [66-method inventory](reports/playerctrl_method_inventory.csv)
-- [Original 110% gameplay chapter reference](reports/gameplay_reference_110percent_walkthrough.md)
-- [Last tested Phase 13 diagnostic ROM](roms/ck64_diag_phase13_display_timing.z64)
+### Verified/recorded engineering work
+
+- **Phase 14:** source-grounded C11 port of selected original PlayerCtrl gravity/reset helpers. [Report](reports/phase14_playerctrl_source.md)
+- **Phase 15:** original PlayerCtrl::MovPl (two movement paths, rotation and floor-plane handling) as a separately tested C11 module. [Report](reports/phase15_movpl_source.md)
+- **Phase 16:** early PlayerCtrl::Run state entry, selective input lock, rumble decay, camera-mode selection, and deferred frontend effect flags. 10 C11 scenario groups plus private IL structural audit. [Report](reports/phase16_run_prelude.md) · [Evidence](reports/player_run_prelude_evidence.json)
+- **Original reference:** [66-method PlayerCtrl inventory](reports/playerctrl_method_inventory.csv) and [110% PC gameplay walkthrough chapter notes](reports/gameplay_reference_110percent_walkthrough.md).
+- **Emulator reference:** [Phase 13 native diagnostic .z64](roms/ck64_diag_phase13_display_timing.z64) tested by user in ares. It is still a placeholder wireframe scene, not the original game's levels.
+
+### Build and testing
+
+- Host: `cmake -S portable -B build && cmake --build build && ctest --test-dir build --output-on-failure`.
+- N64: `make -C n64` with a configured libdragon/N64_INST toolchain. GitHub Actions independently builds a diagnostic ROM.
+- Source audit (private IL only): `python3 tools/audit_player_run_prelude.py /path/to/playerctrl_il_private.json`.
+
+**Distribution:** independently authored source code and metadata-only evidence; original proprietary Unity binaries, models, sounds, textures, game/video assets **are not committed**.
+
+---
 
 ### Historical phase notes below
 The older sections preserve the work's chronological history; older statements such as 'not yet tested on ares' describe their phase *at the time*, not current validation.
