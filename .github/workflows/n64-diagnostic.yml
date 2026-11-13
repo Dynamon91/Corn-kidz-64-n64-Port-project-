@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     container:
-      image: ghcr.io/dragonminded/libdragon:trunk
+      image: ghcr.io/dragonminded/libdragon:latest
     steps:
       - uses: actions/checkout@v4
       - name: Install libdragon SDK in toolchain container
