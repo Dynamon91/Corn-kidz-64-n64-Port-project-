@@ -7,3 +7,10 @@ __pycache__/
 
 build-*/
 .build*/
+*.z64
+*.v64
+*.elf
+*.sym
+*.map
+*.stripped
+*.d

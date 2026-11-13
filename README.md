@@ -81,3 +81,13 @@ This download includes **only independently authored C code, Python tools,
 IL data extracts, and reports**. It does **not** ship Unity binaries,
 proprietary models, audio, textures, original game resources or Steam emulation
 components. The game must be obtained separately by its lawful owner.
+
+## Phase 5 — Native N64 diagnostic shell (not gameplay)
+
+A **30 Hz fixed-step** portable clock/runtime (`portable/include/ck64_clock.h`, `ck64_runtime.h`) now calls the selected `GameCtrl` counter/transition methods and the `MusicFade` state-machine once per update. Unit tests cover 50/60 Hz render cadence and delayed scene transitions.
+
+`n64/main.c` is a **libdragon diagnostic screen**: it displays counters/transition state and reads Controller 1. Its scene names are placeholders and its save record is **RAM only**; music is **silent**. It does not render, load or run original levels.
+
+Host: `cmake -S portable -B build && cmake --build build && ctest --test-dir build --output-on-failure`.
+Native (after installing libdragon): `make -C n64`. The GitHub Action `N64 diagnostic ROM build` independently attempts this cross-build and, on success, publishes `ck64_diag.z64` as a workflow artifact. Even a successful ROM build **does not prove execution on an emulator or actual gameplay**. See `reports/phase5_native_shell.md`.
+

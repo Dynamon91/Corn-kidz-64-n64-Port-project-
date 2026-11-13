@@ -20,3 +20,9 @@ add_test(NAME save_format_host_tests COMMAND test_save)
 add_executable(test_music tests/test_music.c)
 target_link_libraries(test_music PRIVATE ck64_gameflow)
 add_test(NAME musicfade_host_tests COMMAND test_music)
+
+# Phase 5: integer frame scheduler, source-grounded runtime integration.
+target_sources(ck64_gameflow PRIVATE src/ck64_clock.c src/ck64_runtime.c)
+add_executable(test_clock_runtime tests/test_clock_runtime.c)
+target_link_libraries(test_clock_runtime PRIVATE ck64_gameflow)
+add_test(NAME clock_runtime_host_tests COMMAND test_clock_runtime)

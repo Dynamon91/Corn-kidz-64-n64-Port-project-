@@ -1,0 +1,45 @@
+name: N64 diagnostic ROM build (not playable game)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'n64/**'
+      - 'portable/**'
+      - '.github/workflows/n64-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  n64-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    container:
+      image: ghcr.io/dragonminded/libdragon:trunk
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install libdragon SDK in toolchain container
+        run: |
+          git clone --depth 1 --branch trunk https://github.com/DragonMinded/libdragon.git /tmp/libdragon
+          make -C /tmp/libdragon install-mk
+          make -C /tmp/libdragon -j 2 libdragon tools
+          make -C /tmp/libdragon install tools-install
+      - name: Build N64 diagnostic ROM
+        run: make -C n64 -j 2
+      - name: Verify ROM header (big-endian Z64)
+        run: |
+          test -s n64/ck64_diag.z64
+          python3 - <<'PY'
+          from pathlib import Path
+          rom = Path('n64/ck64_diag.z64').read_bytes()
+          assert rom[:4] == b'\x80\x37\x12\x40', f'Not big-endian z64 header: {rom[:4].hex()}'
+          print('Verified N64 ROM magic; byte length:',len(rom))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ck64-diag-n64-rom
+          path: n64/ck64_diag.z64
+          if-no-files-found: error
+          retention-days: 14
