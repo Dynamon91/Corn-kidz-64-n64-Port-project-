@@ -207,7 +207,9 @@ static void test_distinct_contact_events(void) {
 static void test_contact_flash_and_ejection_indicator(void) {
     CK64World3D w; ck64_world3d_reset(&w);
     w.position.x=CK64_TEST_PILLAR_X;
-    w.position.z=2.85f;
+    /* One 30Hz tick accelerates by 0.6 units/s: 0.02 units of travel.
+     * Start 0.01 units before the expanded pillar face (Z=2.92). */
+    w.position.z=2.91f;
     CK64WorldInput in={0}; in.stick_y=1.0f;
     assert(ck64_world3d_step(&w,in));
     assert(w.collided_this_step && w.contact_flash_steps==10);
