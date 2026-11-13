@@ -61,3 +61,9 @@ target_sources(ck64_gameflow PRIVATE src/ck64_player_motion.c)
 add_executable(test_player_motion tests/test_player_motion.c)
 target_link_libraries(test_player_motion PRIVATE ck64_gameflow)
 add_test(NAME playerctrl_movpl_source_math COMMAND test_player_motion)
+
+# Phase 16: source-grounded PlayerCtrl Run prelude, not wired into gameplay.
+target_sources(ck64_gameflow PRIVATE src/ck64_player_run.c)
+add_executable(test_player_run tests/test_player_run.c)
+target_link_libraries(test_player_run PRIVATE ck64_gameflow)
+add_test(NAME playerctrl_run_prelude COMMAND test_player_run)

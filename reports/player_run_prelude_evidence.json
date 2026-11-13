@@ -1,0 +1,47 @@
+{
+  "camera_modes_dispatched": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "decoded_instructions": 22052,
+  "entry_guard": "changeState != plState",
+  "entry_reset_fields": [
+    "plTimer",
+    "plTimer2",
+    "plTimer3",
+    "plCounter",
+    "plFloat",
+    "bNoHurt",
+    "lastState",
+    "changeState",
+    "bNoCol",
+    "bNoLook",
+    "wallObj"
+  ],
+  "il_bytes": 76019,
+  "no_control_zeroed_fields": [
+    "Adown",
+    "Aup",
+    "Ahold",
+    "Xdown",
+    "Xhold",
+    "Bdown",
+    "Ydown",
+    "Yhold",
+    "RTTimer",
+    "LTTimer",
+    "ctrlX",
+    "ctrlY",
+    "Atimer"
+  ],
+  "original_method": "PlayerCtrl::Run",
+  "original_token": "0x06000294",
+  "scope": "Run prelude only; full gameplay state machine not ported",
+  "state18_selects_camera3_except_underwater_default": true,
+  "verified_call_counts": {
+    "PlayerCtrl::Gravity": 44,
+    "PlayerCtrl::MovPl": 33
+  }
+}
