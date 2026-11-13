@@ -2,11 +2,19 @@
 
 > **PROJECT IN DEVELOPMENT.** This is a source-grounded fan-port research workspace. **No playable Corn Kidz 64 N64 release exists.** Phase 13 remains the last user-validated ares build; Phase 19 source-driven wireframe motion is not yet visually verified in ares.
 
-## Current milestone — Phase 20 of 50+ (provisional)
+## Current milestone — Phase 21 of 50+ (provisional)
 
-**Roadmap:** 20/50 = **40% of planned milestone positions**, **NOT 40% of original gameplay or game assets ported**.
+**Roadmap:** 21/50 = **42% of planned milestone positions**, **NOT 40% of original gameplay or game assets ported**.
 
-Progress: [██████████░░░░░░░░░░░░░░░] 40% (provisional planning roadmap).
+Progress: [██████████▌░░░░░░░░░░░░░░] 42% (provisional planning roadmap).
+
+### Phase 21 — Original Unity world-space anchors (not geometry)
+
+- **1,473 of 1,502** native 3D transforms in the tutorial resolved through quaternion/translation/scale parent chains; 29 depend on UI RectTransform ancestry and remain deliberately unresolved.
+- **477 MeshFilter references** in the tutorial point to external resource files; **mesh vertices have not been extracted or ported**.
+- [Phase 21 evidence and limitations](reports/phase21_transform_hierarchy.md) · [Tutorial metadata](reports/phase21_tutorial_anchors.json).
+- The Z diagnostic menu, on the fourth listed original scene (TutorialWorld01), now displays two *world-space anchor positions*. Original textures, models and level collision remain absent.
+- New tests validate hierarchy math and consistency of the numbers embedded in the ROM metadata header.
 
 ### Phase 20 — Source-owned Unity scene index (metadata, no geometry)
 

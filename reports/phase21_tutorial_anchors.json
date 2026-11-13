@@ -1,0 +1,84 @@
+{
+  "scene": "TutorialWorld01",
+  "build_index": 3,
+  "native_transforms": 1502,
+  "transform_status_counts": {
+    "unsupported_rect_transform": 29,
+    "world": 1473
+  },
+  "mesh_filters": 477,
+  "mesh_reference_file_id_counts": {
+    "2": 79,
+    "3": 222,
+    "4": 101,
+    "6": 75
+  },
+  "geometry_extracted": false,
+  "anchors": [
+    {
+      "name": "checkpoint",
+      "world_position": [
+        36.98877,
+        31.69063,
+        21.93672
+      ],
+      "resolution": "world"
+    },
+    {
+      "name": "Main Camera",
+      "world_position": [
+        19.34088,
+        15.28725,
+        47.39554
+      ],
+      "resolution": "world"
+    },
+    {
+      "name": "player",
+      "world_position": [
+        19.34088,
+        14.18525,
+        43.94254
+      ],
+      "resolution": "world"
+    },
+    {
+      "name": "spawn",
+      "world_position": [
+        28.6,
+        0.45716,
+        10.503
+      ],
+      "resolution": "world"
+    },
+    {
+      "name": "spawnPoint",
+      "world_position": [
+        -1.89132,
+        2.68576,
+        49.50039
+      ],
+      "resolution": "world"
+    },
+    {
+      "name": "spawnPoint",
+      "world_position": [
+        24.02711,
+        -30.59961,
+        58.48512
+      ],
+      "resolution": "world"
+    },
+    {
+      "name": "WORLDX00tut",
+      "world_position": [
+        4.36855,
+        0.0,
+        0.61916
+      ],
+      "resolution": "world"
+    }
+  ],
+  "anchor_count": 7,
+  "unity_version": "2021.3.30f1"
+}

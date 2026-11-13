@@ -13,6 +13,7 @@
 #include "ck64_player_footer.h"
 #include "ck64_source_lab.h"
 #include "wireframe.h"
+#include "scene_anchor_meta.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -257,7 +258,7 @@ static void draw_diagnostics(void) {
     if (!screen) return;
     graphics_fill_screen(screen, graphics_make_color(13, 19, 29, 255));
     graphics_draw_text(screen, 15, 18, "CORN KIDZ 64 - N64 ENGINE DIAGNOSTIC");
-    graphics_draw_text(screen, 15, 40, "PH20: ORIGINAL SCENE INDEX / 30 HZ");
+    graphics_draw_text(screen, 15, 40, "PH21: ORIGINAL WORLD ANCHORS");
     graphics_draw_text(screen, 15, 60, "NO ORIGINAL GAME LEVELS OR ASSETS");
     snprintf(line, sizeof line, "Scene: %.90s", app.active_scene);
     graphics_draw_text(screen, 15, 82, line);
@@ -277,12 +278,20 @@ static void draw_diagnostics(void) {
     snprintf(line, sizeof line, "GO:%u MESH:%u (META ONLY)",
              scene->game_objects, scene->mesh_filters);
     graphics_draw_text(screen, 15, 191, line);
-    graphics_draw_text(screen, 15, 205, "R:SCENE A:FADE B:BACK Z:3D");
+    if (app.original_scene_index == 3u) {
+        /* These are source world-space metadata, NOT drawn Unity meshes. */
+        graphics_draw_text(screen, 15, 205, CK64_TUTORIAL_PLAYER_WORLD);
+        graphics_draw_text(screen, 15, 219, CK64_TUTORIAL_SPAWN_WORLD);
+    } else {
+        graphics_draw_text(screen, 15, 205, "R:SCENE A:FADE B:BACK Z:3D");
+    }
     if (app.last_runtime_error != CK64_RUNTIME_OK ||
         app.last_control_error != CK64_OK || app.dropped_update) {
         snprintf(line, sizeof line, "ERR runtime=%d ctrl=%d drop=%d",
                 (int)app.last_runtime_error,
                 (int)app.last_control_error, app.dropped_update ? 1 : 0);
+        graphics_draw_box(screen, 10, 216, 303, 19,
+                          graphics_make_color(75,25,30,255));
         graphics_draw_text(screen, 15, 221, line);
     }
     /* Visible fade progress (not Unity's original transition graphic). */

@@ -59,12 +59,12 @@ jobs:
             n64/ck64_diag_1mib_test.z64
           if-no-files-found: error
           retention-days: 14
-      - name: Publish Phase 20 scene-index diagnostic ROM to GitHub
+      - name: Publish Phase 21 world-anchor metadata ROM to GitHub
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           set -euo pipefail
           mkdir -p roms
-          cp n64/ck64_diag.z64 roms/ck64_diag_phase20_scene_index.z64
+          cp n64/ck64_diag.z64 roms/ck64_diag_phase21_world_anchors.z64
           sha256sum roms/ck64_diag_phase20_scene_index.z64
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -72,6 +72,6 @@ jobs:
           if git diff --cached --quiet; then
             echo 'Diagnostic ROM unchanged'
           else
-            git commit -m 'build: publish Phase 20 original Unity scene-index diagnostic ROM'
+            git commit -m 'build: publish Phase 21 Unity world anchor metadata ROM'
             git push origin HEAD:main
           fi
