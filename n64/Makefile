@@ -19,6 +19,7 @@ OBJS := $(OBJ_DIR)/main.o \
   $(OBJ_DIR)/ck64_save.o \
   $(OBJ_DIR)/ck64_world3d.o \
   $(OBJ_DIR)/ck64_perf.o \
+  $(OBJ_DIR)/ck64_playercore.o \
   $(OBJ_DIR)/wireframe.o
 
 ck64_diag.z64: N64_ROM_TITLE = "CK64 Port Diagnostic"

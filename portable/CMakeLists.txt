@@ -49,3 +49,9 @@ target_sources(ck64_gameflow PRIVATE src/ck64_perf.c)
 add_executable(test_perf tests/test_perf.c)
 target_link_libraries(test_perf PRIVATE ck64_gameflow)
 add_test(NAME display_stage_timings COMMAND test_perf)
+
+# Phase 14: source-grounded PlayerCtrl function subset, NOT wired into gameplay.
+target_sources(ck64_gameflow PRIVATE src/ck64_playercore.c)
+add_executable(test_playercore tests/test_playercore.c)
+target_link_libraries(test_playercore PRIVATE ck64_gameflow)
+add_test(NAME playerctrl_original_il_subset COMMAND test_playercore)

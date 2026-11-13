@@ -1,5 +1,20 @@
 # Corn Kidz 64 → Nintendo 64: reverse-engineering workspace
 
+> **PROJECT IN DEVELOPMENT — not playable Corn Kidz 64 yet.** Latest research milestone: **Phase 14**, first C11 original-IL-derived PlayerCtrl gravity/reset/utilities and method inventory. The last user-confirmed ares ROM is Phase 13, a **wireframe diagnostic only**.
+
+**Roadmap milestone counter: 14/50 (28%)** — this is a planning ratio, **NOT the actual percentage of the original game ported.**
+
+`[███████░░░░░░░░░░░░░░░░░░] 28% of provisional phases`
+
+- [Phase 14 source reconstruction](reports/phase14_playerctrl_source.md)
+- [66-method inventory](reports/playerctrl_method_inventory.csv)
+- [Original 110% gameplay chapter reference](reports/gameplay_reference_110percent_walkthrough.md)
+- [Last tested Phase 13 diagnostic ROM](roms/ck64_diag_phase13_display_timing.z64)
+
+### Historical phase notes below
+The older sections preserve the work's chronological history; older statements such as 'not yet tested on ares' describe their phase *at the time*, not current validation.
+
+
 **Status — Phase 8 (13 November 2026):** The user confirmed Phase 6's diagnostic ROM boots and accepts controller input in ares. Phase 8 adds a separate libdragon **perspective wireframe navigation test**: analog movement, jump, orbit camera, and the earlier diagnostic mode, all with 5 CTest suites passing on host and a successful native MIPS64 cross-build. [Download the experimental 160 KiB .z64](roms/ck64_diag_phase8_wireframe.z64). The Phase 8 ROM **has not yet been boot-tested on ares**. No authentic Corn Kidz 64 player model, level, collision or animations have been ported. See [Phase 8 report](reports/phase8_wireframe_navigation.md).
 
 **Status (13 November 2026): Phase 5 N64 diagnostic ROM cross-compiled** using the official MIPS64 compiler and libdragon in GitHub Actions; portable clock/runtime and selected GameCtrl/MusicFade state logic are tested. Persistent N64 saves, 3D gameplay and original levels are not implemented.
