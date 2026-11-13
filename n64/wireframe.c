@@ -102,9 +102,11 @@ void ck64_wireframe_draw(surface_t *screen, const CK64World3D *world,
              mode,stats->lines_drawn,stats->lines_attempted);
     graphics_draw_text(screen,6,36,debug);
     if (previous && previous->valid) {
+        /* MIPS64 libdragon typedefs uint32_t as unsigned long, while host
+         * uint32_t is unsigned int. These values are <=99999 by design. */
         snprintf(debug,sizeof(debug),"G:%u D:%u S:%u T:%u us",
-                 previous->get_us,previous->draw_us,
-                 previous->show_us,previous->total_us);
+                 (unsigned)previous->get_us,(unsigned)previous->draw_us,
+                 (unsigned)previous->show_us,(unsigned)previous->total_us);
     } else {
         snprintf(debug,sizeof(debug),"G/D/S/T: NO TIMING SAMPLE");
     }
