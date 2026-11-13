@@ -85,3 +85,9 @@ target_sources(ck64_gameflow PRIVATE src/ck64_source_lab.c)
 add_executable(test_source_lab tests/test_source_lab.c)
 target_link_libraries(test_source_lab PRIVATE ck64_gameflow)
 add_test(NAME source_driven_wireframe_lab COMMAND test_source_lab)
+
+# Phase 22: experimental N64-oriented big-endian CKM1 geometry decoder.
+target_sources(ck64_gameflow PRIVATE src/ck64_mesh_format.c)
+add_executable(test_mesh_format tests/test_mesh_format.c)
+target_link_libraries(test_mesh_format PRIVATE ck64_gameflow)
+add_test(NAME ckm1_big_endian_mesh_format COMMAND test_mesh_format)

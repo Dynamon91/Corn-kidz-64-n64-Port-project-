@@ -1,0 +1,41 @@
+{
+  "project": "Corn Kidz 64 -> N64",
+  "phase": 22,
+  "scope": "user-owned Unity v1.029 mesh analysis",
+  "geometry_extracted": true,
+  "scene_scans": [
+    {
+      "scene": "TutorialWorld01",
+      "index": 3,
+      "mesh_filter_count": 477,
+      "unique_mesh_references": 116,
+      "resolved_meshes": 113,
+      "unsupported_refs": 3,
+      "total_triangles_unique_meshes": 8605
+    },
+    {
+      "scene": "Wolloh's Hollow",
+      "index": 4,
+      "mesh_filter_count": 1376,
+      "unique_mesh_references": 319,
+      "resolved_meshes": 315,
+      "unsupported_refs": 4,
+      "total_triangles_unique_meshes": 26407
+    }
+  ],
+  "sample_original_mesh": {
+    "scene": "TutorialWorld01",
+    "id": "3:194",
+    "mesh_name": "000world",
+    "source_vertices": 6913,
+    "source_triangles": 4514,
+    "source_sharedassets": "sharedassets3.assets",
+    "external_resource_stream": true,
+    "ckm1_private_payload_bytes": 68590,
+    "ckm1_private_payload_sha256": "4145fbadf018a0317e060cb1ae9f574c3199a1ecfedc95e41bb2457855f8c462",
+    "ckm1_max_quantization_error_unity_units": 0.00271875,
+    "ckm1_rms_quantization_error_unity_units": 0.00163176
+  },
+  "exclusions": "No original game raw mesh/texture/sound/model bytes committed to public repository",
+  "verification": "All referenced non-builtin Mesh class 43 positions and triangle lists parsed without exceptions; does not establish visual N64 gameplay or texture/material extraction."
+}

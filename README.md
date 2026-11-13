@@ -2,16 +2,24 @@
 
 > **PROJECT IN DEVELOPMENT.** This is a source-grounded fan-port research workspace. **No playable Corn Kidz 64 N64 release exists.** Phase 13 remains the last user-validated ares build; Phase 19 source-driven wireframe motion is not yet visually verified in ares.
 
-## Current milestone — Phase 21 of 50+ (provisional)
+## Current milestone — Phase 22 of 50+ (provisional)
 
-**Roadmap:** 21/50 = **42% of planned milestone positions**, **NOT 40% of original gameplay or game assets ported**.
+**Roadmap:** 22/50 = **44% of planned milestone positions**, **NOT 44% of original gameplay or assets ported**.
 
-Progress: [██████████▌░░░░░░░░░░░░░░] 42% (provisional planning roadmap).
+Progress: [███████████░░░░░░░░░░░░░░] 44% (provisional planning roadmap).
 
-### Phase 21 — Original Unity world-space anchors (not geometry)
+### Phase 22 — Original game mesh decoding (private source assets, metadata only on GitHub)
+
+- **Decoded real 3D geometry** from the user's original PC game: 113 unique tutorial meshes / 8,605 triangles, and 315 Wolloh's Hollow meshes / 26,407 triangles; remaining scene mesh references are Unity built-in resources.
+- The original tutorial `000world` mesh contains 6,913 vertices and 4,514 triangles. Privately exported OBJ and an **experimental** 68,590-byte CKM1 quantized big-endian blob. No commercial geometry is committed here.
+- Python Mesh v22 reader handles index buffers, 2018+ channels, external `.resS`, scene fileID mapping and strict malformed-data rejection. C11 CKM1 decoder is added to N64 build but **no real mesh is drawn by ROM yet**.
+- 21 new synthetic Python tests and 10 CKM1 C11 scenario groups. [Geometry report](reports/phase22_geometry_extraction.md) · [Metadata inventory](reports/phase22_geometry_metadata.json).
+- Last user-confirmed ares ROM remains Phase 13; Phase 21 remains the most recent archived diagnostic ROM pending user test. The new compile step does not establish a playable original level.
+
+### Phase 21 — Original Unity world-space anchors (historical metadata step)
 
 - **1,473 of 1,502** native 3D transforms in the tutorial resolved through quaternion/translation/scale parent chains; 29 depend on UI RectTransform ancestry and remain deliberately unresolved.
-- **477 MeshFilter references** in the tutorial point to external resource files; **mesh vertices have not been extracted or ported**.
+- **477 MeshFilter references** in the tutorial point to external resource files; **mesh vertices had not yet been extracted at this stage (Phase 22 now decodes them privately)**.
 - [Phase 21 evidence and limitations](reports/phase21_transform_hierarchy.md) · [Tutorial metadata](reports/phase21_tutorial_anchors.json).
 - The Z diagnostic menu, on the fourth listed original scene (TutorialWorld01), now displays two *world-space anchor positions*. Original textures, models and level collision remain absent.
 - New tests validate hierarchy math and consistency of the numbers embedded in the ROM metadata header.

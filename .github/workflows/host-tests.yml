@@ -25,7 +25,7 @@ jobs:
         run: ctest --test-dir build --output-on-failure
       - name: Check source MusicFade IL evidence
         run: python3 tools/verify_phase4_musicfade.py
-      - name: Phase 20 and 21 Unity transform and scene tests
+      - name: Phase 20-22 Unity scene, transform and mesh tests
         run: python3 -m unittest discover -s tools/tests -p 'test_unity*.py' -v
 
   sanitizer-tests:
