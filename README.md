@@ -1,6 +1,6 @@
 # Corn Kidz 64 → Nintendo 64: reverse-engineering workspace
 
-**Status (13 November 2026):** binary analysis and **Phase 3 Data/save C11 reconstruction**, plus selected GameCtrl behavior. Source field schema verified; native N64 save hardware and ROM not implemented.
+**Status (13 November 2026):** binary analysis and **Phase 4 MusicFade C11 reconstruction**, following Data/save and selected GameCtrl behavior. Source field schema verified; native N64 save hardware and ROM not implemented.
 
 **Important:** no N64 ROM or full playable port exists yet. The available
 host tests **do not** establish gameplay equivalence.
@@ -17,6 +17,9 @@ host tests **do not** establish gameplay equivalence.
 - `<WaitForFade>d__44`: coroutine delaying scene load across 50 frame yields.
 
 ## Read the reports first
+
+- `reports/music_phase4.md`: 196-instruction MusicFade method, precise two-channel fades/pitch rules, limitations, 30 tested host behaviors.
+- `tools/verify_phase4_musicfade.py`: 19 evidence checks against the original `MusicFade` IL.
 
 - `reports/phase1.md`: original executable, binary/architecture analysis, risks.
 - `reports/gamectrl_phase2.md`: Phase 2 behavior scope and limitations.
@@ -43,7 +46,11 @@ and a source-faithful selective `ResetSav`. GameCtrl also covers scene changes,
 progression, death, checkpoints, volume and Update's counter/HP subset. N64 IO
 and graphics/audio backends are deliberately not implemented yet.
 
-Host test counts: 10 gameflow scenario groups + 8 save groups = **18 passing**.
+`portable/include/ck64_music.h` and `portable/src/ck64_music.c` reconstruct
+`GameCtrl.MusicFade` as a portable, two-channel state machine from source IL.
+Actual game music samples and N64 playback are **not** included.
+
+Host test counts: 10 gameflow + 8 save + 12 MusicFade scenario groups = **30 passing**. The music state machine emits Play/Stop and clip-switch events, not audible sound.
 AddressSanitizer and UndefinedBehaviorSanitizer host builds also pass.
 
 ## Repeat IL inspection with a personal copy of the game

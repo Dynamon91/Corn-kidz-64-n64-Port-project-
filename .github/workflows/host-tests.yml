@@ -23,3 +23,20 @@ jobs:
         run: cmake --build build --parallel 2
       - name: Test
         run: ctest --test-dir build --output-on-failure
+      - name: Check source MusicFade IL evidence
+        run: python3 tools/verify_phase4_musicfade.py
+
+  sanitizer-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure sanitizer build
+        run: >-
+          cmake -S portable -B build-sanitized -DCMAKE_C_COMPILER=clang
+          -DCMAKE_BUILD_TYPE=Debug
+          -DCMAKE_C_FLAGS='-fsanitize=address,undefined -fno-sanitize-recover=all -fno-omit-frame-pointer'
+          -DCMAKE_EXE_LINKER_FLAGS='-fsanitize=address,undefined'
+      - name: Build
+        run: cmake --build build-sanitized --parallel 2
+      - name: Test
+        run: ctest --test-dir build-sanitized --output-on-failure
