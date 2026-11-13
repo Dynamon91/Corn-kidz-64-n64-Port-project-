@@ -43,7 +43,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add roms/ck64_diag_phase6_ipl3_r4_mupen_test.z64
+          git add -f roms/ck64_diag_phase6_ipl3_r4_mupen_test.z64
           if ! git diff --cached --quiet; then
             git commit -m 'test: add experimental Phase 6 IPL3 r4 Mupen boot variant'
             git push origin HEAD:main
