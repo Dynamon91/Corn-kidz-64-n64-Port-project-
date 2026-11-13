@@ -1,0 +1,1654 @@
+{
+  "summary": {
+    "archive_bytes": 133722631,
+    "sha256": "2d1f4f33ff4cfc86d77a71649c5f89d7191d93c2fa6ad79096676e3aec3c459f",
+    "entries": 232,
+    "regular_files": 213,
+    "uncompressed_bytes": 244794370,
+    "crc_checked": true,
+    "crc_valid": true
+  },
+  "parts": [
+    {
+      "part": "Corn.Kidz.64.v1.029 (1).zip.001",
+      "size": 51380224,
+      "sha256": "78148ee591c9143977aab8c6c8a3337f0f64244f8020e2cf64c824e3e2b98d61"
+    },
+    {
+      "part": "Corn.Kidz.64.v1.029 (1).zip.002",
+      "size": 51380224,
+      "sha256": "54247dbee8a0c56a0c86e2a8e93c57941ef6732ec57ec8bcd1d381e220fe1229"
+    },
+    {
+      "part": "Corn.Kidz.64.v1.029 (1).zip.003",
+      "size": 30962183,
+      "sha256": "75f2a0da2c1ae34a64ac59eaa18f54941babab838d86a3a0f4c95dd79c624fed"
+    }
+  ],
+  "files": [
+    {
+      "name": "Corn.Kidz.64.v1.029/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64.exe",
+      "size": 653824,
+      "compressed_size": 263021,
+      "crc32": "a9f8d62b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/app.info",
+      "size": 21,
+      "compressed_size": 21,
+      "crc32": "bf5a55d2",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/boot.config",
+      "size": 66,
+      "compressed_size": 64,
+      "crc32": "6e6c4d47",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/globalgamemanagers",
+      "size": 47384,
+      "compressed_size": 22095,
+      "crc32": "cd15b470",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/globalgamemanagers.assets",
+      "size": 56600,
+      "compressed_size": 12794,
+      "crc32": "74ded1cb",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level0",
+      "size": 34496,
+      "compressed_size": 6631,
+      "crc32": "2f845816",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level0.resS",
+      "size": 131232,
+      "compressed_size": 295,
+      "crc32": "d1935924",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level1",
+      "size": 302204,
+      "compressed_size": 32017,
+      "crc32": "65f27654",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level10",
+      "size": 323796,
+      "compressed_size": 34734,
+      "crc32": "2a701fe4",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level11",
+      "size": 324092,
+      "compressed_size": 35375,
+      "crc32": "611c9b2b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level12",
+      "size": 310404,
+      "compressed_size": 33255,
+      "crc32": "032f66b4",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level13",
+      "size": 1498352,
+      "compressed_size": 131355,
+      "crc32": "0fb4eb12",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level13.resS",
+      "size": 16128,
+      "compressed_size": 2633,
+      "crc32": "02b3f2cc",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level14",
+      "size": 981228,
+      "compressed_size": 89441,
+      "crc32": "e5a9d3ec",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level14.resS",
+      "size": 166560,
+      "compressed_size": 6111,
+      "crc32": "016da7b3",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level15",
+      "size": 636240,
+      "compressed_size": 62324,
+      "crc32": "77b291e7",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level16",
+      "size": 307756,
+      "compressed_size": 32879,
+      "crc32": "7cb6d735",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level17",
+      "size": 348852,
+      "compressed_size": 38135,
+      "crc32": "a8e62428",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level17.resS",
+      "size": 6048,
+      "compressed_size": 1144,
+      "crc32": "c11257e2",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level2",
+      "size": 478592,
+      "compressed_size": 56156,
+      "crc32": "ade602f3",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level3",
+      "size": 1380312,
+      "compressed_size": 135566,
+      "crc32": "d4c38ac8",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level4",
+      "size": 5369432,
+      "compressed_size": 485286,
+      "crc32": "b6902a4a",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level5",
+      "size": 1540820,
+      "compressed_size": 161096,
+      "crc32": "8ffe4630",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level5.resS",
+      "size": 46368,
+      "compressed_size": 7621,
+      "crc32": "ec814e74",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level6",
+      "size": 336116,
+      "compressed_size": 36460,
+      "crc32": "686b568b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level7",
+      "size": 308556,
+      "compressed_size": 33291,
+      "crc32": "45aa2325",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level8",
+      "size": 302892,
+      "compressed_size": 32194,
+      "crc32": "4dc47979",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/level9",
+      "size": 514052,
+      "compressed_size": 82770,
+      "crc32": "f21d7c11",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/Assembly-CSharp.dll",
+      "size": 317440,
+      "compressed_size": 104952,
+      "crc32": "e8c1779b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/Facepunch.Steamworks.Win64.dll",
+      "size": 546816,
+      "compressed_size": 191823,
+      "crc32": "1e8f352d",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/Mono.Security.dll",
+      "size": 241152,
+      "compressed_size": 100054,
+      "crc32": "2bd9f3d8",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/mscorlib.dll",
+      "size": 4631552,
+      "compressed_size": 1589632,
+      "crc32": "db4ffd3f",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/netstandard.dll",
+      "size": 90112,
+      "compressed_size": 24577,
+      "crc32": "975ffbbe",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.ComponentModel.Composition.dll",
+      "size": 257024,
+      "compressed_size": 101505,
+      "crc32": "94e3f74c",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.Configuration.dll",
+      "size": 124928,
+      "compressed_size": 50361,
+      "crc32": "c5405977",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.Core.dll",
+      "size": 1113088,
+      "compressed_size": 377109,
+      "crc32": "6626429f",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.Data.DataSetExtensions.dll",
+      "size": 29696,
+      "compressed_size": 10884,
+      "crc32": "7ee6c8a7",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.Data.dll",
+      "size": 2118656,
+      "compressed_size": 733993,
+      "crc32": "4435d0c9",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.dll",
+      "size": 2637824,
+      "compressed_size": 1005362,
+      "crc32": "4cbf3757",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.Drawing.dll",
+      "size": 489984,
+      "compressed_size": 182197,
+      "crc32": "7989edb3",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.EnterpriseServices.dll",
+      "size": 44544,
+      "compressed_size": 17335,
+      "crc32": "f455f549",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.IO.Compression.dll",
+      "size": 114688,
+      "compressed_size": 50939,
+      "crc32": "83adb84c",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.IO.Compression.FileSystem.dll",
+      "size": 18432,
+      "compressed_size": 6209,
+      "crc32": "274239aa",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.Net.Http.dll",
+      "size": 121344,
+      "compressed_size": 52177,
+      "crc32": "c7e27929",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.Numerics.dll",
+      "size": 119296,
+      "compressed_size": 42716,
+      "crc32": "523c75d7",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.Runtime.Serialization.dll",
+      "size": 934400,
+      "compressed_size": 304853,
+      "crc32": "73c6ca90",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.Security.dll",
+      "size": 320000,
+      "compressed_size": 121201,
+      "crc32": "86192874",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.ServiceModel.Internals.dll",
+      "size": 215040,
+      "compressed_size": 83411,
+      "crc32": "215fbce0",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.Transactions.dll",
+      "size": 35328,
+      "compressed_size": 13291,
+      "crc32": "a3fc60a5",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.Xml.dll",
+      "size": 3160064,
+      "compressed_size": 1060606,
+      "crc32": "a06b25eb",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/System.Xml.Linq.dll",
+      "size": 136704,
+      "compressed_size": 54741,
+      "crc32": "3b825680",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/Unity.Timeline.dll",
+      "size": 115712,
+      "compressed_size": 51692,
+      "crc32": "242c50f6",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.AccessibilityModule.dll",
+      "size": 23064,
+      "compressed_size": 12201,
+      "crc32": "bdecc71a",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.AIModule.dll",
+      "size": 56344,
+      "compressed_size": 25739,
+      "crc32": "9afee6a1",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.AndroidJNIModule.dll",
+      "size": 79896,
+      "compressed_size": 30818,
+      "crc32": "f9c28e8f",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.AnimationModule.dll",
+      "size": 161816,
+      "compressed_size": 57172,
+      "crc32": "a883e799",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.ARModule.dll",
+      "size": 21016,
+      "compressed_size": 11186,
+      "crc32": "f2616427",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.AssetBundleModule.dll",
+      "size": 33304,
+      "compressed_size": 15860,
+      "crc32": "55acd0b1",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.AudioModule.dll",
+      "size": 70168,
+      "compressed_size": 30367,
+      "crc32": "3d2c2340",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.ClothModule.dll",
+      "size": 26136,
+      "compressed_size": 12986,
+      "crc32": "eac0c349",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.ClusterInputModule.dll",
+      "size": 21528,
+      "compressed_size": 11251,
+      "crc32": "694af2ee",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.ClusterRendererModule.dll",
+      "size": 22040,
+      "compressed_size": 11312,
+      "crc32": "22d0ff74",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.CoreModule.dll",
+      "size": 1275928,
+      "compressed_size": 414918,
+      "crc32": "4a2d1025",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.CrashReportingModule.dll",
+      "size": 20504,
+      "compressed_size": 10961,
+      "crc32": "028c935c",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.DirectorModule.dll",
+      "size": 24600,
+      "compressed_size": 12528,
+      "crc32": "a419036a",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.dll",
+      "size": 112664,
+      "compressed_size": 36777,
+      "crc32": "facfac07",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.DSPGraphModule.dll",
+      "size": 29208,
+      "compressed_size": 14172,
+      "crc32": "c6002b8a",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.GameCenterModule.dll",
+      "size": 39960,
+      "compressed_size": 19189,
+      "crc32": "0e03b07a",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.GIModule.dll",
+      "size": 19992,
+      "compressed_size": 10619,
+      "crc32": "6e488b28",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.GridModule.dll",
+      "size": 24600,
+      "compressed_size": 12287,
+      "crc32": "2728140e",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.HotReloadModule.dll",
+      "size": 19992,
+      "compressed_size": 10616,
+      "crc32": "7ecc2ac4",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.ImageConversionModule.dll",
+      "size": 24088,
+      "compressed_size": 12034,
+      "crc32": "5f98af80",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.IMGUIModule.dll",
+      "size": 173080,
+      "compressed_size": 69039,
+      "crc32": "3a74dc83",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.InputLegacyModule.dll",
+      "size": 37400,
+      "compressed_size": 18038,
+      "crc32": "5bd9945e",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.InputModule.dll",
+      "size": 23064,
+      "compressed_size": 12335,
+      "crc32": "92f6205f",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.JSONSerializeModule.dll",
+      "size": 22040,
+      "compressed_size": 11585,
+      "crc32": "c16760c5",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.LocalizationModule.dll",
+      "size": 21016,
+      "compressed_size": 11063,
+      "crc32": "1286c865",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.NVIDIAModule.dll",
+      "size": 33816,
+      "compressed_size": 16683,
+      "crc32": "9f7ae948",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.ParticleSystemModule.dll",
+      "size": 154648,
+      "compressed_size": 54993,
+      "crc32": "96372511",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.PerformanceReportingModule.dll",
+      "size": 20504,
+      "compressed_size": 10870,
+      "crc32": "e7244f7d",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.Physics2DModule.dll",
+      "size": 134168,
+      "compressed_size": 46446,
+      "crc32": "863103ac",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.PhysicsModule.dll",
+      "size": 114712,
+      "compressed_size": 43108,
+      "crc32": "ec6c293e",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.ProfilerModule.dll",
+      "size": 19992,
+      "compressed_size": 10618,
+      "crc32": "395ef698",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
+      "size": 19992,
+      "compressed_size": 10647,
+      "crc32": "7f5cb99a",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.ScreenCaptureModule.dll",
+      "size": 21016,
+      "compressed_size": 11053,
+      "crc32": "adca2e4a",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.SharedInternalsModule.dll",
+      "size": 32280,
+      "compressed_size": 15517,
+      "crc32": "c74e57a3",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.SpriteMaskModule.dll",
+      "size": 21016,
+      "compressed_size": 11161,
+      "crc32": "57694197",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.SpriteShapeModule.dll",
+      "size": 25112,
+      "compressed_size": 12991,
+      "crc32": "bc545c6e",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.StreamingModule.dll",
+      "size": 20504,
+      "compressed_size": 10951,
+      "crc32": "67ace5ff",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.SubstanceModule.dll",
+      "size": 24600,
+      "compressed_size": 12745,
+      "crc32": "9676e4e8",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.SubsystemsModule.dll",
+      "size": 34840,
+      "compressed_size": 16921,
+      "crc32": "ff70fd68",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.TerrainModule.dll",
+      "size": 98840,
+      "compressed_size": 40778,
+      "crc32": "8bf26a0c",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.TerrainPhysicsModule.dll",
+      "size": 20504,
+      "compressed_size": 11001,
+      "crc32": "8f86a532",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll",
+      "size": 72216,
+      "compressed_size": 28170,
+      "crc32": "68b1f8d2",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll",
+      "size": 197144,
+      "compressed_size": 77881,
+      "crc32": "972b8098",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.TextRenderingModule.dll",
+      "size": 38936,
+      "compressed_size": 18646,
+      "crc32": "a713204a",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.TilemapModule.dll",
+      "size": 43032,
+      "compressed_size": 19872,
+      "crc32": "f18348d7",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.TLSModule.dll",
+      "size": 26648,
+      "compressed_size": 13157,
+      "crc32": "485efd59",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UI.dll",
+      "size": 247296,
+      "compressed_size": 103261,
+      "crc32": "5df04f0c",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UIElementsModule.dll",
+      "size": 1215512,
+      "compressed_size": 452197,
+      "crc32": "08c030ce",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UIElementsNativeModule.dll",
+      "size": 58904,
+      "compressed_size": 25400,
+      "crc32": "b186dc9f",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UIModule.dll",
+      "size": 35864,
+      "compressed_size": 17672,
+      "crc32": "700319bc",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UmbraModule.dll",
+      "size": 19992,
+      "compressed_size": 10627,
+      "crc32": "4108a683",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UNETModule.dll",
+      "size": 89624,
+      "compressed_size": 35641,
+      "crc32": "b9363360",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll",
+      "size": 20504,
+      "compressed_size": 10957,
+      "crc32": "03245d24",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
+      "size": 44056,
+      "compressed_size": 20691,
+      "crc32": "89ffad45",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UnityConnectModule.dll",
+      "size": 21528,
+      "compressed_size": 11343,
+      "crc32": "bfe1170a",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UnityCurlModule.dll",
+      "size": 21528,
+      "compressed_size": 11427,
+      "crc32": "1fa8206c",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UnityTestProtocolModule.dll",
+      "size": 19992,
+      "compressed_size": 10636,
+      "crc32": "f329c852",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll",
+      "size": 23064,
+      "compressed_size": 11790,
+      "crc32": "f0158f0c",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll",
+      "size": 22552,
+      "compressed_size": 11819,
+      "crc32": "6647e1fb",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UnityWebRequestModule.dll",
+      "size": 56856,
+      "compressed_size": 26175,
+      "crc32": "f944174b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll",
+      "size": 22040,
+      "compressed_size": 11549,
+      "crc32": "161fefee",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll",
+      "size": 31256,
+      "compressed_size": 15362,
+      "crc32": "697a24c5",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.VehiclesModule.dll",
+      "size": 23576,
+      "compressed_size": 12136,
+      "crc32": "2c9431ab",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.VFXModule.dll",
+      "size": 54808,
+      "compressed_size": 22779,
+      "crc32": "b59c6b34",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.VideoModule.dll",
+      "size": 39960,
+      "compressed_size": 18570,
+      "crc32": "39e44ad2",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.VirtualTexturingModule.dll",
+      "size": 34840,
+      "compressed_size": 17086,
+      "crc32": "c367ad6d",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.VRModule.dll",
+      "size": 26136,
+      "compressed_size": 13555,
+      "crc32": "7bdfb6ac",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.WindModule.dll",
+      "size": 20504,
+      "compressed_size": 10997,
+      "crc32": "37e1dd4e",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/UnityEngine.XRModule.dll",
+      "size": 70168,
+      "compressed_size": 30331,
+      "crc32": "85c7fd0e",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Managed/XInputDotNetPure.dll",
+      "size": 9216,
+      "compressed_size": 3896,
+      "crc32": "f43c383c",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Plugins/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Plugins/x86_64/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Plugins/x86_64/steam_api64.dll",
+      "size": 426080,
+      "compressed_size": 365151,
+      "crc32": "ee3439ce",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Plugins/x86_64/steam_api64.rne",
+      "size": 290536,
+      "compressed_size": 132997,
+      "crc32": "09bfe83e",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Plugins/x86_64/steam_emu.ini",
+      "size": 2926,
+      "compressed_size": 1138,
+      "crc32": "510068b6",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Plugins/x86_64/XInputInterface.dll",
+      "size": 110592,
+      "compressed_size": 59649,
+      "crc32": "c8a3ceba",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Resources/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Resources/unity default resources",
+      "size": 4832808,
+      "compressed_size": 433536,
+      "crc32": "b1296229",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/Resources/unity_builtin_extra",
+      "size": 420864,
+      "compressed_size": 88341,
+      "crc32": "4c16a486",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/resources.assets",
+      "size": 19584,
+      "compressed_size": 5056,
+      "crc32": "0326dfcd",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/RuntimeInitializeOnLoads.json",
+      "size": 13,
+      "compressed_size": 13,
+      "crc32": "0914ec99",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/ScriptingAssemblies.json",
+      "size": 2701,
+      "compressed_size": 588,
+      "crc32": "c5f8b985",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets0.assets",
+      "size": 48268,
+      "compressed_size": 23740,
+      "crc32": "44a4a06b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets0.assets.resS",
+      "size": 40992,
+      "compressed_size": 4834,
+      "crc32": "26e7e9f0",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets0.resource",
+      "size": 30889714,
+      "compressed_size": 28098113,
+      "crc32": "0a25a5ef",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets1.assets",
+      "size": 19000168,
+      "compressed_size": 5261649,
+      "crc32": "030db263",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets1.assets.resS",
+      "size": 1590576,
+      "compressed_size": 193501,
+      "crc32": "e9d7538b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets1.resource",
+      "size": 2733600,
+      "compressed_size": 2718287,
+      "crc32": "f478686d",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets10.assets",
+      "size": 12532,
+      "compressed_size": 2692,
+      "crc32": "7eb95c24",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets10.assets.resS",
+      "size": 11584,
+      "compressed_size": 3796,
+      "crc32": "8dfb753d",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets11.assets",
+      "size": 11556,
+      "compressed_size": 2088,
+      "crc32": "d18166cf",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets11.assets.resS",
+      "size": 672,
+      "compressed_size": 198,
+      "crc32": "664bd2d2",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets12.assets",
+      "size": 25024,
+      "compressed_size": 5721,
+      "crc32": "3a92391d",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets12.assets.resS",
+      "size": 35904,
+      "compressed_size": 7201,
+      "crc32": "012c1e7b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets13.assets",
+      "size": 99684,
+      "compressed_size": 29277,
+      "crc32": "7a93c877",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets13.assets.resS",
+      "size": 241088,
+      "compressed_size": 67817,
+      "crc32": "8309b61d",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets14.assets",
+      "size": 83528,
+      "compressed_size": 14234,
+      "crc32": "d4b00d34",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets14.assets.resS",
+      "size": 10192,
+      "compressed_size": 4223,
+      "crc32": "f926f2ab",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets15.assets",
+      "size": 266024,
+      "compressed_size": 56892,
+      "crc32": "2f1cda2c",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets15.assets.resS",
+      "size": 409440,
+      "compressed_size": 180055,
+      "crc32": "3dac46d0",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets15.resource",
+      "size": 65824,
+      "compressed_size": 65833,
+      "crc32": "6014d8e2",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets16.assets",
+      "size": 15184,
+      "compressed_size": 3454,
+      "crc32": "f6b17da0",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets16.assets.resS",
+      "size": 532480,
+      "compressed_size": 67702,
+      "crc32": "3f775859",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets17.assets",
+      "size": 25212,
+      "compressed_size": 7657,
+      "crc32": "ddc40265",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets17.assets.resS",
+      "size": 53952,
+      "compressed_size": 12809,
+      "crc32": "e4b1a1c9",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets2.assets",
+      "size": 1864756,
+      "compressed_size": 594706,
+      "crc32": "d816169d",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets2.assets.resS",
+      "size": 469936,
+      "compressed_size": 159090,
+      "crc32": "e73cec86",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets2.resource",
+      "size": 1093696,
+      "compressed_size": 1087023,
+      "crc32": "a1b17f5b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets3.assets",
+      "size": 2706852,
+      "compressed_size": 718354,
+      "crc32": "3fe27a99",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets3.assets.resS",
+      "size": 785312,
+      "compressed_size": 356131,
+      "crc32": "6b8d94e6",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets3.resource",
+      "size": 2465728,
+      "compressed_size": 2447784,
+      "crc32": "e4b32970",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets4.assets",
+      "size": 8141432,
+      "compressed_size": 2540712,
+      "crc32": "693d9809",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets4.assets.resS",
+      "size": 2045728,
+      "compressed_size": 840962,
+      "crc32": "c637fd7f",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets4.resource",
+      "size": 4032800,
+      "compressed_size": 3999365,
+      "crc32": "c8d050a5",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets5.assets",
+      "size": 2512964,
+      "compressed_size": 923328,
+      "crc32": "26d46f54",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets5.assets.resS",
+      "size": 421840,
+      "compressed_size": 163679,
+      "crc32": "faec752d",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets5.resource",
+      "size": 621088,
+      "compressed_size": 619796,
+      "crc32": "06e4be18",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets6.assets",
+      "size": 29332,
+      "compressed_size": 9891,
+      "crc32": "5abbed41",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets6.assets.resS",
+      "size": 29760,
+      "compressed_size": 10852,
+      "crc32": "45bfafe8",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets6.resource",
+      "size": 102240,
+      "compressed_size": 102260,
+      "crc32": "3975d15f",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets7.assets",
+      "size": 39536,
+      "compressed_size": 8749,
+      "crc32": "04f877f5",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets7.assets.resS",
+      "size": 86048,
+      "compressed_size": 27823,
+      "crc32": "76b4eda6",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets7.resource",
+      "size": 152000,
+      "compressed_size": 151499,
+      "crc32": "b8310138",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets8.assets",
+      "size": 13824,
+      "compressed_size": 2770,
+      "crc32": "cbb1c9ef",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets8.assets.resS",
+      "size": 14672,
+      "compressed_size": 5530,
+      "crc32": "01a94843",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets9.assets",
+      "size": 376356,
+      "compressed_size": 84069,
+      "crc32": "8475fab3",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets9.assets.resS",
+      "size": 4160,
+      "compressed_size": 858,
+      "crc32": "ce947388",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/Corn Kidz 64_Data/sharedassets9.resource",
+      "size": 7904,
+      "compressed_size": 7904,
+      "crc32": "f6339fca",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/CornKidz64.txt",
+      "size": 10461,
+      "compressed_size": 4222,
+      "crc32": "15d5a38c",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/EmbedRuntime/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll",
+      "size": 7756312,
+      "compressed_size": 3101601,
+      "crc32": "78433142",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll",
+      "size": 610840,
+      "compressed_size": 269746,
+      "crc32": "aee982b2",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/2.0/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/2.0/Browsers/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
+      "size": 1605,
+      "compressed_size": 566,
+      "crc32": "2e178a0b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
+      "size": 60575,
+      "compressed_size": 14134,
+      "crc32": "95f9d0b4",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/2.0/machine.config",
+      "size": 29066,
+      "compressed_size": 4044,
+      "crc32": "42543b8b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/2.0/settings.map",
+      "size": 2622,
+      "compressed_size": 648,
+      "crc32": "ad5340f9",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/2.0/web.config",
+      "size": 11635,
+      "compressed_size": 1960,
+      "crc32": "1a75ebad",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.0/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.0/Browsers/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
+      "size": 1605,
+      "compressed_size": 566,
+      "crc32": "2e178a0b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
+      "size": 60575,
+      "compressed_size": 14134,
+      "crc32": "95f9d0b4",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.0/machine.config",
+      "size": 33598,
+      "compressed_size": 4416,
+      "crc32": "86f603c4",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.0/settings.map",
+      "size": 2622,
+      "compressed_size": 648,
+      "crc32": "dc24a240",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.0/web.config",
+      "size": 18802,
+      "compressed_size": 2775,
+      "crc32": "36d8ba3e",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.5/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.5/Browsers/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
+      "size": 1605,
+      "compressed_size": 566,
+      "crc32": "2e178a0b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
+      "size": 60575,
+      "compressed_size": 14134,
+      "crc32": "95f9d0b4",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.5/machine.config",
+      "size": 34056,
+      "compressed_size": 4475,
+      "crc32": "c446a9eb",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.5/settings.map",
+      "size": 2622,
+      "compressed_size": 648,
+      "crc32": "dc24a240",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/4.5/web.config",
+      "size": 18811,
+      "compressed_size": 2774,
+      "crc32": "4f48bc13",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/browscap.ini",
+      "size": 311984,
+      "compressed_size": 34673,
+      "crc32": "ce6c0ab3",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/config",
+      "size": 3118,
+      "compressed_size": 594,
+      "crc32": "0baf6ccb",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/mconfig/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/MonoBleedingEdge/etc/mono/mconfig/config.xml",
+      "size": 25817,
+      "compressed_size": 3125,
+      "crc32": "80b2033a",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/UnityCrashHandler64.exe",
+      "size": 1123864,
+      "compressed_size": 415120,
+      "crc32": "7452672f",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/UnityCrashHandler64.pdb",
+      "size": 1478656,
+      "compressed_size": 243564,
+      "crc32": "ae7ee14f",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/UnityPlayer.dll",
+      "size": 29398040,
+      "compressed_size": 12900931,
+      "crc32": "f699625b",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/UnityPlayer_Win64_player_mono_x64.pdb",
+      "size": 23662592,
+      "compressed_size": 5683892,
+      "crc32": "56f0d0b0",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/Corn.Kidz.64.v1.029/WindowsPlayer_player_Master_mono_x64.pdb",
+      "size": 380928,
+      "compressed_size": 45831,
+      "crc32": "272be8b9",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/HOW TO RUN GAME!!.txt",
+      "size": 299,
+      "compressed_size": 213,
+      "crc32": "5395e1d4",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/STEAMUNLOCKED \u00bb Free Steam Games Pre-installed for PC.url",
+      "size": 52,
+      "compressed_size": 52,
+      "crc32": "6b6019fc",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/_Redist/",
+      "size": 0,
+      "compressed_size": 0,
+      "crc32": "00000000",
+      "is_directory": true
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/_Redist/dotNetFx40_Full_setup.exe",
+      "size": 889416,
+      "compressed_size": 794392,
+      "crc32": "e8227ba0",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/_Redist/dxwebsetup.exe",
+      "size": 288088,
+      "compressed_size": 252020,
+      "crc32": "51763b52",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/_Redist/oalinst.exe",
+      "size": 809496,
+      "compressed_size": 588799,
+      "crc32": "154bebc3",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/_Redist/vcredist_2015-2019_x64.exe",
+      "size": 14974024,
+      "compressed_size": 14719958,
+      "crc32": "37dd29a9",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/_Redist/vcredist_2015-2019_x86.exe",
+      "size": 14412304,
+      "compressed_size": 14158216,
+      "crc32": "5d9ab2f2",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/_Redist/vcredist_x64.exe",
+      "size": 5718872,
+      "compressed_size": 5696125,
+      "crc32": "fe9f1cbd",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/_Redist/vcredist_x86.exe",
+      "size": 5073240,
+      "compressed_size": 5050477,
+      "crc32": "aa7f87e7",
+      "is_directory": false
+    },
+    {
+      "name": "Corn.Kidz.64.v1.029/_Redist/xnafx40_redist.msi",
+      "size": 7054336,
+      "compressed_size": 6375230,
+      "crc32": "5dc1f00e",
+      "is_directory": false
+    }
+  ]
+}

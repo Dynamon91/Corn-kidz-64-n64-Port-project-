@@ -1,0 +1,4958 @@
+{
+  "target_type": "GameCtrl",
+  "source_dll": "Assembly-CSharp.dll",
+  "method_count": 21,
+  "methods": [
+    {
+      "name": "GameCtrl::Awake",
+      "token": "0x0600010a",
+      "il_bytes": 235,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldc.i4.s",
+          "operand": 30
+        },
+        {
+          "offset": 2,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000b5",
+            "target": "UnityEngine.Application::set_targetFrameRate"
+          }
+        },
+        {
+          "offset": 7,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "ldstr",
+          "operand": {
+            "token": "0x70000001",
+            "target": "'Player'"
+          }
+        },
+        {
+          "offset": 13,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000023",
+            "target": "UnityEngine.GameObject::FindWithTag"
+          }
+        },
+        {
+          "offset": 18,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 19,
+          "opcode": "brtrue.s",
+          "operand": 25
+        },
+        {
+          "offset": 21,
+          "opcode": "pop",
+          "operand": null
+        },
+        {
+          "offset": 22,
+          "opcode": "ldnull",
+          "operand": null
+        },
+        {
+          "offset": 23,
+          "opcode": "br.s",
+          "operand": 30
+        },
+        {
+          "offset": 25,
+          "opcode": "call",
+          "operand": {
+            "token": "0x2b000002",
+            "target": "0x2b000002"
+          }
+        },
+        {
+          "offset": 30,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400014d",
+            "target": "GameCtrl.plCS"
+          }
+        },
+        {
+          "offset": 35,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 36,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 37,
+          "opcode": "call",
+          "operand": {
+            "token": "0x2b000013",
+            "target": "0x2b000013"
+          }
+        },
+        {
+          "offset": 42,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 47,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 48,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 53,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 54,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 55,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 56,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000b6",
+            "target": "UnityEngine.AudioSource::set_ignoreListenerPause"
+          }
+        },
+        {
+          "offset": 61,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 62,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 67,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 68,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 69,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 70,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000b6",
+            "target": "UnityEngine.AudioSource::set_ignoreListenerPause"
+          }
+        },
+        {
+          "offset": 75,
+          "opcode": "ldsfld",
+          "operand": {
+            "token": "0x0400013b",
+            "target": "GameCtrl.instance"
+          }
+        },
+        {
+          "offset": 80,
+          "opcode": "ldnull",
+          "operand": null
+        },
+        {
+          "offset": 81,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000090",
+            "target": "UnityEngine.Object::op_Inequality"
+          }
+        },
+        {
+          "offset": 86,
+          "opcode": "brfalse.s",
+          "operand": 114
+        },
+        {
+          "offset": 88,
+          "opcode": "ldsfld",
+          "operand": {
+            "token": "0x0400013b",
+            "target": "GameCtrl.instance"
+          }
+        },
+        {
+          "offset": 93,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 94,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000090",
+            "target": "UnityEngine.Object::op_Inequality"
+          }
+        },
+        {
+          "offset": 99,
+          "opcode": "brfalse.s",
+          "operand": 114
+        },
+        {
+          "offset": 101,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 102,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000025",
+            "target": "UnityEngine.Component::get_gameObject"
+          }
+        },
+        {
+          "offset": 107,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000083",
+            "target": "UnityEngine.Object::Destroy"
+          }
+        },
+        {
+          "offset": 112,
+          "opcode": "br.s",
+          "operand": 131
+        },
+        {
+          "offset": 114,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 115,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000025",
+            "target": "UnityEngine.Component::get_gameObject"
+          }
+        },
+        {
+          "offset": 120,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000b7",
+            "target": "UnityEngine.Object::DontDestroyOnLoad"
+          }
+        },
+        {
+          "offset": 125,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 126,
+          "opcode": "stsfld",
+          "operand": {
+            "token": "0x0400013b",
+            "target": "GameCtrl.instance"
+          }
+        },
+        {
+          "offset": 131,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 132,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0600011d",
+            "target": "GameCtrl::ResetSav"
+          }
+        },
+        {
+          "offset": 137,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 138,
+          "opcode": "ldc.i4.s",
+          "operand": 99
+        },
+        {
+          "offset": 140,
+          "opcode": "newarr",
+          "operand": {
+            "token": "0x01000069",
+            "target": "System.Int32"
+          }
+        },
+        {
+          "offset": 145,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400014e",
+            "target": "GameCtrl.lvl"
+          }
+        },
+        {
+          "offset": 150,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 151,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014e",
+            "target": "GameCtrl.lvl"
+          }
+        },
+        {
+          "offset": 156,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 157,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 158,
+          "opcode": "stelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 159,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 160,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014e",
+            "target": "GameCtrl.lvl"
+          }
+        },
+        {
+          "offset": 165,
+          "opcode": "ldc.i4.2",
+          "operand": null
+        },
+        {
+          "offset": 166,
+          "opcode": "ldc.i4.s",
+          "operand": 70
+        },
+        {
+          "offset": 168,
+          "opcode": "stelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 169,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 170,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014e",
+            "target": "GameCtrl.lvl"
+          }
+        },
+        {
+          "offset": 175,
+          "opcode": "ldc.i4.3",
+          "operand": null
+        },
+        {
+          "offset": 176,
+          "opcode": "ldc.i4",
+          "operand": 140
+        },
+        {
+          "offset": 181,
+          "opcode": "stelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 182,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 183,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014e",
+            "target": "GameCtrl.lvl"
+          }
+        },
+        {
+          "offset": 188,
+          "opcode": "ldc.i4.4",
+          "operand": null
+        },
+        {
+          "offset": 189,
+          "opcode": "ldc.i4",
+          "operand": 200
+        },
+        {
+          "offset": 194,
+          "opcode": "stelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 195,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 196,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014e",
+            "target": "GameCtrl.lvl"
+          }
+        },
+        {
+          "offset": 201,
+          "opcode": "ldc.i4.5",
+          "operand": null
+        },
+        {
+          "offset": 202,
+          "opcode": "ldc.i4",
+          "operand": 300
+        },
+        {
+          "offset": 207,
+          "opcode": "stelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 208,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 209,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014e",
+            "target": "GameCtrl.lvl"
+          }
+        },
+        {
+          "offset": 214,
+          "opcode": "ldc.i4.6",
+          "operand": null
+        },
+        {
+          "offset": 215,
+          "opcode": "ldc.i4",
+          "operand": 360
+        },
+        {
+          "offset": 220,
+          "opcode": "stelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 221,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 222,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014e",
+            "target": "GameCtrl.lvl"
+          }
+        },
+        {
+          "offset": 227,
+          "opcode": "ldc.i4.7",
+          "operand": null
+        },
+        {
+          "offset": 228,
+          "opcode": "ldc.i4",
+          "operand": 999
+        },
+        {
+          "offset": 233,
+          "opcode": "stelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 234,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::Start",
+      "token": "0x0600010b",
+      "il_bytes": 38,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 2,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000143",
+            "target": "GameCtrl.startHP"
+          }
+        },
+        {
+          "offset": 7,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000141",
+            "target": "GameCtrl.HP"
+          }
+        },
+        {
+          "offset": 12,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 13,
+          "opcode": "ldc.i4.s",
+          "operand": 16
+        },
+        {
+          "offset": 15,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000142",
+            "target": "GameCtrl.DP"
+          }
+        },
+        {
+          "offset": 20,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 21,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 22,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 27,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000176",
+            "target": "Data.volume"
+          }
+        },
+        {
+          "offset": 32,
+          "opcode": "call",
+          "operand": {
+            "token": "0x06000111",
+            "target": "GameCtrl::SetVolume"
+          }
+        },
+        {
+          "offset": 37,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::OnValidate",
+      "token": "0x0600010c",
+      "il_bytes": 41,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldsfld",
+          "operand": {
+            "token": "0x0400013b",
+            "target": "GameCtrl.instance"
+          }
+        },
+        {
+          "offset": 5,
+          "opcode": "ldnull",
+          "operand": null
+        },
+        {
+          "offset": 6,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a00002f",
+            "target": "UnityEngine.Object::op_Equality"
+          }
+        },
+        {
+          "offset": 11,
+          "opcode": "brfalse.s",
+          "operand": 28
+        },
+        {
+          "offset": 13,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014c",
+            "target": "GameCtrl.sceneTimer"
+          }
+        },
+        {
+          "offset": 19,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 20,
+          "opcode": "ble.s",
+          "operand": 28
+        },
+        {
+          "offset": 22,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 23,
+          "opcode": "stsfld",
+          "operand": {
+            "token": "0x0400013b",
+            "target": "GameCtrl.instance"
+          }
+        },
+        {
+          "offset": 28,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 29,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 30,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000143",
+            "target": "GameCtrl.startHP"
+          }
+        },
+        {
+          "offset": 35,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000141",
+            "target": "GameCtrl.HP"
+          }
+        },
+        {
+          "offset": 40,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::OnApplicationQuit",
+      "token": "0x0600010d",
+      "il_bytes": 44,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014d",
+            "target": "GameCtrl.plCS"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a00003e",
+            "target": "UnityEngine.Object::op_Implicit"
+          }
+        },
+        {
+          "offset": 11,
+          "opcode": "brfalse.s",
+          "operand": 24
+        },
+        {
+          "offset": 13,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014d",
+            "target": "GameCtrl.plCS"
+          }
+        },
+        {
+          "offset": 19,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x060002ba",
+            "target": "PlayerCtrl::PauseRumble"
+          }
+        },
+        {
+          "offset": 24,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 25,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000158",
+            "target": "GameCtrl.bSteamWorks"
+          }
+        },
+        {
+          "offset": 30,
+          "opcode": "brfalse.s",
+          "operand": 37
+        },
+        {
+          "offset": 32,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000b8",
+            "target": "Steamworks.SteamClient::Shutdown"
+          }
+        },
+        {
+          "offset": 37,
+          "opcode": "ldnull",
+          "operand": null
+        },
+        {
+          "offset": 38,
+          "opcode": "stsfld",
+          "operand": {
+            "token": "0x0400013b",
+            "target": "GameCtrl.instance"
+          }
+        },
+        {
+          "offset": 43,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::Update",
+      "token": "0x0600010e",
+      "il_bytes": 280,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 2,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014c",
+            "target": "GameCtrl.sceneTimer"
+          }
+        },
+        {
+          "offset": 7,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "add",
+          "operand": null
+        },
+        {
+          "offset": 9,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400014c",
+            "target": "GameCtrl.sceneTimer"
+          }
+        },
+        {
+          "offset": 14,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 15,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 16,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000146",
+            "target": "GameCtrl.activeTime"
+          }
+        },
+        {
+          "offset": 21,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 22,
+          "opcode": "add",
+          "operand": null
+        },
+        {
+          "offset": 23,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000146",
+            "target": "GameCtrl.activeTime"
+          }
+        },
+        {
+          "offset": 28,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 29,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000144",
+            "target": "GameCtrl.currentWorld"
+          }
+        },
+        {
+          "offset": 34,
+          "opcode": "ldc.i4.s",
+          "operand": -100
+        },
+        {
+          "offset": 36,
+          "opcode": "ble.s",
+          "operand": 57
+        },
+        {
+          "offset": 38,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 39,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 44,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 45,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000166",
+            "target": "Data.gameTime"
+          }
+        },
+        {
+          "offset": 50,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 51,
+          "opcode": "add",
+          "operand": null
+        },
+        {
+          "offset": 52,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000166",
+            "target": "Data.gameTime"
+          }
+        },
+        {
+          "offset": 57,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 58,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000141",
+            "target": "GameCtrl.HP"
+          }
+        },
+        {
+          "offset": 63,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 64,
+          "opcode": "bge.s",
+          "operand": 73
+        },
+        {
+          "offset": 66,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 67,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 68,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000141",
+            "target": "GameCtrl.HP"
+          }
+        },
+        {
+          "offset": 73,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 74,
+          "opcode": "call",
+          "operand": {
+            "token": "0x06000112",
+            "target": "GameCtrl::MusicFade"
+          }
+        },
+        {
+          "offset": 79,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 80,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000156",
+            "target": "GameCtrl.bDebugMode"
+          }
+        },
+        {
+          "offset": 85,
+          "opcode": "brfalse",
+          "operand": 234
+        },
+        {
+          "offset": 90,
+          "opcode": "ldc.i4.s",
+          "operand": 49
+        },
+        {
+          "offset": 92,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000b9",
+            "target": "UnityEngine.Input::GetKeyDown"
+          }
+        },
+        {
+          "offset": 97,
+          "opcode": "brfalse.s",
+          "operand": 105
+        },
+        {
+          "offset": 99,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 100,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0600011a",
+            "target": "GameCtrl::SaveGame"
+          }
+        },
+        {
+          "offset": 105,
+          "opcode": "ldc.i4.s",
+          "operand": 50
+        },
+        {
+          "offset": 107,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000b9",
+            "target": "UnityEngine.Input::GetKeyDown"
+          }
+        },
+        {
+          "offset": 112,
+          "opcode": "brfalse.s",
+          "operand": 120
+        },
+        {
+          "offset": 114,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 115,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0600011b",
+            "target": "GameCtrl::LoadGame"
+          }
+        },
+        {
+          "offset": 120,
+          "opcode": "ldc.i4.s",
+          "operand": 51
+        },
+        {
+          "offset": 122,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000b9",
+            "target": "UnityEngine.Input::GetKeyDown"
+          }
+        },
+        {
+          "offset": 127,
+          "opcode": "brfalse.s",
+          "operand": 135
+        },
+        {
+          "offset": 129,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 130,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0600011c",
+            "target": "GameCtrl::DeleteSave"
+          }
+        },
+        {
+          "offset": 135,
+          "opcode": "ldc.i4.s",
+          "operand": 52
+        },
+        {
+          "offset": 137,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000b9",
+            "target": "UnityEngine.Input::GetKeyDown"
+          }
+        },
+        {
+          "offset": 142,
+          "opcode": "brfalse.s",
+          "operand": 159
+        },
+        {
+          "offset": 144,
+          "opcode": "ldsfld",
+          "operand": {
+            "token": "0x0400013b",
+            "target": "GameCtrl.instance"
+          }
+        },
+        {
+          "offset": 149,
+          "opcode": "ldstr",
+          "operand": {
+            "token": "0x700004cd",
+            "target": "''"
+          }
+        },
+        {
+          "offset": 154,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x06000113",
+            "target": "GameCtrl::LoadScene"
+          }
+        },
+        {
+          "offset": 159,
+          "opcode": "ldc.i4.s",
+          "operand": 107
+        },
+        {
+          "offset": 161,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000b9",
+            "target": "UnityEngine.Input::GetKeyDown"
+          }
+        },
+        {
+          "offset": 166,
+          "opcode": "brfalse.s",
+          "operand": 175
+        },
+        {
+          "offset": 168,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 169,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 170,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000141",
+            "target": "GameCtrl.HP"
+          }
+        },
+        {
+          "offset": 175,
+          "opcode": "ldc.i4.s",
+          "operand": 108
+        },
+        {
+          "offset": 177,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000b9",
+            "target": "UnityEngine.Input::GetKeyDown"
+          }
+        },
+        {
+          "offset": 182,
+          "opcode": "brfalse.s",
+          "operand": 190
+        },
+        {
+          "offset": 184,
+          "opcode": "ldc.i4.8",
+          "operand": null
+        },
+        {
+          "offset": 185,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000ba",
+            "target": "UnityEngine.QualitySettings::set_antiAliasing"
+          }
+        },
+        {
+          "offset": 190,
+          "opcode": "ldc.i4.s",
+          "operand": 117
+        },
+        {
+          "offset": 192,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000b9",
+            "target": "UnityEngine.Input::GetKeyDown"
+          }
+        },
+        {
+          "offset": 197,
+          "opcode": "brfalse.s",
+          "operand": 234
+        },
+        {
+          "offset": 199,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 200,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 201,
+          "opcode": "br.s",
+          "operand": 229
+        },
+        {
+          "offset": 203,
+          "opcode": "ldloca.s",
+          "operand": 1
+        },
+        {
+          "offset": 205,
+          "opcode": "ldloca.s",
+          "operand": 0
+        },
+        {
+          "offset": 207,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000bb",
+            "target": "System.Int32::ToString"
+          }
+        },
+        {
+          "offset": 212,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000bc",
+            "target": "Steamworks.Data.Achievement::.ctor"
+          }
+        },
+        {
+          "offset": 217,
+          "opcode": "ldloca.s",
+          "operand": 1
+        },
+        {
+          "offset": 219,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000bd",
+            "target": "Steamworks.Data.Achievement::Clear"
+          }
+        },
+        {
+          "offset": 224,
+          "opcode": "pop",
+          "operand": null
+        },
+        {
+          "offset": 225,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 226,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 227,
+          "opcode": "add",
+          "operand": null
+        },
+        {
+          "offset": 228,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 229,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 230,
+          "opcode": "ldc.i4.s",
+          "operand": 16
+        },
+        {
+          "offset": 232,
+          "opcode": "blt.s",
+          "operand": 203
+        },
+        {
+          "offset": 234,
+          "opcode": "ldc.i4",
+          "operand": 304
+        },
+        {
+          "offset": 239,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000be",
+            "target": "UnityEngine.Input::GetKey"
+          }
+        },
+        {
+          "offset": 244,
+          "opcode": "brtrue.s",
+          "operand": 258
+        },
+        {
+          "offset": 246,
+          "opcode": "ldc.i4",
+          "operand": 303
+        },
+        {
+          "offset": 251,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000be",
+            "target": "UnityEngine.Input::GetKey"
+          }
+        },
+        {
+          "offset": 256,
+          "opcode": "brfalse.s",
+          "operand": 279
+        },
+        {
+          "offset": 258,
+          "opcode": "ldc.i4.s",
+          "operand": 108
+        },
+        {
+          "offset": 260,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000b9",
+            "target": "UnityEngine.Input::GetKeyDown"
+          }
+        },
+        {
+          "offset": 265,
+          "opcode": "brfalse.s",
+          "operand": 279
+        },
+        {
+          "offset": 267,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 268,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 273,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 274,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400016c",
+            "target": "Data.bSkipLauncher"
+          }
+        },
+        {
+          "offset": 279,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::SimulateFrameDrop",
+      "token": "0x0600010f",
+      "il_bytes": 1,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::SetCurrentLvl",
+      "token": "0x06000110",
+      "il_bytes": 65,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldsfld",
+          "operand": {
+            "token": "0x0400013b",
+            "target": "GameCtrl.instance"
+          }
+        },
+        {
+          "offset": 5,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 10,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000160",
+            "target": "Data.itemTotal"
+          }
+        },
+        {
+          "offset": 15,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 16,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014e",
+            "target": "GameCtrl.lvl"
+          }
+        },
+        {
+          "offset": 21,
+          "opcode": "ldsfld",
+          "operand": {
+            "token": "0x0400013b",
+            "target": "GameCtrl.instance"
+          }
+        },
+        {
+          "offset": 26,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 31,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000161",
+            "target": "Data.currentLvl"
+          }
+        },
+        {
+          "offset": 36,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 37,
+          "opcode": "add",
+          "operand": null
+        },
+        {
+          "offset": 38,
+          "opcode": "ldelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 39,
+          "opcode": "blt.s",
+          "operand": 64
+        },
+        {
+          "offset": 41,
+          "opcode": "ldsfld",
+          "operand": {
+            "token": "0x0400013b",
+            "target": "GameCtrl.instance"
+          }
+        },
+        {
+          "offset": 46,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 51,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 52,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000161",
+            "target": "Data.currentLvl"
+          }
+        },
+        {
+          "offset": 57,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 58,
+          "opcode": "add",
+          "operand": null
+        },
+        {
+          "offset": 59,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000161",
+            "target": "Data.currentLvl"
+          }
+        },
+        {
+          "offset": 64,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::SetVolume",
+      "token": "0x06000111",
+      "il_bytes": 36,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000176",
+            "target": "Data.volume"
+          }
+        },
+        {
+          "offset": 12,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 13,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 18,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000176",
+            "target": "Data.volume"
+          }
+        },
+        {
+          "offset": 23,
+          "opcode": "conv.r4",
+          "operand": null
+        },
+        {
+          "offset": 24,
+          "opcode": "ldc.r4",
+          "operand": 0.009999999776482582
+        },
+        {
+          "offset": 29,
+          "opcode": "mul",
+          "operand": null
+        },
+        {
+          "offset": 30,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000bf",
+            "target": "UnityEngine.AudioListener::set_volume"
+          }
+        },
+        {
+          "offset": 35,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::MusicFade",
+      "token": "0x06000112",
+      "il_bytes": 570,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000152",
+            "target": "GameCtrl.nextTrack"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000151",
+            "target": "GameCtrl.currentTrack"
+          }
+        },
+        {
+          "offset": 12,
+          "opcode": "bne.un.s",
+          "operand": 22
+        },
+        {
+          "offset": 14,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 15,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000153",
+            "target": "GameCtrl.subTrack"
+          }
+        },
+        {
+          "offset": 20,
+          "opcode": "brfalse.s",
+          "operand": 65
+        },
+        {
+          "offset": 22,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 23,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 28,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 29,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 30,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 31,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 36,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 37,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 38,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c0",
+            "target": "UnityEngine.AudioSource::get_volume"
+          }
+        },
+        {
+          "offset": 43,
+          "opcode": "ldc.r4",
+          "operand": 0.0
+        },
+        {
+          "offset": 48,
+          "opcode": "ldc.r4",
+          "operand": 0.03999999910593033
+        },
+        {
+          "offset": 53,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000068",
+            "target": "UnityEngine.Mathf::MoveTowards"
+          }
+        },
+        {
+          "offset": 58,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c1",
+            "target": "UnityEngine.AudioSource::set_volume"
+          }
+        },
+        {
+          "offset": 63,
+          "opcode": "br.s",
+          "operand": 106
+        },
+        {
+          "offset": 65,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 66,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 71,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 72,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 73,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 74,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 79,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 80,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 81,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c0",
+            "target": "UnityEngine.AudioSource::get_volume"
+          }
+        },
+        {
+          "offset": 86,
+          "opcode": "ldc.r4",
+          "operand": 1.0
+        },
+        {
+          "offset": 91,
+          "opcode": "ldc.r4",
+          "operand": 0.03999999910593033
+        },
+        {
+          "offset": 96,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000068",
+            "target": "UnityEngine.Mathf::MoveTowards"
+          }
+        },
+        {
+          "offset": 101,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c1",
+            "target": "UnityEngine.AudioSource::set_volume"
+          }
+        },
+        {
+          "offset": 106,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 107,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000155",
+            "target": "GameCtrl.bMusicAutoSwitch"
+          }
+        },
+        {
+          "offset": 112,
+          "opcode": "brfalse.s",
+          "operand": 192
+        },
+        {
+          "offset": 114,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 115,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 120,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 121,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 122,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c0",
+            "target": "UnityEngine.AudioSource::get_volume"
+          }
+        },
+        {
+          "offset": 127,
+          "opcode": "ldc.r4",
+          "operand": 0.0
+        },
+        {
+          "offset": 132,
+          "opcode": "bne.un.s",
+          "operand": 192
+        },
+        {
+          "offset": 134,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 135,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 136,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000155",
+            "target": "GameCtrl.bMusicAutoSwitch"
+          }
+        },
+        {
+          "offset": 141,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 142,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 143,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000152",
+            "target": "GameCtrl.nextTrack"
+          }
+        },
+        {
+          "offset": 148,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000151",
+            "target": "GameCtrl.currentTrack"
+          }
+        },
+        {
+          "offset": 153,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 154,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 159,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 160,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 161,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 162,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000150",
+            "target": "GameCtrl.tracks"
+          }
+        },
+        {
+          "offset": 167,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 168,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000151",
+            "target": "GameCtrl.currentTrack"
+          }
+        },
+        {
+          "offset": 173,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 174,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a000092",
+            "target": "UnityEngine.AudioSource::set_clip"
+          }
+        },
+        {
+          "offset": 179,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 180,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 185,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 186,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 187,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a000087",
+            "target": "UnityEngine.AudioSource::Play"
+          }
+        },
+        {
+          "offset": 192,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 193,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000153",
+            "target": "GameCtrl.subTrack"
+          }
+        },
+        {
+          "offset": 198,
+          "opcode": "brfalse.s",
+          "operand": 243
+        },
+        {
+          "offset": 200,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 201,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 206,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 207,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 208,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 209,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 214,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 215,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 216,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c0",
+            "target": "UnityEngine.AudioSource::get_volume"
+          }
+        },
+        {
+          "offset": 221,
+          "opcode": "ldc.r4",
+          "operand": 1.0
+        },
+        {
+          "offset": 226,
+          "opcode": "ldc.r4",
+          "operand": 0.03999999910593033
+        },
+        {
+          "offset": 231,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000068",
+            "target": "UnityEngine.Mathf::MoveTowards"
+          }
+        },
+        {
+          "offset": 236,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c1",
+            "target": "UnityEngine.AudioSource::set_volume"
+          }
+        },
+        {
+          "offset": 241,
+          "opcode": "br.s",
+          "operand": 299
+        },
+        {
+          "offset": 243,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 244,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 249,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 250,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 251,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c2",
+            "target": "UnityEngine.AudioSource::get_isPlaying"
+          }
+        },
+        {
+          "offset": 256,
+          "opcode": "brfalse.s",
+          "operand": 299
+        },
+        {
+          "offset": 258,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 259,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 264,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 265,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 266,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 267,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 272,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 273,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 274,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c0",
+            "target": "UnityEngine.AudioSource::get_volume"
+          }
+        },
+        {
+          "offset": 279,
+          "opcode": "ldc.r4",
+          "operand": 0.0
+        },
+        {
+          "offset": 284,
+          "opcode": "ldc.r4",
+          "operand": 0.03999999910593033
+        },
+        {
+          "offset": 289,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000068",
+            "target": "UnityEngine.Mathf::MoveTowards"
+          }
+        },
+        {
+          "offset": 294,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c1",
+            "target": "UnityEngine.AudioSource::set_volume"
+          }
+        },
+        {
+          "offset": 299,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 300,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000153",
+            "target": "GameCtrl.subTrack"
+          }
+        },
+        {
+          "offset": 305,
+          "opcode": "brtrue.s",
+          "operand": 355
+        },
+        {
+          "offset": 307,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 308,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 313,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 314,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 315,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c0",
+            "target": "UnityEngine.AudioSource::get_volume"
+          }
+        },
+        {
+          "offset": 320,
+          "opcode": "ldc.r4",
+          "operand": 0.0
+        },
+        {
+          "offset": 325,
+          "opcode": "bne.un.s",
+          "operand": 355
+        },
+        {
+          "offset": 327,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 328,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 333,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 334,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 335,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c2",
+            "target": "UnityEngine.AudioSource::get_isPlaying"
+          }
+        },
+        {
+          "offset": 340,
+          "opcode": "brfalse.s",
+          "operand": 355
+        },
+        {
+          "offset": 342,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 343,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 348,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 349,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 350,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c3",
+            "target": "UnityEngine.AudioSource::Stop"
+          }
+        },
+        {
+          "offset": 355,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 356,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 361,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 362,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 363,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c4",
+            "target": "UnityEngine.AudioSource::get_pitch"
+          }
+        },
+        {
+          "offset": 368,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 369,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000154",
+            "target": "GameCtrl.musicSpeed"
+          }
+        },
+        {
+          "offset": 374,
+          "opcode": "beq.s",
+          "operand": 460
+        },
+        {
+          "offset": 376,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 377,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 382,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 383,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 384,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 385,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 390,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 391,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 392,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c4",
+            "target": "UnityEngine.AudioSource::get_pitch"
+          }
+        },
+        {
+          "offset": 397,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 398,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000154",
+            "target": "GameCtrl.musicSpeed"
+          }
+        },
+        {
+          "offset": 403,
+          "opcode": "ldc.r4",
+          "operand": 0.019999999552965164
+        },
+        {
+          "offset": 408,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000068",
+            "target": "UnityEngine.Mathf::MoveTowards"
+          }
+        },
+        {
+          "offset": 413,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a000094",
+            "target": "UnityEngine.AudioSource::set_pitch"
+          }
+        },
+        {
+          "offset": 418,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 419,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 424,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 425,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 426,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 427,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 432,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 433,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 434,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c4",
+            "target": "UnityEngine.AudioSource::get_pitch"
+          }
+        },
+        {
+          "offset": 439,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 440,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000154",
+            "target": "GameCtrl.musicSpeed"
+          }
+        },
+        {
+          "offset": 445,
+          "opcode": "ldc.r4",
+          "operand": 0.019999999552965164
+        },
+        {
+          "offset": 450,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000068",
+            "target": "UnityEngine.Mathf::MoveTowards"
+          }
+        },
+        {
+          "offset": 455,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a000094",
+            "target": "UnityEngine.AudioSource::set_pitch"
+          }
+        },
+        {
+          "offset": 460,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 461,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000153",
+            "target": "GameCtrl.subTrack"
+          }
+        },
+        {
+          "offset": 466,
+          "opcode": "brtrue.s",
+          "operand": 520
+        },
+        {
+          "offset": 468,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 469,
+          "opcode": "ldc.r4",
+          "operand": 1.0
+        },
+        {
+          "offset": 474,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000154",
+            "target": "GameCtrl.musicSpeed"
+          }
+        },
+        {
+          "offset": 479,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 480,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 485,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 486,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 487,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 488,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 493,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 494,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 495,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c4",
+            "target": "UnityEngine.AudioSource::get_pitch"
+          }
+        },
+        {
+          "offset": 500,
+          "opcode": "ldc.r4",
+          "operand": 1.0
+        },
+        {
+          "offset": 505,
+          "opcode": "ldc.r4",
+          "operand": 0.019999999552965164
+        },
+        {
+          "offset": 510,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a000068",
+            "target": "UnityEngine.Mathf::MoveTowards"
+          }
+        },
+        {
+          "offset": 515,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a000094",
+            "target": "UnityEngine.AudioSource::set_pitch"
+          }
+        },
+        {
+          "offset": 520,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 521,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 526,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000178",
+            "target": "Data.bMusic"
+          }
+        },
+        {
+          "offset": 531,
+          "opcode": "brtrue.s",
+          "operand": 569
+        },
+        {
+          "offset": 533,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 534,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 539,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 540,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 541,
+          "opcode": "ldc.r4",
+          "operand": 0.0
+        },
+        {
+          "offset": 546,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c1",
+            "target": "UnityEngine.AudioSource::set_volume"
+          }
+        },
+        {
+          "offset": 551,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 552,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400014f",
+            "target": "GameCtrl.music"
+          }
+        },
+        {
+          "offset": 557,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 558,
+          "opcode": "ldelem.ref",
+          "operand": null
+        },
+        {
+          "offset": 559,
+          "opcode": "ldc.r4",
+          "operand": 0.0
+        },
+        {
+          "offset": 564,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000c1",
+            "target": "UnityEngine.AudioSource::set_volume"
+          }
+        },
+        {
+          "offset": 569,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::LoadScene",
+      "token": "0x06000113",
+      "il_bytes": 104,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0600011a",
+            "target": "GameCtrl::SaveGame"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000157",
+            "target": "GameCtrl.bFading"
+          }
+        },
+        {
+          "offset": 13,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldstr",
+          "operand": {
+            "token": "0x700004cd",
+            "target": "''"
+          }
+        },
+        {
+          "offset": 19,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c5",
+            "target": "System.String::op_Equality"
+          }
+        },
+        {
+          "offset": 24,
+          "opcode": "brfalse.s",
+          "operand": 46
+        },
+        {
+          "offset": 26,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c6",
+            "target": "UnityEngine.SceneManagement.SceneManager::GetActiveScene"
+          }
+        },
+        {
+          "offset": 31,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 32,
+          "opcode": "ldloca.s",
+          "operand": 0
+        },
+        {
+          "offset": 34,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c7",
+            "target": "UnityEngine.SceneManagement.Scene::get_name"
+          }
+        },
+        {
+          "offset": 39,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c8",
+            "target": "UnityEngine.SceneManagement.SceneManager::LoadScene"
+          }
+        },
+        {
+          "offset": 44,
+          "opcode": "br.s",
+          "operand": 96
+        },
+        {
+          "offset": 46,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c6",
+            "target": "UnityEngine.SceneManagement.SceneManager::GetActiveScene"
+          }
+        },
+        {
+          "offset": 51,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 52,
+          "opcode": "ldloca.s",
+          "operand": 0
+        },
+        {
+          "offset": 54,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c7",
+            "target": "UnityEngine.SceneManagement.Scene::get_name"
+          }
+        },
+        {
+          "offset": 59,
+          "opcode": "ldstr",
+          "operand": {
+            "token": "0x700004cf",
+            "target": "'gameover'"
+          }
+        },
+        {
+          "offset": 64,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c9",
+            "target": "System.String::op_Inequality"
+          }
+        },
+        {
+          "offset": 69,
+          "opcode": "brfalse.s",
+          "operand": 90
+        },
+        {
+          "offset": 71,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 72,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c6",
+            "target": "UnityEngine.SceneManagement.SceneManager::GetActiveScene"
+          }
+        },
+        {
+          "offset": 77,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 78,
+          "opcode": "ldloca.s",
+          "operand": 0
+        },
+        {
+          "offset": 80,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c7",
+            "target": "UnityEngine.SceneManagement.Scene::get_name"
+          }
+        },
+        {
+          "offset": 85,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000149",
+            "target": "GameCtrl.lastScene"
+          }
+        },
+        {
+          "offset": 90,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 91,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c8",
+            "target": "UnityEngine.SceneManagement.SceneManager::LoadScene"
+          }
+        },
+        {
+          "offset": 96,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 97,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 98,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400014c",
+            "target": "GameCtrl.sceneTimer"
+          }
+        },
+        {
+          "offset": 103,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::Die",
+      "token": "0x06000114",
+      "il_bytes": 105,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400013f",
+            "target": "GameCtrl.checkPointDoor"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "bge.s",
+          "operand": 16
+        },
+        {
+          "offset": 9,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 10,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 11,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400013f",
+            "target": "GameCtrl.checkPointDoor"
+          }
+        },
+        {
+          "offset": 16,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 17,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000144",
+            "target": "GameCtrl.currentWorld"
+          }
+        },
+        {
+          "offset": 22,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 23,
+          "opcode": "bge.s",
+          "operand": 47
+        },
+        {
+          "offset": 25,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 26,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000149",
+            "target": "GameCtrl.lastScene"
+          }
+        },
+        {
+          "offset": 31,
+          "opcode": "brfalse.s",
+          "operand": 47
+        },
+        {
+          "offset": 33,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 34,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 35,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400013d",
+            "target": "GameCtrl.bHurtOnEnter"
+          }
+        },
+        {
+          "offset": 40,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 41,
+          "opcode": "call",
+          "operand": {
+            "token": "0x06000115",
+            "target": "GameCtrl::Return"
+          }
+        },
+        {
+          "offset": 46,
+          "opcode": "ret",
+          "operand": null
+        },
+        {
+          "offset": 47,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 48,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 49,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000152",
+            "target": "GameCtrl.nextTrack"
+          }
+        },
+        {
+          "offset": 54,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 55,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 56,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000143",
+            "target": "GameCtrl.startHP"
+          }
+        },
+        {
+          "offset": 61,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000141",
+            "target": "GameCtrl.HP"
+          }
+        },
+        {
+          "offset": 66,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 67,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 72,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 73,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000165",
+            "target": "Data.totalDeaths"
+          }
+        },
+        {
+          "offset": 78,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 79,
+          "opcode": "add",
+          "operand": null
+        },
+        {
+          "offset": 80,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000165",
+            "target": "Data.totalDeaths"
+          }
+        },
+        {
+          "offset": 85,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 86,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 87,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400013d",
+            "target": "GameCtrl.bHurtOnEnter"
+          }
+        },
+        {
+          "offset": 92,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 93,
+          "opcode": "ldstr",
+          "operand": {
+            "token": "0x700004cf",
+            "target": "'gameover'"
+          }
+        },
+        {
+          "offset": 98,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 99,
+          "opcode": "call",
+          "operand": {
+            "token": "0x06000116",
+            "target": "GameCtrl::FadeToScene"
+          }
+        },
+        {
+          "offset": 104,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::Return",
+      "token": "0x06000115",
+      "il_bytes": 57,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000157",
+            "target": "GameCtrl.bFading"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "brtrue.s",
+          "operand": 56
+        },
+        {
+          "offset": 8,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 9,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 10,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000140",
+            "target": "GameCtrl.lastDoor"
+          }
+        },
+        {
+          "offset": 15,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400013e",
+            "target": "GameCtrl.goToDoor"
+          }
+        },
+        {
+          "offset": 20,
+          "opcode": "ldsfld",
+          "operand": {
+            "token": "0x040005a3",
+            "target": "UI.instance"
+          }
+        },
+        {
+          "offset": 25,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x060003ee",
+            "target": "UI::transOut"
+          }
+        },
+        {
+          "offset": 30,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 31,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 32,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000152",
+            "target": "GameCtrl.nextTrack"
+          }
+        },
+        {
+          "offset": 37,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 38,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 39,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 40,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000149",
+            "target": "GameCtrl.lastScene"
+          }
+        },
+        {
+          "offset": 45,
+          "opcode": "call",
+          "operand": {
+            "token": "0x06000117",
+            "target": "GameCtrl::WaitForFade"
+          }
+        },
+        {
+          "offset": 50,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a00002b",
+            "target": "UnityEngine.MonoBehaviour::StartCoroutine"
+          }
+        },
+        {
+          "offset": 55,
+          "opcode": "pop",
+          "operand": null
+        },
+        {
+          "offset": 56,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::FadeToScene",
+      "token": "0x06000116",
+      "il_bytes": 115,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000157",
+            "target": "GameCtrl.bFading"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "brtrue.s",
+          "operand": 114
+        },
+        {
+          "offset": 8,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 9,
+          "opcode": "ldarg.2",
+          "operand": null
+        },
+        {
+          "offset": 10,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400013e",
+            "target": "GameCtrl.goToDoor"
+          }
+        },
+        {
+          "offset": 15,
+          "opcode": "ldarg.2",
+          "operand": null
+        },
+        {
+          "offset": 16,
+          "opcode": "brtrue.s",
+          "operand": 38
+        },
+        {
+          "offset": 18,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 19,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400013f",
+            "target": "GameCtrl.checkPointDoor"
+          }
+        },
+        {
+          "offset": 24,
+          "opcode": "brfalse.s",
+          "operand": 38
+        },
+        {
+          "offset": 26,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 27,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 28,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x0400013f",
+            "target": "GameCtrl.checkPointDoor"
+          }
+        },
+        {
+          "offset": 33,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400013e",
+            "target": "GameCtrl.goToDoor"
+          }
+        },
+        {
+          "offset": 38,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 39,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000144",
+            "target": "GameCtrl.currentWorld"
+          }
+        },
+        {
+          "offset": 44,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 45,
+          "opcode": "bge.s",
+          "operand": 90
+        },
+        {
+          "offset": 47,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 48,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000144",
+            "target": "GameCtrl.currentWorld"
+          }
+        },
+        {
+          "offset": 53,
+          "opcode": "ldc.i4.s",
+          "operand": -100
+        },
+        {
+          "offset": 55,
+          "opcode": "ble.s",
+          "operand": 90
+        },
+        {
+          "offset": 57,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 58,
+          "opcode": "ldstr",
+          "operand": {
+            "token": "0x700004cd",
+            "target": "''"
+          }
+        },
+        {
+          "offset": 63,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c5",
+            "target": "System.String::op_Equality"
+          }
+        },
+        {
+          "offset": 68,
+          "opcode": "brfalse.s",
+          "operand": 90
+        },
+        {
+          "offset": 70,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 71,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 72,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000140",
+            "target": "GameCtrl.lastDoor"
+          }
+        },
+        {
+          "offset": 77,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400013e",
+            "target": "GameCtrl.goToDoor"
+          }
+        },
+        {
+          "offset": 82,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 83,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000149",
+            "target": "GameCtrl.lastScene"
+          }
+        },
+        {
+          "offset": 88,
+          "opcode": "starg.s",
+          "operand": 1
+        },
+        {
+          "offset": 90,
+          "opcode": "ldsfld",
+          "operand": {
+            "token": "0x040005a3",
+            "target": "UI.instance"
+          }
+        },
+        {
+          "offset": 95,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x060003ee",
+            "target": "UI::transOut"
+          }
+        },
+        {
+          "offset": 100,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 101,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 102,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 103,
+          "opcode": "call",
+          "operand": {
+            "token": "0x06000117",
+            "target": "GameCtrl::WaitForFade"
+          }
+        },
+        {
+          "offset": 108,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a00002b",
+            "target": "UnityEngine.MonoBehaviour::StartCoroutine"
+          }
+        },
+        {
+          "offset": 113,
+          "opcode": "pop",
+          "operand": null
+        },
+        {
+          "offset": 114,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::WaitForFade",
+      "token": "0x06000117",
+      "il_bytes": 21,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "newobj",
+          "operand": {
+            "token": "0x06000427",
+            "target": "<WaitForFade>d__44::.ctor"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400063a",
+            "target": "<WaitForFade>d__44.<>4__this"
+          }
+        },
+        {
+          "offset": 13,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 15,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400063b",
+            "target": "<WaitForFade>d__44.sceneName"
+          }
+        },
+        {
+          "offset": 20,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::SetCheckpointScene",
+      "token": "0x06000118",
+      "il_bytes": 20,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c6",
+            "target": "UnityEngine.SceneManagement.SceneManager::GetActiveScene"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "ldloca.s",
+          "operand": 0
+        },
+        {
+          "offset": 9,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000c7",
+            "target": "UnityEngine.SceneManagement.Scene::get_name"
+          }
+        },
+        {
+          "offset": 14,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400014a",
+            "target": "GameCtrl.checkpointScene"
+          }
+        },
+        {
+          "offset": 19,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::UnlockAchievement",
+      "token": "0x06000119",
+      "il_bytes": 46,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000179",
+            "target": "Data.bAchDisable"
+          }
+        },
+        {
+          "offset": 11,
+          "opcode": "brfalse.s",
+          "operand": 14
+        },
+        {
+          "offset": 13,
+          "opcode": "ret",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 15,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000158",
+            "target": "GameCtrl.bSteamWorks"
+          }
+        },
+        {
+          "offset": 20,
+          "opcode": "brfalse.s",
+          "operand": 45
+        },
+        {
+          "offset": 22,
+          "opcode": "ldloca.s",
+          "operand": 0
+        },
+        {
+          "offset": 24,
+          "opcode": "ldarga.s",
+          "operand": 1
+        },
+        {
+          "offset": 26,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000bb",
+            "target": "System.Int32::ToString"
+          }
+        },
+        {
+          "offset": 31,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000bc",
+            "target": "Steamworks.Data.Achievement::.ctor"
+          }
+        },
+        {
+          "offset": 36,
+          "opcode": "ldloca.s",
+          "operand": 0
+        },
+        {
+          "offset": 38,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 39,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000ca",
+            "target": "Steamworks.Data.Achievement::Trigger"
+          }
+        },
+        {
+          "offset": 44,
+          "opcode": "pop",
+          "operand": null
+        },
+        {
+          "offset": 45,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::SaveGame",
+      "token": "0x0600011a",
+      "il_bytes": 55,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "newobj",
+          "operand": {
+            "token": "0x0a0000cb",
+            "target": "System.Runtime.Serialization.Formatters.Binary.BinaryFormatter::.ctor"
+          }
+        },
+        {
+          "offset": 5,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000cc",
+            "target": "UnityEngine.Application::get_persistentDataPath"
+          }
+        },
+        {
+          "offset": 10,
+          "opcode": "ldstr",
+          "operand": {
+            "token": "0x700004e1",
+            "target": "'/save1.cow'"
+          }
+        },
+        {
+          "offset": 15,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000cd",
+            "target": "System.String::Concat"
+          }
+        },
+        {
+          "offset": 20,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000ce",
+            "target": "System.IO.File::Create"
+          }
+        },
+        {
+          "offset": 25,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 26,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 27,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 28,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 33,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000cf",
+            "target": "System.Runtime.Serialization.Formatters.Binary.BinaryFormatter::Serialize"
+          }
+        },
+        {
+          "offset": 38,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 39,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000d0",
+            "target": "System.IO.Stream::Close"
+          }
+        },
+        {
+          "offset": 44,
+          "opcode": "ldstr",
+          "operand": {
+            "token": "0x700004f7",
+            "target": "'SAVED'"
+          }
+        },
+        {
+          "offset": 49,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000d1",
+            "target": "UnityEngine.Debug::Log"
+          }
+        },
+        {
+          "offset": 54,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::LoadGame",
+      "token": "0x0600011b",
+      "il_bytes": 85,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000cc",
+            "target": "UnityEngine.Application::get_persistentDataPath"
+          }
+        },
+        {
+          "offset": 5,
+          "opcode": "ldstr",
+          "operand": {
+            "token": "0x700004e1",
+            "target": "'/save1.cow'"
+          }
+        },
+        {
+          "offset": 10,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000cd",
+            "target": "System.String::Concat"
+          }
+        },
+        {
+          "offset": 15,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000d2",
+            "target": "System.IO.File::Exists"
+          }
+        },
+        {
+          "offset": 20,
+          "opcode": "brfalse.s",
+          "operand": 84
+        },
+        {
+          "offset": 22,
+          "opcode": "newobj",
+          "operand": {
+            "token": "0x0a0000cb",
+            "target": "System.Runtime.Serialization.Formatters.Binary.BinaryFormatter::.ctor"
+          }
+        },
+        {
+          "offset": 27,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 28,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000cc",
+            "target": "UnityEngine.Application::get_persistentDataPath"
+          }
+        },
+        {
+          "offset": 33,
+          "opcode": "ldstr",
+          "operand": {
+            "token": "0x700004e1",
+            "target": "'/save1.cow'"
+          }
+        },
+        {
+          "offset": 38,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000cd",
+            "target": "System.String::Concat"
+          }
+        },
+        {
+          "offset": 43,
+          "opcode": "ldc.i4.3",
+          "operand": null
+        },
+        {
+          "offset": 44,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000d3",
+            "target": "System.IO.File::Open"
+          }
+        },
+        {
+          "offset": 49,
+          "opcode": "stloc.1",
+          "operand": null
+        },
+        {
+          "offset": 50,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 51,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 52,
+          "opcode": "ldloc.1",
+          "operand": null
+        },
+        {
+          "offset": 53,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000d4",
+            "target": "System.Runtime.Serialization.Formatters.Binary.BinaryFormatter::Deserialize"
+          }
+        },
+        {
+          "offset": 58,
+          "opcode": "isinst",
+          "operand": {
+            "token": "0x0200002c",
+            "target": "Data"
+          }
+        },
+        {
+          "offset": 63,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 68,
+          "opcode": "ldloc.1",
+          "operand": null
+        },
+        {
+          "offset": 69,
+          "opcode": "callvirt",
+          "operand": {
+            "token": "0x0a0000d0",
+            "target": "System.IO.Stream::Close"
+          }
+        },
+        {
+          "offset": 74,
+          "opcode": "ldstr",
+          "operand": {
+            "token": "0x70000503",
+            "target": "'LOADED'"
+          }
+        },
+        {
+          "offset": 79,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000d1",
+            "target": "UnityEngine.Debug::Log"
+          }
+        },
+        {
+          "offset": 84,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::DeleteSave",
+      "token": "0x0600011c",
+      "il_bytes": 23,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0600011d",
+            "target": "GameCtrl::ResetSav"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "ldstr",
+          "operand": {
+            "token": "0x70000511",
+            "target": "'DELETED'"
+          }
+        },
+        {
+          "offset": 11,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a0000d1",
+            "target": "UnityEngine.Debug::Log"
+          }
+        },
+        {
+          "offset": 16,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 17,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0600011a",
+            "target": "GameCtrl::SaveGame"
+          }
+        },
+        {
+          "offset": 22,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::ResetSav",
+      "token": "0x0600011d",
+      "il_bytes": 283,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "ldc.i4",
+          "operand": 1000
+        },
+        {
+          "offset": 11,
+          "opcode": "newarr",
+          "operand": {
+            "token": "0x01000074",
+            "target": "System.Boolean"
+          }
+        },
+        {
+          "offset": 16,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400015b",
+            "target": "Data.items"
+          }
+        },
+        {
+          "offset": 21,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 22,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 27,
+          "opcode": "ldc.i4",
+          "operand": 1000
+        },
+        {
+          "offset": 32,
+          "opcode": "newarr",
+          "operand": {
+            "token": "0x01000074",
+            "target": "System.Boolean"
+          }
+        },
+        {
+          "offset": 37,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400015a",
+            "target": "Data.switches"
+          }
+        },
+        {
+          "offset": 42,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 43,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 48,
+          "opcode": "ldc.i4.s",
+          "operand": 100
+        },
+        {
+          "offset": 50,
+          "opcode": "newarr",
+          "operand": {
+            "token": "0x01000074",
+            "target": "System.Boolean"
+          }
+        },
+        {
+          "offset": 55,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400015c",
+            "target": "Data.upgrades"
+          }
+        },
+        {
+          "offset": 60,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 61,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 66,
+          "opcode": "ldc.i4.s",
+          "operand": 100
+        },
+        {
+          "offset": 68,
+          "opcode": "newarr",
+          "operand": {
+            "token": "0x01000069",
+            "target": "System.Int32"
+          }
+        },
+        {
+          "offset": 73,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400015d",
+            "target": "Data.ints"
+          }
+        },
+        {
+          "offset": 78,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 79,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 84,
+          "opcode": "ldc.i4.s",
+          "operand": 100
+        },
+        {
+          "offset": 86,
+          "opcode": "newarr",
+          "operand": {
+            "token": "0x01000069",
+            "target": "System.Int32"
+          }
+        },
+        {
+          "offset": 91,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400015e",
+            "target": "Data.cranks"
+          }
+        },
+        {
+          "offset": 96,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 97,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 102,
+          "opcode": "ldc.i4.s",
+          "operand": 100
+        },
+        {
+          "offset": 104,
+          "opcode": "newarr",
+          "operand": {
+            "token": "0x01000069",
+            "target": "System.Int32"
+          }
+        },
+        {
+          "offset": 109,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400015f",
+            "target": "Data.lvlItems1"
+          }
+        },
+        {
+          "offset": 114,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 115,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 120,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 121,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000160",
+            "target": "Data.itemTotal"
+          }
+        },
+        {
+          "offset": 126,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 127,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 132,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 133,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000161",
+            "target": "Data.currentLvl"
+          }
+        },
+        {
+          "offset": 138,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 139,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 144,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 145,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000162",
+            "target": "Data.HPupTotal"
+          }
+        },
+        {
+          "offset": 150,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 151,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 156,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 157,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000163",
+            "target": "Data.screwTotal"
+          }
+        },
+        {
+          "offset": 162,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 163,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 168,
+          "opcode": "ldc.i4.8",
+          "operand": null
+        },
+        {
+          "offset": 169,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000164",
+            "target": "Data.maxHP"
+          }
+        },
+        {
+          "offset": 174,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 175,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 180,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 181,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000165",
+            "target": "Data.totalDeaths"
+          }
+        },
+        {
+          "offset": 186,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 187,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 192,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 193,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000166",
+            "target": "Data.gameTime"
+          }
+        },
+        {
+          "offset": 198,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 199,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 204,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 205,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000167",
+            "target": "Data.bNonEmpty"
+          }
+        },
+        {
+          "offset": 210,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 211,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 216,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 217,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000168",
+            "target": "Data.currentCamMode"
+          }
+        },
+        {
+          "offset": 222,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 223,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 228,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 229,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400016a",
+            "target": "Data.camInvertOff"
+          }
+        },
+        {
+          "offset": 234,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 235,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 240,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 241,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400016b",
+            "target": "Data.bRumble"
+          }
+        },
+        {
+          "offset": 246,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 247,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 252,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 253,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400016c",
+            "target": "Data.bSkipLauncher"
+          }
+        },
+        {
+          "offset": 258,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 259,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 264,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 265,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400016e",
+            "target": "Data.bWidescreen"
+          }
+        },
+        {
+          "offset": 270,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 271,
+          "opcode": "ldfld",
+          "operand": {
+            "token": "0x04000159",
+            "target": "GameCtrl.data"
+          }
+        },
+        {
+          "offset": 276,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 277,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x0400016f",
+            "target": "Data.clothes"
+          }
+        },
+        {
+          "offset": 282,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "name": "GameCtrl::.ctor",
+      "token": "0x0600011e",
+      "il_bytes": 14,
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldc.i4.5",
+          "operand": null
+        },
+        {
+          "offset": 2,
+          "opcode": "stfld",
+          "operand": {
+            "token": "0x04000143",
+            "target": "GameCtrl.startHP"
+          }
+        },
+        {
+          "offset": 7,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "call",
+          "operand": {
+            "token": "0x0a00002d",
+            "target": "UnityEngine.MonoBehaviour::.ctor"
+          }
+        },
+        {
+          "offset": 13,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    }
+  ]
+}
