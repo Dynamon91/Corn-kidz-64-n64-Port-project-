@@ -35,7 +35,11 @@ typedef struct CK64World3D {
     bool grounded;
     bool collision_enabled;
     bool collided_this_step;
-    unsigned collision_hits;
+    bool contact_last_step; /* Previous fixed-step wall contact. */
+    unsigned collision_hits; /* Fixed simulation steps touching pillar. */
+    unsigned contact_events; /* Rising edges: separate contacts only. */
+    unsigned contact_flash_steps; /* Frames remaining after new impact. */
+    unsigned ejection_flash_steps; /* Frames remaining after re-enable ejection. */
     unsigned total_steps;
 } CK64World3D;
 

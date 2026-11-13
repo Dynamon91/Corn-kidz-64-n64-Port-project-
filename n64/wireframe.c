@@ -27,7 +27,9 @@ void ck64_wireframe_draw(surface_t *screen, const CK64World3D *world,
     const uint32_t grid=graphics_make_color(57,96,90,255);
     const uint32_t border=graphics_make_color(101,190,130,255);
     const uint32_t avatar=graphics_make_color(255,208,111,255);
-    const uint32_t landmark = world->collided_this_step
+    const uint32_t landmark =
+        (world->collided_this_step || world->contact_flash_steps > 0 ||
+         world->ejection_flash_steps > 0)
           ? graphics_make_color(255,104,66,255)
           : graphics_make_color(132,177,239,255);
     graphics_fill_screen(screen, graphics_make_color(13,21,29,255));
@@ -49,18 +51,30 @@ void ck64_wireframe_draw(surface_t *screen, const CK64World3D *world,
     box3d(screen,world,world->position.x,world->position.y,
           world->position.z,CK64_TEST_AVATAR_HALF,
           CK64_TEST_AVATAR_HEIGHT,avatar);
+    /* Timed labels remain visible for multiple fixed updates even on
+     * 60 Hz render cycles; they do not indicate original game impacts. */
+    if (world->ejection_flash_steps > 0) {
+        graphics_draw_box(screen,105,45,110,15,
+                          graphics_make_color(101,43,34,255));
+        graphics_draw_text(screen,123,48,"EJECTED");
+    } else if (world->collided_this_step ||
+               world->contact_flash_steps > 0) {
+        graphics_draw_box(screen,105,45,110,15,
+                          graphics_make_color(101,43,34,255));
+        graphics_draw_text(screen,123,48,"CONTACT!");
+    }
     /* Backplate keeps the control legend legible over the grid. */
     graphics_draw_box(screen,0,0,320,32,graphics_make_color(8,15,22,255));
-    graphics_draw_text(screen,6,4,"CK64 N64 - PHASE 10 COLLISION");
+    graphics_draw_text(screen,6,4,"CK64 N64 - PHASE 11 CONTACT HUD");
     graphics_draw_text(screen,6,18,"STICK: MOVE  A: JUMP  B: RESET");
     graphics_draw_box(screen,0,211,320,29,graphics_make_color(8,15,22,255));
     graphics_draw_text(screen,6,215,world->collision_enabled
         ? "C-L/R CAM  START COLL:ON  Z:DIAG"
         : "C-L/R CAM  START COLL:OFF Z:DIAG");
     char status[75];
-    snprintf(status,sizeof(status),"X:%+.1f Z:%+.1f Y:%.1f H:%u",
+    snprintf(status,sizeof(status),"X:%+.1f Z:%+.1f Y:%.1f H:%u E:%u",
              world->position.x,world->position.z,world->position.y,
-             world->collision_hits);
+             world->collision_hits,world->contact_events);
     graphics_draw_text(screen,6,228,status);
     (void)game_updates; /* Frame count visible in the Z diagnostic view. */
 }

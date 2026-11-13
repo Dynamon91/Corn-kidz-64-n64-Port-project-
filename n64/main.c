@@ -1,4 +1,4 @@
-/* Corn Kidz 64 -> N64: Phase 10 DIAGNOSTIC frontend.
+/* Corn Kidz 64 -> N64: Phase 11 DIAGNOSTIC frontend.
  * Includes fixed-step GameCtrl/MusicFade plus a perspective wireframe TEST.
  * The navigation values are experimental, NOT extracted PlayerCtrl logic.
  * It is NOT a port of original levels, models, textures, music or physics.
@@ -150,7 +150,7 @@ static void draw_diagnostics(void) {
     if (!screen) return;
     graphics_fill_screen(screen, graphics_make_color(13, 19, 29, 255));
     graphics_draw_text(screen, 15, 18, "CORN KIDZ 64 - N64 ENGINE DIAGNOSTIC");
-    graphics_draw_text(screen, 15, 40, "Phase 10: solid test pillar / 30 Hz");
+    graphics_draw_text(screen, 15, 40, "Phase 11: collision events / 30 Hz");
     graphics_draw_text(screen, 15, 60, "NO ORIGINAL GAME LEVELS OR ASSETS");
     snprintf(line, sizeof line, "Scene: %.90s", app.active_scene);
     graphics_draw_text(screen, 15, 82, line);

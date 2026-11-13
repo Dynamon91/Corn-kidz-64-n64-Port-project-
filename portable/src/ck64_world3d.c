@@ -40,6 +40,12 @@ static bool overlaps_pillar(const CK64World3D *w, float x, float z) {
 bool ck64_world3d_set_collision_enabled(CK64World3D *w, bool enabled) {
     if (!w) return false;
     w->collision_enabled = enabled;
+    /* Disabling collision also clears stale impact feedback; lifetime totals
+     * remain until B/reset. A later contact starts a new event. */
+    w->contact_last_step = false;
+    w->collided_this_step = false;
+    w->contact_flash_steps = 0;
+    w->ejection_flash_steps = 0;
     if (!enabled || !overlaps_pillar(w, w->position.x, w->position.z))
         return true;
     const float r = CK64_TEST_PILLAR_HALF + CK64_TEST_AVATAR_HALF;
@@ -53,6 +59,7 @@ bool ck64_world3d_set_collision_enabled(CK64World3D *w, bool enabled) {
     if (face==1) {w->position.x=right; w->velocity.x=0.0f;}
     if (face==2) {w->position.z=front; w->velocity.z=0.0f;}
     if (face==3) {w->position.z=back;  w->velocity.z=0.0f;}
+    w->ejection_flash_steps = 12; /* On-screen EJECTED for 0.4 s at 30 Hz. */
     return true;
 }
 
@@ -66,6 +73,8 @@ bool ck64_world3d_step(CK64World3D *world, CK64WorldInput in) {
     if (!world || !isfinite(in.stick_x) || !isfinite(in.stick_y) ||
         !isfinite(in.camera_turn) || world->total_steps == UINT_MAX) return false;
     if (in.reset) { ck64_world3d_reset(world); return true; }
+    if (world->contact_flash_steps > 0) --world->contact_flash_steps;
+    if (world->ejection_flash_steps > 0) --world->ejection_flash_steps;
     world->collided_this_step = false;
     float sx = clampf(in.stick_x, -1.0f, 1.0f);
     float sy = clampf(in.stick_y, -1.0f, 1.0f);
@@ -110,8 +119,14 @@ bool ck64_world3d_step(CK64World3D *world, CK64WorldInput in) {
         world->collided_this_step = true;
     }
     world->position.z = nz;
-    if (world->collided_this_step && world->collision_hits < UINT_MAX)
-        ++world->collision_hits;
+    if (world->collided_this_step) {
+        if (world->collision_hits < UINT_MAX) ++world->collision_hits;
+        if (!world->contact_last_step) {
+            if (world->contact_events < UINT_MAX) ++world->contact_events;
+            world->contact_flash_steps = 10;
+        }
+    }
+    world->contact_last_step = world->collided_this_step;
     if (in.jump && world->grounded) {
         world->grounded = false;
         world->velocity.y = 6.0f;

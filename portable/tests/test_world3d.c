@@ -183,9 +183,78 @@ static void test_airborne_pillar_collision(void) {
     assert(w.collision_hits>0 && w.position.z<=2.921f);
 }
 
+
+static void test_distinct_contact_events(void) {
+    CK64World3D w; ck64_world3d_reset(&w);
+    w.position.x=CK64_TEST_PILLAR_X;
+    w.position.z=2.5f;
+    CK64WorldInput in={0}; in.stick_y=1.0f;
+    for (int i=0; i<45; ++i) assert(ck64_world3d_step(&w,in));
+    assert(w.collided_this_step);
+    assert(w.collision_hits>10);
+    assert(w.contact_events==1); /* Holding against wall is one impact. */
+
+    /* Separate, leave the wall, and let the ten-step contact banner expire. */
+    in.stick_y=-1.0f;
+    for (int i=0; i<25; ++i) assert(ck64_world3d_step(&w,in));
+    assert(!w.collided_this_step && !w.contact_last_step);
+    assert(w.contact_flash_steps==0);
+    assert(w.contact_events==1);
+    in.stick_y=1.0f;
+    for (int i=0; i<35; ++i) assert(ck64_world3d_step(&w,in));
+    assert(w.collided_this_step && w.contact_events==2);
+}
+static void test_contact_flash_and_ejection_indicator(void) {
+    CK64World3D w; ck64_world3d_reset(&w);
+    w.position.x=CK64_TEST_PILLAR_X;
+    w.position.z=2.85f;
+    CK64WorldInput in={0}; in.stick_y=1.0f;
+    assert(ck64_world3d_step(&w,in));
+    assert(w.collided_this_step && w.contact_flash_steps==10);
+    in.stick_y=-1.0f;
+    assert(ck64_world3d_step(&w,in));
+    assert(!w.collided_this_step && w.contact_flash_steps==9);
+    for (int i=0;i<9;i++) assert(ck64_world3d_step(&w,in));
+    assert(w.contact_flash_steps==0);
+    assert(ck64_world3d_set_collision_enabled(&w,false));
+    assert(w.contact_flash_steps==0 && !w.contact_last_step);
+    w.position.x=CK64_TEST_PILLAR_X; w.position.z=CK64_TEST_PILLAR_Z;
+    assert(ck64_world3d_set_collision_enabled(&w,true));
+    assert(!inside_expanded_pillar(&w));
+    assert(w.ejection_flash_steps==12 && w.contact_events==1);
+    CK64WorldInput neutral={0};
+    for (int i=0;i<12;i++) assert(ck64_world3d_step(&w,neutral));
+    assert(w.ejection_flash_steps==0);
+    assert(ck64_world3d_set_collision_enabled(&w,false));
+    assert(w.ejection_flash_steps==0);
+    neutral.reset=true; assert(ck64_world3d_step(&w,neutral));
+    assert(w.contact_events==0 && w.collision_hits==0 &&
+           w.contact_flash_steps==0 && w.ejection_flash_steps==0 &&
+           w.collision_enabled);
+}
+static void test_camera_rotated_corner_slide(void) {
+    CK64World3D w; ck64_world3d_reset(&w);
+    w.position.x=1.7f; w.position.z=3.4f;
+    w.camera_yaw=0.9f;
+    CK64WorldInput in={0};
+    /* Transform desired diagonal world movement into stick coordinates. */
+    const float dx=0.70710678f, dz=0.70710678f;
+    in.stick_x=cosf(w.camera_yaw)*dx - sinf(w.camera_yaw)*dz;
+    in.stick_y=sinf(w.camera_yaw)*dx + cosf(w.camera_yaw)*dz;
+    for (int i=0;i<80;i++) {
+        assert(ck64_world3d_step(&w,in));
+        assert(!inside_expanded_pillar(&w));
+    }
+    assert(w.collision_hits>0 && w.contact_events>=1);
+    assert(w.position.z>5.1f && w.position.x>1.9f);
+}
+
 int main(void) {
     test_solid_pillar_front_and_back();
     test_diagonal_wall_slide();
+    test_distinct_contact_events();
+    test_contact_flash_and_ejection_indicator();
+    test_camera_rotated_corner_slide();
     test_toggle_and_reset_collision();
     test_airborne_pillar_collision();
     test_line_crosses_near_plane();test_line_screen_clip_and_invalid_args();
@@ -193,5 +262,5 @@ int main(void) {
     test_jump_landing();test_steering_and_reset();
     test_invalid_inputs_atomic();test_perspective_projection();
     test_screen_clip();
-    puts("13 navigation, projection and pillar collision scenario tests passed");return 0;
+    puts("16 navigation, projection, contact-event and collision scenario tests passed");return 0;
 }
