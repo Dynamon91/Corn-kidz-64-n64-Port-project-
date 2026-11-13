@@ -28,15 +28,45 @@ static CK64Vec3 normalized(CK64Vec3 v) {
     if (d < 0.00001f) { CK64Vec3 fallback={0.0f, 0.0f, 1.0f}; return fallback; }
     CK64Vec3 n={v.x/d, v.y/d, v.z/d}; return n;
 }
+
+/* Expanded AABB accounts for the width of the player proxy. */
+static bool overlaps_pillar(const CK64World3D *w, float x, float z) {
+    const float r = CK64_TEST_PILLAR_HALF + CK64_TEST_AVATAR_HALF;
+    return w->position.y < CK64_TEST_PILLAR_HEIGHT &&
+           w->position.y + CK64_TEST_AVATAR_HEIGHT > 0.0f &&
+           x > CK64_TEST_PILLAR_X - r && x < CK64_TEST_PILLAR_X + r &&
+           z > CK64_TEST_PILLAR_Z - r && z < CK64_TEST_PILLAR_Z + r;
+}
+bool ck64_world3d_set_collision_enabled(CK64World3D *w, bool enabled) {
+    if (!w) return false;
+    w->collision_enabled = enabled;
+    if (!enabled || !overlaps_pillar(w, w->position.x, w->position.z))
+        return true;
+    const float r = CK64_TEST_PILLAR_HALF + CK64_TEST_AVATAR_HALF;
+    const float left = CK64_TEST_PILLAR_X-r, right = CK64_TEST_PILLAR_X+r;
+    const float front = CK64_TEST_PILLAR_Z-r, back = CK64_TEST_PILLAR_Z+r;
+    const float d[4] = {w->position.x-left, right-w->position.x,
+                        w->position.z-front, back-w->position.z};
+    unsigned face = 0;
+    for (unsigned i=1; i<4; ++i) if (d[i] < d[face]) face=i;
+    if (face==0) {w->position.x=left;  w->velocity.x=0.0f;}
+    if (face==1) {w->position.x=right; w->velocity.x=0.0f;}
+    if (face==2) {w->position.z=front; w->velocity.z=0.0f;}
+    if (face==3) {w->position.z=back;  w->velocity.z=0.0f;}
+    return true;
+}
+
 void ck64_world3d_reset(CK64World3D *world) {
     if (!world) return;
     *world = (CK64World3D){0};
     world->grounded = true;
+    world->collision_enabled = true;
 }
 bool ck64_world3d_step(CK64World3D *world, CK64WorldInput in) {
     if (!world || !isfinite(in.stick_x) || !isfinite(in.stick_y) ||
         !isfinite(in.camera_turn) || world->total_steps == UINT_MAX) return false;
     if (in.reset) { ck64_world3d_reset(world); return true; }
+    world->collided_this_step = false;
     float sx = clampf(in.stick_x, -1.0f, 1.0f);
     float sy = clampf(in.stick_y, -1.0f, 1.0f);
     float mag = sqrtf(sx*sx+sy*sy);
@@ -51,16 +81,37 @@ bool ck64_world3d_step(CK64World3D *world, CK64WorldInput in) {
     float dz = (-sn*sx + cs*sy) * 4.0f;
     world->velocity.x = move_towards(world->velocity.x, dx, 18.0f*CK64_STEP);
     world->velocity.z = move_towards(world->velocity.z, dz, 18.0f*CK64_STEP);
-    world->position.x += world->velocity.x*CK64_STEP;
-    world->position.z += world->velocity.z*CK64_STEP;
-    if (world->position.x <= -7.5f || world->position.x >= 7.5f) {
-        world->position.x = clampf(world->position.x,-7.5f,7.5f);
+    /* Axis-separated resolution preserves tangential sliding. At 4 units/s
+     * each 30 Hz displacement is <=0.134, far less than pillar width 2.16;
+     * the player cannot tunnel completely through this test-only obstacle. */
+    float nx = world->position.x + world->velocity.x*CK64_STEP;
+    if (nx <= -7.5f || nx >= 7.5f) {
+        nx = clampf(nx,-7.5f,7.5f);
         world->velocity.x = 0.0f;
     }
-    if (world->position.z <= -7.5f || world->position.z >= 7.5f) {
-        world->position.z = clampf(world->position.z,-7.5f,7.5f);
+    if (world->collision_enabled &&
+        overlaps_pillar(world,nx,world->position.z)) {
+        const float r = CK64_TEST_PILLAR_HALF + CK64_TEST_AVATAR_HALF;
+        nx = CK64_TEST_PILLAR_X + (world->velocity.x>0.0f ? -r : r);
+        world->velocity.x = 0.0f;
+        world->collided_this_step = true;
+    }
+    world->position.x = nx;
+    float nz = world->position.z + world->velocity.z*CK64_STEP;
+    if (nz <= -7.5f || nz >= 7.5f) {
+        nz = clampf(nz,-7.5f,7.5f);
         world->velocity.z = 0.0f;
     }
+    if (world->collision_enabled &&
+        overlaps_pillar(world,world->position.x,nz)) {
+        const float r = CK64_TEST_PILLAR_HALF + CK64_TEST_AVATAR_HALF;
+        nz = CK64_TEST_PILLAR_Z + (world->velocity.z>0.0f ? -r : r);
+        world->velocity.z = 0.0f;
+        world->collided_this_step = true;
+    }
+    world->position.z = nz;
+    if (world->collided_this_step && world->collision_hits < UINT_MAX)
+        ++world->collision_hits;
     if (in.jump && world->grounded) {
         world->grounded = false;
         world->velocity.y = 6.0f;

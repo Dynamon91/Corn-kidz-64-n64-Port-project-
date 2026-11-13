@@ -27,7 +27,9 @@ void ck64_wireframe_draw(surface_t *screen, const CK64World3D *world,
     const uint32_t grid=graphics_make_color(57,96,90,255);
     const uint32_t border=graphics_make_color(101,190,130,255);
     const uint32_t avatar=graphics_make_color(255,208,111,255);
-    const uint32_t landmark=graphics_make_color(132,177,239,255);
+    const uint32_t landmark = world->collided_this_step
+          ? graphics_make_color(255,104,66,255)
+          : graphics_make_color(132,177,239,255);
     graphics_fill_screen(screen, graphics_make_color(13,21,29,255));
     /* Flat floor, no imported stage geometry. Keep under 100 line draws. */
     for(int i=-8;i<=8;i+=2) {
@@ -41,18 +43,24 @@ void ck64_wireframe_draw(surface_t *screen, const CK64World3D *world,
     line3d(screen,world,(CK64Vec3){8,0,-8},(CK64Vec3){8,0,8},border);
     line3d(screen,world,(CK64Vec3){8,0,8},(CK64Vec3){-8,0,8},border);
     line3d(screen,world,(CK64Vec3){-8,0,8},(CK64Vec3){-8,0,-8},border);
-    box3d(screen,world,3.0f,0,4.0f,0.7f,2.0f,landmark);
+    box3d(screen,world,CK64_TEST_PILLAR_X,0,CK64_TEST_PILLAR_Z,
+          CK64_TEST_PILLAR_HALF,CK64_TEST_PILLAR_HEIGHT,landmark);
     /* This box is NOT the Corn Kidz protagonist model. */
     box3d(screen,world,world->position.x,world->position.y,
-          world->position.z,0.38f,1.15f,avatar);
+          world->position.z,CK64_TEST_AVATAR_HALF,
+          CK64_TEST_AVATAR_HEIGHT,avatar);
     /* Backplate keeps the control legend legible over the grid. */
     graphics_draw_box(screen,0,0,320,32,graphics_make_color(8,15,22,255));
-    graphics_draw_text(screen,6,4,"CK64 N64 - PHASE 9 CLIPPING TEST");
+    graphics_draw_text(screen,6,4,"CK64 N64 - PHASE 10 COLLISION");
     graphics_draw_text(screen,6,18,"STICK: MOVE  A: JUMP  B: RESET");
     graphics_draw_box(screen,0,211,320,29,graphics_make_color(8,15,22,255));
-    graphics_draw_text(screen,6,215,"C-L/R: CAMERA   Z: DIAGNOSTIC");
+    graphics_draw_text(screen,6,215,world->collision_enabled
+        ? "C-L/R CAM  START COLL:ON  Z:DIAG"
+        : "C-L/R CAM  START COLL:OFF Z:DIAG");
     char status[75];
-    snprintf(status,sizeof(status),"X:%+.1f Z:%+.1f Y:%.1f T:%lu",
-             world->position.x,world->position.z,world->position.y,game_updates);
+    snprintf(status,sizeof(status),"X:%+.1f Z:%+.1f Y:%.1f H:%u",
+             world->position.x,world->position.z,world->position.y,
+             world->collision_hits);
     graphics_draw_text(screen,6,228,status);
+    (void)game_updates; /* Frame count visible in the Z diagnostic view. */
 }

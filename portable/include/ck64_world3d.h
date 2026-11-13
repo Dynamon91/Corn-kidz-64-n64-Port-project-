@@ -9,6 +9,14 @@
 extern "C" {
 #endif
 
+/* Geometry dimensions shared by test-only collision and wireframe display. */
+#define CK64_TEST_PILLAR_X 3.0f
+#define CK64_TEST_PILLAR_Z 4.0f
+#define CK64_TEST_PILLAR_HALF 0.7f
+#define CK64_TEST_PILLAR_HEIGHT 2.0f
+#define CK64_TEST_AVATAR_HALF 0.38f
+#define CK64_TEST_AVATAR_HEIGHT 1.15f
+
 typedef struct CK64Vec3 {
     float x, y, z;
 } CK64Vec3;
@@ -25,12 +33,18 @@ typedef struct CK64World3D {
     CK64Vec3 velocity;
     float camera_yaw;
     bool grounded;
+    bool collision_enabled;
+    bool collided_this_step;
+    unsigned collision_hits;
     unsigned total_steps;
 } CK64World3D;
 
 typedef struct CK64ScreenPoint { float x, y; } CK64ScreenPoint;
 
 void ck64_world3d_reset(CK64World3D *world);
+/* A single temporary pillar collider; re-enable while overlapping to eject
+ * the player from the nearest expanded AABB face. Reset restores collision ON. */
+bool ck64_world3d_set_collision_enabled(CK64World3D *world, bool enabled);
 /* Return false on invalid pointers, nonfinite analog inputs, or counter overflow.
  * Does not modify the world on invalid input. */
 bool ck64_world3d_step(CK64World3D *world, CK64WorldInput input);

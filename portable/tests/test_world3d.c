@@ -118,11 +118,80 @@ static void test_line_screen_clip_and_invalid_args(void) {
     w.camera_yaw=NAN;
     assert(!ck64_world3d_project_line(&w,left,right,&a,&b));
 }
+
+static bool inside_expanded_pillar(const CK64World3D *w) {
+    const float r=CK64_TEST_PILLAR_HALF+CK64_TEST_AVATAR_HALF;
+    return w->position.x>CK64_TEST_PILLAR_X-r &&
+           w->position.x<CK64_TEST_PILLAR_X+r &&
+           w->position.z>CK64_TEST_PILLAR_Z-r &&
+           w->position.z<CK64_TEST_PILLAR_Z+r &&
+           w->position.y<CK64_TEST_PILLAR_HEIGHT;
+}
+static void test_solid_pillar_front_and_back(void) {
+    CK64World3D w; ck64_world3d_reset(&w);
+    const float r=CK64_TEST_PILLAR_HALF+CK64_TEST_AVATAR_HALF;
+    w.position.x=CK64_TEST_PILLAR_X;
+    CK64WorldInput in={0}; in.stick_y=1.0f;
+    for (int i=0;i<150;i++) {
+        assert(ck64_world3d_step(&w,in));
+        assert(!inside_expanded_pillar(&w));
+    }
+    assert(w.collision_hits>0 && w.position.z<=CK64_TEST_PILLAR_Z-r+0.001f);
+    ck64_world3d_reset(&w);
+    w.position.x=CK64_TEST_PILLAR_X; w.position.z=7.0f;
+    in.stick_y=-1.0f;
+    for (int i=0;i<150;i++) assert(ck64_world3d_step(&w,in));
+    assert(w.collision_hits>0 && w.position.z>=CK64_TEST_PILLAR_Z+r-0.001f);
+}
+static void test_diagonal_wall_slide(void) {
+    CK64World3D w; ck64_world3d_reset(&w);
+    w.position.x=1.8f; w.position.z=3.5f;
+    CK64WorldInput in={0}; in.stick_x=1.0f; in.stick_y=1.0f;
+    for (int i=0;i<100;i++) {
+        assert(ck64_world3d_step(&w,in));
+        assert(!inside_expanded_pillar(&w));
+    }
+    assert(w.collision_hits>0);
+    assert(w.position.z>5.3f); /* Tangential movement is not blocked. */
+}
+static void test_toggle_and_reset_collision(void) {
+    CK64World3D w; ck64_world3d_reset(&w);
+    assert(w.collision_enabled);
+    assert(!ck64_world3d_set_collision_enabled(NULL,false));
+    assert(ck64_world3d_set_collision_enabled(&w,false));
+    w.position.x=CK64_TEST_PILLAR_X;
+    CK64WorldInput in={0}; in.stick_y=1.0f;
+    for (int i=0;i<30;i++) assert(ck64_world3d_step(&w,in));
+    assert(inside_expanded_pillar(&w) && w.collision_hits==0);
+    assert(ck64_world3d_set_collision_enabled(&w,true));
+    assert(!inside_expanded_pillar(&w));
+    in.reset=true;
+    assert(ck64_world3d_step(&w,in));
+    assert(w.collision_enabled && w.collision_hits==0);
+    assert(w.position.x==0.0f && w.position.z==0.0f);
+}
+static void test_airborne_pillar_collision(void) {
+    CK64World3D w; ck64_world3d_reset(&w);
+    w.position.x=CK64_TEST_PILLAR_X;
+    w.position.z=2.8f;
+    w.position.y=1.2f; w.grounded=false;
+    CK64WorldInput in={0}; in.stick_y=1.0f;
+    for (int i=0;i<16;i++) {
+        assert(ck64_world3d_step(&w,in));
+        assert(!inside_expanded_pillar(&w));
+    }
+    assert(w.collision_hits>0 && w.position.z<=2.921f);
+}
+
 int main(void) {
+    test_solid_pillar_front_and_back();
+    test_diagonal_wall_slide();
+    test_toggle_and_reset_collision();
+    test_airborne_pillar_collision();
     test_line_crosses_near_plane();test_line_screen_clip_and_invalid_args();
     test_reset_and_standstill();test_move_and_bounds();
     test_jump_landing();test_steering_and_reset();
     test_invalid_inputs_atomic();test_perspective_projection();
     test_screen_clip();
-    puts("9 wireframe/navigation and near-plane scenario tests passed");return 0;
+    puts("13 navigation, projection and pillar collision scenario tests passed");return 0;
 }
