@@ -13,7 +13,11 @@
 #include "ck64_player_footer.h"
 #include "ck64_source_lab.h"
 #include "wireframe.h"
+#include "mesh_renderer.h"
 #include "scene_anchor_meta.h"
+#ifdef CK64_PHASE23_PRIVATE_SCENE
+#include "phase23_private_mesh.h"
+#endif
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -64,6 +68,11 @@ typedef struct CK64DiagnosticApp {
     unsigned boot_stage;
     CK64World3D world;
     bool view_3d;
+    bool phase23_preview;
+    bool phase23_mesh_valid;
+    CK64MeshView phase23_mesh;
+    CK64N64MeshStats phase23_stats;
+    float phase23_yaw, phase23_pitch;
     bool jump_pending, reset_pending;
     float stick_x, stick_y, camera_turn;
     bool source_jump_probe;
@@ -137,6 +146,10 @@ static void init_diagnostic(void) {
     (void)ck64_source_lab_init(&app.source_lab);
     app.view_3d = true;
     app.grid_mode = CK64_GRID_FULL;
+#ifdef CK64_PHASE23_PRIVATE_SCENE
+    app.phase23_mesh_valid = ck64_mesh_view_open(&app.phase23_mesh,
+        ck64_phase23_mesh_bytes,sizeof ck64_phase23_mesh_bytes);
+#endif
 }
 
 static void controller_diagnostics(void) {
@@ -154,6 +167,7 @@ static void controller_diagnostics(void) {
     pressed = joypad_get_buttons_pressed(JOYPAD_PORT_1);
     if (pressed.z) {
         app.view_3d = !app.view_3d;
+        app.phase23_preview = false;
         app.jump_pending = false;
         app.reset_pending = false;
     }
@@ -182,6 +196,12 @@ static void controller_diagnostics(void) {
             app.reset_pending=false;
             app.source_a_held=false;
             app.source_release_pending=false;
+        }
+        if (pressed.c_down) {
+            app.phase23_preview = !app.phase23_preview;
+            app.jump_pending = false;
+            app.reset_pending = false;
+            app.source_release_pending = false;
         }
         if (app.source_jump_probe && pressed.a) {
             /* One-shot source rule sample, NOT modifying world3d physics. */
@@ -216,6 +236,15 @@ static void controller_diagnostics(void) {
         app.stick_y = (float)inputs.stick_y / 85.0f;
         app.camera_turn = (inputs.btn.c_right ? 1.0f : 0.0f) -
                           (inputs.btn.c_left ? 1.0f : 0.0f);
+        if (app.phase23_preview) {
+            app.phase23_yaw += app.stick_x * 0.035f;
+            app.phase23_pitch += app.stick_y * 0.025f;
+            if (app.phase23_pitch > 1.1f) app.phase23_pitch = 1.1f;
+            if (app.phase23_pitch < -1.1f) app.phase23_pitch = -1.1f;
+            app.stick_x = app.stick_y = app.camera_turn = 0.0f;
+            app.jump_pending = app.reset_pending = false;
+            return;
+        }
         if (app.source_live) {
             app.source_release_pending |= app.source_a_held && !inputs.btn.a;
             app.source_a_held=inputs.btn.a;
@@ -325,7 +354,7 @@ int main(void) {
             app.last_runtime_error = ck64_runtime_frame(&app.runtime,
                         (uint64_t)timer_ticks(), 1u, &frame);
             app.dropped_update |= frame.dropped_time;
-            if (app.view_3d) {
+            if (app.view_3d && !app.phase23_preview) {
                 CK64WorldInput input = {
                     app.stick_x, app.stick_y, app.camera_turn,
                     app.jump_pending, app.reset_pending
@@ -374,11 +403,44 @@ int main(void) {
             surface_t *screen=display_get();
             const uint64_t after_get=(uint64_t)timer_ticks();
             if (screen) {
-                ck64_wireframe_draw(screen,
+                if (app.phase23_preview) {
+#ifdef CK64_PHASE23_PRIVATE_SCENE
+                    if (app.phase23_mesh_valid &&
+                        ck64_n64_mesh_renderer_draw(screen,&app.phase23_mesh,
+                            &ck64_phase23_instance_transform,
+                            ck64_phase23_focus,ck64_phase23_radius,
+                            app.phase23_yaw,app.phase23_pitch,&app.phase23_stats)) {
+                        char mesh_line[96];
+                        graphics_draw_text(screen,5,18,"PH23 ORIGINAL MESH - C-DOWN:EXIT");
+                        snprintf(mesh_line,sizeof mesh_line,"RDP TRI:%u/%u SRC:%u",
+                            app.phase23_stats.rdp_triangles_submitted,
+                            CK64_PHASE23_TRIANGLE_BUDGET,
+                            app.phase23_mesh.triangle_count);
+                        graphics_draw_text(screen,5,33,mesh_line);
+                        snprintf(mesh_line,sizeof mesh_line,"RDRAM EST:%lu BYTES",
+                            (unsigned long)app.phase23_stats.estimated_rdram_bytes);
+                        graphics_draw_text(screen,5,48,mesh_line);
+                        graphics_draw_text(screen,5,225,"STICK:ORBIT Z:DIAGNOSTIC");
+                    } else {
+                        graphics_fill_screen(screen,graphics_make_color(13,19,29,255));
+                        graphics_draw_text(screen,8,22,"PH23 PRIVATE MESH INVALID");
+                        graphics_draw_text(screen,8,42,"RE-EXPORT THE ORIGINAL MESH");
+                        graphics_draw_text(screen,8,225,"C-DOWN:EXIT Z:DIAGNOSTIC");
+                    }
+#else
+                    graphics_fill_screen(screen,graphics_make_color(13,19,29,255));
+                    graphics_draw_text(screen,8,22,"PH23 PRIVATE ORIGINAL MESH REQUIRED");
+                    graphics_draw_text(screen,8,42,"PUBLIC ROM CONTAINS NO COMMERCIAL DATA");
+                    graphics_draw_text(screen,8,62,"RUN tools/unity_phase23_export.py");
+                    graphics_draw_text(screen,8,225,"C-DOWN:EXIT Z:DIAGNOSTIC");
+#endif
+                } else {
+                    ck64_wireframe_draw(screen,
                         app.source_live ? &app.source_lab.world : &app.world,
                         (unsigned long)app.runtime.fixed_updates,
                         app.grid_mode,&app.previous_perf,&app.line_stats);
-                if (app.source_live) {
+                }
+                if (!app.phase23_preview && app.source_live) {
                     char lab_line[100];
                     graphics_draw_box(screen,0,150,320,61,
                         graphics_make_color(19,31,44,255));
@@ -397,7 +459,7 @@ int main(void) {
                     graphics_draw_text(screen,5,183,lab_line);
                     graphics_draw_text(screen,5,198,
                         "TEST GEOMETRY / NO ORIGINAL ASSETS");
-                } else if (app.source_jump_probe) {
+                } else if (!app.phase23_preview && app.source_jump_probe) {
                     char probe_line[96];
                     graphics_draw_box(screen,3,185,313,52,
                         graphics_make_color(18,26,40,255));
