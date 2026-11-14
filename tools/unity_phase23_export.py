@@ -28,18 +28,20 @@ def resolve_instance(records, mesh_id, instance_index=0):
         if (mesh["mesh_file_id"], mesh["mesh_path_id"]) != (file_id, path_id):
             continue
         transform_id = graph["go_to_transform"].get(mesh["game_object_id"])
-        if transform_id is None or graph["statuses"].get(transform_id) != "world":
-            raise ValueError("mesh instance has unresolved or UI-dependent Transform")
-        matrix = graph["world_matrices"].get(transform_id)
-        if matrix is None:
-            raise ValueError("mesh instance has no resolved world matrix")
+        matrix = None
+        if transform_id is not None and graph["statuses"].get(transform_id) == "world":
+            matrix = graph["world_matrices"].get(transform_id)
+        # Preserve MeshFilter order so --instance remains deterministic, even
+        # when some placements have unsupported ancestry or UI transforms.
         matches.append(matrix)
     if not matches:
         raise ValueError("selected mesh has no scene instance")
     if not 0 <= instance_index < len(matches):
         raise ValueError("instance index is outside the selected mesh placements")
-    return matches[instance_index], len(matches)
-
+    matrix = matches[instance_index]
+    if matrix is None:
+        raise ValueError("selected mesh instance has unresolved or UI-dependent Transform")
+    return matrix, len(matches)
 
 def _cfloat(value):
     if not math.isfinite(value):
