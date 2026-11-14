@@ -14,4 +14,6 @@ build-*/
 *.map
 *.stripped
 *.d
-\n# Phase 23 contains private original game geometry; generate locally only.\n/n64/phase23_private_mesh.h\n
+
+# Phase 23 contains private original game geometry; generate locally only.
+/n64/phase23_private_mesh.h
