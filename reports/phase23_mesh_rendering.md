@@ -30,9 +30,11 @@ The reported 4,514 source triangles are not all submitted. The first pass draws 
 
 - C11 synthetic tests cover quaternion/scale/translation, parent × local order, invalid-input atomicity, triangle caps, 128 KiB rejection, and memory arithmetic.
 - Python synthetic tests cover Transform-to-MeshFilter association, inherited parent scale, unresolved ancestry rejection, mixed resolved/unresolved placements, and the private generated-header marker.
+- A local run against public branch sources at `f412118503f5b18368c079dd92571d6dd06d9be2` passed all 52 Unity Python tests: `python -m unittest discover -s tools/tests -p 'test_unity*.py' -v`.
+- The current desktop has no CMake, GCC, Clang, MIPS64 GCC, or Make on PATH, so it could not run a local C11 or libdragon build.
 - At commit `2c96575b929ee5428dc24cfbcd916f94cc0712ed`, the GitHub N64 diagnostic build passed ([run](https://github.com/Dynamon91/Corn-kidz-64-n64-Port-project-/actions/runs/43563119291)); GCC and Clang host jobs passed, as did Python tests and the 15 CTest cases.
 - The sanitizer job's final N64 frontend syntax step failed at that commit because four libdragon stub headers were missing. They were added in commit `018c31486087eb89f4ac1867eff8facb8d4c057b`.
-- Runs for `018c314`, `b3fbf62`, `3b27bec`, and current head `cc62d7c` ended in `startup_failure` before creating jobs (for example, [latest run](https://github.com/Dynamon91/Corn-kidz-64-n64-Port-project-/actions/runs/43565040648)). Therefore, the stub fix and the later mixed-placement regression test are **not yet verified by CI**. No private-header N64 build or ares visual test has run.
+- Runs for `018c314`, `b3fbf62`, `3b27bec`, `cc62d7c`, and report update `f412118` ended in `startup_failure` before creating jobs (see [latest run](https://github.com/Dynamon91/Corn-kidz-64-n64-Port-project-/actions/runs/43565069701)). Therefore, the stub fix and mixed-placement regression test are **not yet verified by CI**. No private-header N64 build or ares visual test has run.
 - The older Phase 21 diagnostic ROM remains at its existing path. Phase 23 private ROMs must stay local because they contain original game geometry.
 
 ## Private reproduction
