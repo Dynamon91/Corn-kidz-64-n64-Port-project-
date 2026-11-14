@@ -64,7 +64,8 @@ bool ck64_affine3x4_transform_point(const CK64Affine3x4 *m,
     return true;
 }
 bool ck64_mesh_scene_validate(const CK64MeshView *v) {
-    return v && v->bytes && v->vertex_count>0u && v->triangle_count>0u &&
+    return v && v->bytes && v->vertex_count>0u && v->vertex_count<=65535u &&
+           v->triangle_count>0u && v->triangle_count<=65535u &&
            v->byte_length<=CK64_PHASE23_MAX_PRIVATE_MESH_BYTES &&
            v->byte_length==28u+6u*((size_t)v->vertex_count+(size_t)v->triangle_count);
 }
