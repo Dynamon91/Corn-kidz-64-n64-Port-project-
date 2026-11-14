@@ -13,7 +13,9 @@ Progress: [███████████▌░░░░░░░░░░░
 - Added a private exporter that joins one decoded Unity mesh to its resolved MeshFilter Transform chain, plus a libdragon RDP triangle renderer with near/far clipping and a Z buffer.
 - Hard limits: 256 RDP triangle submissions per frame, 128 KiB resident CKM1 mesh data, two 320×240 RGBA16 color buffers, one RGBA16 Z buffer, 4 KiB renderer scratch, no textures. The estimated renderer-owned RDRAM cap is 595,968 bytes.
 - The generated header contains commercial mesh bytes and is ignored by Git. The public ROM has no original mesh data and displays a private-asset-required notice.
-- The current session has no attached original Unity archive or private CKM1 file. A private original-geometry ROM build and ares screenshot are therefore **not verified**. No Phase 23 rendering success is claimed.
+- The owner-provided three-part Unity archive was reassembled privately; its SHA-256 matches the repository's previously recorded combined ZIP, and all 232 entries pass CRC checks. The exporter resolved the TutorialWorld01 `3:194` MeshFilter placement and generated a local 68,590-byte CKM1 header for 6,913 vertices / 4,514 triangles.
+- The generated private header and offline geometry preview remain outside GitHub. The preview uses real transformed source geometry but is **not** an N64 ROM or ares screenshot.
+- A private original-geometry ROM build and ares screenshot remain **unverified**. No emulator rendering success is claimed.
 - [Phase 23 implementation and limits](reports/phase23_mesh_rendering.md). Phase 21 diagnostic ROM remains archived at its existing path.
 
 ### Phase 22 — Original game mesh decoding (private source assets, metadata only on GitHub)
