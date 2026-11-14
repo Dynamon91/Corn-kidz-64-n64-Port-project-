@@ -412,10 +412,10 @@ int main(void) {
                             app.phase23_yaw,app.phase23_pitch,&app.phase23_stats)) {
                         char mesh_line[96];
                         graphics_draw_text(screen,5,18,"PH23 ORIGINAL MESH - C-DOWN:EXIT");
-                        snprintf(mesh_line,sizeof mesh_line,"RDP TRI:%u/%u SRC:%u",
+                        snprintf(mesh_line,sizeof mesh_line,"RDP TRI:%u/%u SRC:%lu",
                             app.phase23_stats.rdp_triangles_submitted,
                             CK64_PHASE23_TRIANGLE_BUDGET,
-                            app.phase23_mesh.triangle_count);
+                            (unsigned long)app.phase23_mesh.triangle_count);
                         graphics_draw_text(screen,5,33,mesh_line);
                         snprintf(mesh_line,sizeof mesh_line,"RDRAM EST:%lu BYTES",
                             (unsigned long)app.phase23_stats.estimated_rdram_bytes);
