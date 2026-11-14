@@ -112,14 +112,15 @@ def export(archive, scene, mesh_id, instance_index, output):
                 raise ValueError("invalid scene index")
             records = parse_serialized(z.read(members["level" + str(scene)]))[0]
         matrix, instance_count = resolve_instance(records, mesh_id, instance_index)
-        header = private_header(ckm.read_bytes(), matrix, mesh["triangles"])
+        ckm1_bytes = ckm.stat().st_size
+        blob = ckm.read_bytes()
+        header = private_header(blob, matrix, mesh["triangles"])
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(header, encoding="utf-8")
     return {"scene": summary["scene"], "mesh_id": mesh_id,
             "vertices": mesh["vertices"], "triangles": mesh["triangles"],
             "instances": instance_count, "instance_index": instance_index,
-            "ckm1_bytes": ckm.stat().st_size if ckm.exists() else None,
-            "output": str(output)}
+            "ckm1_bytes": ckm1_bytes, "output": str(output)}
 
 
 def main():
