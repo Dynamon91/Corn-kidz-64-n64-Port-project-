@@ -11,7 +11,11 @@ typedef struct joypad_inputs_s {joypad_buttons_t btn; int8_t stick_x,stick_y;} j
 #define RESOLUTION_320x240 1
 #define DEPTH_16_BPP 1
 #define GAMMA_NONE 0
-#define FILTERS_RESAMPLE 1\n#define FMT_RGBA16 1\n#define RDPQ_COMBINER_SHADE 1\ntypedef struct rdpq_trifmt_s { int unused; } rdpq_trifmt_t;\nextern const rdpq_trifmt_t TRIFMT_ZBUF_SHADE;
+#define FILTERS_RESAMPLE 1
+#define FMT_RGBA16 1
+#define RDPQ_COMBINER_SHADE 1
+typedef struct rdpq_trifmt_s { int unused; } rdpq_trifmt_t;
+extern const rdpq_trifmt_t TRIFMT_ZBUF_SHADE;
 void timer_init(void);
 long long timer_ticks(void);
 void joypad_init(void);
@@ -21,7 +25,14 @@ joypad_buttons_t joypad_get_buttons_pressed(int port);
 joypad_inputs_t joypad_get_inputs(int port);
 void display_init(int mode, int bitdepth, int buffers, int gamma, int filters);
 surface_t *display_get(void);
-void display_show(surface_t *surface);\nsurface_t surface_alloc(int format,uint16_t width,uint16_t height);\nvoid rdpq_attach_clear(const surface_t *color,const surface_t *z);\nvoid rdpq_set_mode_standard(void);\nvoid rdpq_mode_combiner(int combiner);\nvoid rdpq_mode_zbuf(bool compare,bool update);\nvoid rdpq_triangle(const rdpq_trifmt_t *format,const float *a,const float *b,const float *c);\nvoid rdpq_detach_wait(void);
+void display_show(surface_t *surface);
+surface_t surface_alloc(int format,uint16_t width,uint16_t height);
+void rdpq_attach_clear(const surface_t *color,const surface_t *z);
+void rdpq_set_mode_standard(void);
+void rdpq_mode_combiner(int combiner);
+void rdpq_mode_zbuf(bool compare,bool update);
+void rdpq_triangle(const rdpq_trifmt_t *format,const float *a,const float *b,const float *c);
+void rdpq_detach_wait(void);
 uint32_t graphics_make_color(int r,int g,int b,int a);
 void graphics_fill_screen(surface_t *surface, uint32_t color);
 void graphics_set_default_font(void);
