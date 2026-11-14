@@ -2,19 +2,27 @@
 
 > **PROJECT IN DEVELOPMENT.** This is a source-grounded fan-port research workspace. **No playable Corn Kidz 64 N64 release exists.** Phase 13 remains the last user-validated ares build; Phase 19 source-driven wireframe motion is not yet visually verified in ares.
 
-## Current milestone — Phase 22 of 50+ (provisional)
+## Current milestone — Phase 23 of 50+ (provisional)
 
-**Roadmap:** 22/50 = **44% of planned milestone positions**, **NOT 44% of original gameplay or assets ported**.
+**Roadmap:** 23/50 = **46% of planned milestone positions**, **NOT 46% of original gameplay or assets ported**.
 
-Progress: [███████████░░░░░░░░░░░░░░] 44% (provisional planning roadmap).
+Progress: [███████████▌░░░░░░░░░░░░░░] 46% (provisional planning roadmap).
+
+### Phase 23 — Bounded original-mesh rendering path (not yet visually verified)
+
+- Added a private exporter that joins one decoded Unity mesh to its resolved MeshFilter Transform chain, plus a libdragon RDP triangle renderer with near/far clipping and a Z buffer.
+- Hard limits: 256 RDP triangle submissions per frame, 128 KiB resident CKM1 mesh data, two 320×240 RGBA16 color buffers, one RGBA16 Z buffer, 4 KiB renderer scratch, no textures. The estimated renderer-owned RDRAM cap is 595,968 bytes.
+- The generated header contains commercial mesh bytes and is ignored by Git. The public ROM has no original mesh data and displays a private-asset-required notice.
+- The current session has no attached original Unity archive or private CKM1 file. A private original-geometry ROM build and ares screenshot are therefore **not verified**. No Phase 23 rendering success is claimed.
+- [Phase 23 implementation and limits](reports/phase23_mesh_rendering.md). Phase 21 diagnostic ROM remains archived at its existing path.
 
 ### Phase 22 — Original game mesh decoding (private source assets, metadata only on GitHub)
 
 - **Decoded real 3D geometry** from the user's original PC game: 113 unique tutorial meshes / 8,605 triangles, and 315 Wolloh's Hollow meshes / 26,407 triangles; remaining scene mesh references are Unity built-in resources.
-- The original tutorial `000world` mesh contains 6,913 vertices and 4,514 triangles. Privately exported OBJ and an **experimental** 68,590-byte CKM1 quantized big-endian blob. No commercial geometry is committed here.
-- Python Mesh v22 reader handles index buffers, 2018+ channels, external `.resS`, scene fileID mapping and strict malformed-data rejection. C11 CKM1 decoder is added to N64 build but **no real mesh is drawn by ROM yet**.
+- The original tutorial 000world mesh contains 6,913 vertices and 4,514 triangles. Privately exported OBJ and an experimental 68,590-byte CKM1 quantized big-endian blob. No commercial geometry is committed here.
+- Python Mesh v22 reader handles index buffers, 2018+ channels, external .resS, scene fileID mapping and strict malformed-data rejection. C11 CKM1 decoder is in the N64 build; no original mesh is drawn by the public ROM.
 - 21 new synthetic Python tests and 10 CKM1 C11 scenario groups. [Geometry report](reports/phase22_geometry_extraction.md) · [Metadata inventory](reports/phase22_geometry_metadata.json).
-- Last user-confirmed ares ROM remains Phase 13; Phase 21 remains the most recent archived diagnostic ROM pending user test. The new compile step does not establish a playable original level.
+- Last user-confirmed ares ROM remains Phase 13; Phase 21 remains the most recent archived diagnostic ROM pending user test. A successful compile does not establish a playable original level.
 
 ### Phase 21 — Original Unity world-space anchors (historical metadata step)
 
