@@ -91,3 +91,9 @@ target_sources(ck64_gameflow PRIVATE src/ck64_mesh_format.c)
 add_executable(test_mesh_format tests/test_mesh_format.c)
 target_link_libraries(test_mesh_format PRIVATE ck64_gameflow)
 add_test(NAME ckm1_big_endian_mesh_format COMMAND test_mesh_format)
+
+# Phase 23: checked Unity Transform composition and bounded mesh-scene budgets.
+target_sources(ck64_gameflow PRIVATE src/ck64_mesh_scene.c)
+add_executable(test_mesh_scene tests/test_mesh_scene.c)
+target_link_libraries(test_mesh_scene PRIVATE ck64_gameflow)
+add_test(NAME unity_transform_mesh_scene_budget COMMAND test_mesh_scene)
