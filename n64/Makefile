@@ -10,6 +10,14 @@ PORTABLE_SRC := ../portable/src
 PORTABLE_INCLUDE := ../portable/include
 CFLAGS += -I$(PORTABLE_INCLUDE)
 
+PHASE23_PRIVATE_SCENE ?= 0
+ifeq ($(PHASE23_PRIVATE_SCENE),1)
+  ifeq ($(wildcard phase23_private_mesh.h),)
+    $(error Generate n64/phase23_private_mesh.h locally before enabling PHASE23_PRIVATE_SCENE=1)
+  endif
+  CFLAGS += -DCK64_PHASE23_PRIVATE_SCENE
+endif
+
 OBJS := $(OBJ_DIR)/main.o \
   $(OBJ_DIR)/ck64_clock.o \
   $(OBJ_DIR)/ck64_runtime.o \
@@ -26,6 +34,8 @@ OBJS := $(OBJ_DIR)/main.o \
   $(OBJ_DIR)/ck64_player_footer.o \
   $(OBJ_DIR)/ck64_source_lab.o \
   $(OBJ_DIR)/ck64_mesh_format.o \
+  $(OBJ_DIR)/ck64_mesh_scene.o \
+  $(OBJ_DIR)/mesh_renderer.o \
   $(OBJ_DIR)/wireframe.o
 
 ck64_diag.z64: N64_ROM_TITLE = "CK64 Port Diagnostic"
@@ -34,6 +44,10 @@ ck64_diag.z64: N64_ROM_SAVETYPE = none
 $(BUILD_DIR)/ck64_diag.elf: $(OBJS)
 
 $(OBJ_DIR)/ck64_%.o: $(PORTABLE_SRC)/ck64_%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(OBJ_DIR)/mesh_renderer.o: mesh_renderer.c mesh_renderer.h
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c -o $@ $<
 

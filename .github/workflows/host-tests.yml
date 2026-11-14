@@ -46,4 +46,4 @@ jobs:
       - name: N64 frontend API compile check with host-only stubs
         run: |
           clang -std=c11 -Wall -Wextra -Wpedantic -Werror \
-            -fsyntax-only -In64/tests/stubs -Iportable/include -In64 n64/main.c n64/wireframe.c
+            -fsyntax-only -In64/tests/stubs -Iportable/include -In64 n64/main.c n64/wireframe.c n64/mesh_renderer.c
