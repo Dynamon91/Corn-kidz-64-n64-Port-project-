@@ -8,7 +8,7 @@ include $(N64_INST)/include/n64.mk
 OBJ_DIR := $(BUILD_DIR)
 PORTABLE_SRC := ../portable/src
 PORTABLE_INCLUDE := ../portable/include
-CFLAGS += -I$(PORTABLE_INCLUDE)
+CFLAGS += -I$(PORTABLE_INCLUDE)\n\nPHASE23_PRIVATE_SCENE ?= 0\nifeq ($(PHASE23_PRIVATE_SCENE),1)\n  ifeq ($(wildcard phase23_private_mesh.h),)\n    $(error Generate n64/phase23_private_mesh.h locally before enabling PHASE23_PRIVATE_SCENE=1)\n  endif\n  CFLAGS += -DCK64_PHASE23_PRIVATE_SCENE\nendif
 
 OBJS := $(OBJ_DIR)/main.o \
   $(OBJ_DIR)/ck64_clock.o \
