@@ -8,7 +8,15 @@ include $(N64_INST)/include/n64.mk
 OBJ_DIR := $(BUILD_DIR)
 PORTABLE_SRC := ../portable/src
 PORTABLE_INCLUDE := ../portable/include
-CFLAGS += -I$(PORTABLE_INCLUDE)\n\nPHASE23_PRIVATE_SCENE ?= 0\nifeq ($(PHASE23_PRIVATE_SCENE),1)\n  ifeq ($(wildcard phase23_private_mesh.h),)\n    $(error Generate n64/phase23_private_mesh.h locally before enabling PHASE23_PRIVATE_SCENE=1)\n  endif\n  CFLAGS += -DCK64_PHASE23_PRIVATE_SCENE\nendif
+CFLAGS += -I$(PORTABLE_INCLUDE)
+
+PHASE23_PRIVATE_SCENE ?= 0
+ifeq ($(PHASE23_PRIVATE_SCENE),1)
+  ifeq ($(wildcard phase23_private_mesh.h),)
+    $(error Generate n64/phase23_private_mesh.h locally before enabling PHASE23_PRIVATE_SCENE=1)
+  endif
+  CFLAGS += -DCK64_PHASE23_PRIVATE_SCENE
+endif
 
 OBJS := $(OBJ_DIR)/main.o \
   $(OBJ_DIR)/ck64_clock.o \
@@ -40,8 +48,8 @@ $(OBJ_DIR)/ck64_%.o: $(PORTABLE_SRC)/ck64_%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(OBJ_DIR)/mesh_renderer.o: mesh_renderer.c mesh_renderer.h
-\t@mkdir -p $(dir $@)
-\t$(CC) $(CFLAGS) -c -o $@ $<
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	rm -rf $(BUILD_DIR) ck64_diag.z64
