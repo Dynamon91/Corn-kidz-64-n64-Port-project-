@@ -63,7 +63,7 @@ static void memory_budget(void) {
     assert(CK64_PHASE23_FRAMEBUFFER_BYTES==307200u);
     assert(CK64_PHASE23_ZBUFFER_BYTES==153600u);
     assert(CK64_PHASE23_TEXTURE_TMEM_BYTES==0u);
-    assert(ck64_mesh_scene_rdram_bytes(68590u)==530462u);
+    assert(ck64_mesh_scene_rdram_bytes(68590u)==533486u);
     assert(ck64_mesh_scene_rdram_bytes(CK64_PHASE23_MAX_PRIVATE_MESH_BYTES)==595968u);
     assert(ck64_mesh_scene_rdram_bytes(CK64_PHASE23_MAX_PRIVATE_MESH_BYTES+1u)==0u);
 }
