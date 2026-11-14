@@ -7,10 +7,15 @@ on:
       - 'n64/**'
       - 'portable/**'
       - '.github/workflows/n64-diagnostic.yml'
+  pull_request:
+    paths:
+      - 'n64/**'
+      - 'portable/**'
+      - '.github/workflows/n64-diagnostic.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   n64-diagnostic:
