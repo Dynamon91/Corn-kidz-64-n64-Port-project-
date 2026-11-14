@@ -6,7 +6,6 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-struct surface_s { int marker; };
 static unsigned graphics_lines;
 static char last_grid_label[80];
 static char last_perf_label[80];
