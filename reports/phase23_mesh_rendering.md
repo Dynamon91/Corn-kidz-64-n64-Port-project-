@@ -1,6 +1,6 @@
 # Phase 23 — Unity Transform bridge and bounded N64 mesh renderer
 
-**Implementation status: renderer path and build/test coverage added; original asset render remains unverified.** The current session has no attached owner-provided Unity archive or private CKM1 payload. No commercial bytes were added to this public repository, and no original-geometry screenshot or ares result is claimed.
+**Implementation status: renderer path, exporter, and synthetic coverage added; original N64 render remains unverified.** The owner supplied the original archive as three split files. They were reassembled only in the private local workspace; the reconstructed ZIP matches the SHA-256 already recorded in the repository, and all 232 entries pass ZIP CRC checks. The exporter successfully resolved the TutorialWorld01 `3:194` MeshFilter placement and generated a local CKM1 header: 6,913 vertices, 4,514 triangles, 68,590 bytes. The header and offline preview stay outside GitHub. No commercial bytes were added to this public repository.
 
 ## What Phase 23 adds
 
@@ -26,6 +26,12 @@ The 595,968-byte estimate is buffers + bounded mesh payload + scratch; it exclud
 
 The reported 4,514 source triangles are not all submitted. The first pass draws at most 256 evenly sampled triangles and has no original materials or textures. That is a geometry pipeline proof, not a complete level.
 
+## Local private export
+
+- Source mesh: TutorialWorld01, reference `3:194`; one resolved MeshFilter placement, 6,913 vertices, 4,514 triangles, 68,590-byte CKM1 output.
+- ZIP integrity: 232 entries; Python `zipfile -t` passed, and the archive hash matches the combined ZIP already documented in the README.
+- An offline preview was generated from the transformed source geometry. Its N64-camera panel is a software approximation and is **not** a ROM or ares capture. The private generated header and PNG remain outside the public repository.
+
 ## Checks and evidence
 
 - C11 synthetic tests cover quaternion/scale/translation, parent × local order, invalid-input atomicity, triangle caps, 128 KiB rejection, and memory arithmetic.
@@ -48,4 +54,4 @@ The generated header is ignored by Git. In the ROM, C-down enters/exits the prev
 
 ## Roadmap
 
-**23 / 50+ milestones = 46% of the provisional plan.** This is milestone progress only, not game completion. Phase 23 still requires the owner's private asset input, a successful private ROM build, and an actual ares visual capture before the original-geometry render can be called verified.
+**23 / 50+ milestones = 46% of the provisional plan.** This is milestone progress only, not game completion. The private asset input and local mesh export are now verified. Phase 23 still requires a successful private ROM build and an actual ares visual capture before an original-geometry N64 render can be called verified.
