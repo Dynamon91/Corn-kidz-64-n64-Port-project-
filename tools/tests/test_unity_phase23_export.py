@@ -59,6 +59,21 @@ class Phase23ExportTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "outside"):
             resolve_instance(records, "3:194", 1)
 
+    def test_resolved_instance_can_skip_other_unresolved_placement(self):
+        records = [
+            (11, 4, transform(1, parent=99)),
+            (12, 4, transform(2, pos=(7, 0, 0))),
+            (1, 1, game_object(11)),
+            (2, 1, game_object(12)),
+            (21, 33, mesh_filter(1, 3, 194)),
+            (22, 33, mesh_filter(2, 3, 194)),
+        ]
+        matrix, count = resolve_instance(records, "3:194", 1)
+        self.assertEqual(count, 2)
+        self.assertAlmostEqual(matrix[0][3], 7.0)
+        with self.assertRaisesRegex(ValueError, "unresolved"):
+            resolve_instance(records, "3:194", 0)
+
     def test_unresolved_transform_rejected(self):
         records = [(11, 4, transform(1, parent=99)), (1, 1, game_object(11)),
                    (21, 33, mesh_filter(1, 3, 194))]
