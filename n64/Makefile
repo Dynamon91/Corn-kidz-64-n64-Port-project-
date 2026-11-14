@@ -26,6 +26,8 @@ OBJS := $(OBJ_DIR)/main.o \
   $(OBJ_DIR)/ck64_player_footer.o \
   $(OBJ_DIR)/ck64_source_lab.o \
   $(OBJ_DIR)/ck64_mesh_format.o \
+  $(OBJ_DIR)/ck64_mesh_scene.o \
+  $(OBJ_DIR)/mesh_renderer.o \
   $(OBJ_DIR)/wireframe.o
 
 ck64_diag.z64: N64_ROM_TITLE = "CK64 Port Diagnostic"
@@ -36,6 +38,10 @@ $(BUILD_DIR)/ck64_diag.elf: $(OBJS)
 $(OBJ_DIR)/ck64_%.o: $(PORTABLE_SRC)/ck64_%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(OBJ_DIR)/mesh_renderer.o: mesh_renderer.c mesh_renderer.h
+\t@mkdir -p $(dir $@)
+\t$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	rm -rf $(BUILD_DIR) ck64_diag.z64
